@@ -3,7 +3,6 @@ package dto;
 import java.io.Serializable;
 
 public class Tests implements Serializable{
-	private String name; // 氏名
 	private String number; //学籍番号
 	private String term; //学期
 	private String testName; //テスト名
@@ -20,12 +19,6 @@ public class Tests implements Serializable{
 	private String sum; //総合
 	private String averageSum; //総合平均点
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public String getNumber() {
 		return number;
 	}
@@ -116,10 +109,9 @@ public class Tests implements Serializable{
 	public void setAverageSum(String averageSum) {
 		this.averageSum = averageSum;
 	}
-	public Tests(String name, String number, String term, String testName, String japanese, String averageJapanese,
+	public Tests(String number, String term, String testName, String japanese, String averageJapanese,
 			String math, String averageMath, String science, String averageScience, String social, String averageSocial,
 			String english, String averageEnglish, String sum, String averageSum) {
-		this.name = name;
 		this.number = number;
 		this.term = term;
 		this.testName = testName;
@@ -137,7 +129,6 @@ public class Tests implements Serializable{
 		this.averageSum = averageSum;
 	}
 	public Tests() {
-		this.name = "";
 		this.number = "";
 		this.term = "";
 		this.testName = "";

@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class Tidpw implements Serializable {
 	private String className; // クラス名
-	private String name; // 氏名
-	private String pw; // パスワード
+	private String tName; // 先生の氏名
+	private String tPw; // 先生のパスワード
 	
 	public String getClassName() {
 		return className;
@@ -14,27 +14,27 @@ public class Tidpw implements Serializable {
 		this.className = className;
 	}
 	public String getName() {
-		return name;
+		return tName;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.tName = name;
 	}
 	public String getPw() {
-		return pw;
+		return tPw;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setPw(String tPw) {
+		this.tPw = tPw;
 	}
 	
-	public Tidpw(String className, String name, String pw) {
+	public Tidpw(String className, String tName, String tPw) {
 		this.className = className;
-		this.name = name;
-		this.pw = pw;
+		this.tName = tName;
+		this.tPw = tPw;
 	}
 	public Tidpw() {
 		this.className = "";
-		this.name = "";
-		this.pw = "";
+		this.tName = "";
+		this.tPw = "";
 	}
 	
 	

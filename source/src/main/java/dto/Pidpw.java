@@ -3,37 +3,37 @@ package dto;
 import java.io.Serializable;
 
 public class Pidpw implements Serializable{
-	private String name; // 氏名
+	private String pName; // 保護者の氏名
 	private String number; //学籍番号
-	private String pw; // パスワード
+	private String pPw; // 保護者のパスワード
 	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+	public String getpName() {
+		return pName;
 	}
 	public String getNumber() {
 		return number;
 	}
+	public String getpPw() {
+		return pPw;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
 	public void setNumber(String number) {
 		this.number = number;
 	}
-	public String getPw() {
-		return pw;
+	public void setpPw(String pPw) {
+		this.pPw = pPw;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
-	}
-	public Pidpw(String name, String number, String pw) {
-		this.name = name;
+	public Pidpw(String pName, String number, String pPw) {
+		this.pName = pName;
 		this.number = number;
-		this.pw = pw;
+		this.pPw = pPw;
 	}
 	public Pidpw() {
-		this.name = "";
+		this.pName = "";
 		this.number = "";
-		this.pw = "";
+		this.pPw = "";
 	}
 	
 }
