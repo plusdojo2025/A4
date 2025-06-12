@@ -32,15 +32,16 @@ public class Attendance implements Serializable{
 		this.attendanceDate = attendanceDate;
 	}
 	public Attendance(String name, String number, String status, String attendanceDate) {
-		super();
 		this.name = name;
 		this.number = number;
 		this.status = status;
 		this.attendanceDate = attendanceDate;
 	}
 	public Attendance() {
-		super();
-		// TODO 自動生成されたコンストラクター・スタブ
+		this.name = "";
+		this.number = "";
+		this.status = "";
+		this.attendanceDate = "";
 	}
 	
 }

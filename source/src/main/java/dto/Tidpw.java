@@ -27,7 +27,6 @@ public class Tidpw implements Serializable {
 	}
 	
 	public Tidpw(String className, String name, String pw) {
-		super();
 		this.className = className;
 		this.name = name;
 		this.pw = pw;

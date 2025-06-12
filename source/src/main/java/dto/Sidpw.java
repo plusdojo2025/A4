@@ -7,6 +7,7 @@ public class Sidpw implements Serializable{
 	private String name; // 氏名
 	private String number; //学籍番号
 	private String pw; // パスワード
+	
 	public String getClassName() {
 		return className;
 	}
@@ -32,15 +33,18 @@ public class Sidpw implements Serializable{
 		this.pw = pw;
 	}
 	public Sidpw(String className, String name, String number, String pw) {
-		super();
 		this.className = className;
 		this.name = name;
 		this.number = number;
 		this.pw = pw;
 	}
 	public Sidpw() {
-		super();
-		// TODO 自動生成されたコンストラクター・スタブ
+		this.className = "";
+		this.name = "";
+		this.number = "";
+		this.pw = "";
 	}
+	
+	
 	
 }

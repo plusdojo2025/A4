@@ -6,6 +6,7 @@ public class Pidpw implements Serializable{
 	private String name; // 氏名
 	private String number; //学籍番号
 	private String pw; // パスワード
+	
 	public String getName() {
 		return name;
 	}
@@ -25,14 +26,14 @@ public class Pidpw implements Serializable{
 		this.pw = pw;
 	}
 	public Pidpw(String name, String number, String pw) {
-		super();
 		this.name = name;
 		this.number = number;
 		this.pw = pw;
 	}
 	public Pidpw() {
-		super();
-		// TODO 自動生成されたコンストラクター・スタブ
+		this.name = "";
+		this.number = "";
+		this.pw = "";
 	}
 	
 }
