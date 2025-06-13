@@ -17,7 +17,7 @@
 			<li>ユーザー一覧</li>
 			<li>チャット</li>
 		</ul>
-	</header>
+</header>
 	
 	<main>
 	<form method="POST" action="/webapp/AccountServlet">
@@ -95,7 +95,8 @@
               </tr>
               
               <tr>
-                <input type="submit" id="register" name="submit" value="登録">
+              <td>
+                <input type="submit" id="register" name="regist" value="登録">
                 <span id="error_message"></span>
               </td>
               </tr>
