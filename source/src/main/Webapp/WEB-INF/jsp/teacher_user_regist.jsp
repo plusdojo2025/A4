@@ -20,8 +20,9 @@
 </header>
 	
 	<main>
-	<form method="POST" action="/webapp/AccountServlet">
-	
+	<form method="POST" action="/webapp/AccountRegistServlet">
+	</form>
+		<table>
 			  <!--  生徒 -->
               <tr>
               <td>
@@ -61,8 +62,9 @@
                 </label>
               </td>
               </tr>
-
+			</table>
               <!--  保護者 -->
+			<table> 
               <tr>
               <td>
                 <label>保護者<br>
@@ -100,7 +102,7 @@
                 <span id="error_message"></span>
               </td>
               </tr>
-              
+			</table>
               <!--  学籍番号の共有 -->
               <script>
   				var number1 = document.getElementById("number1");
