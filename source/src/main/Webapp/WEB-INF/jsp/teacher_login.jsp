@@ -4,9 +4,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>先生専用ログイン</title>
 </head>
 <body>
-
+	<header>
+		<!-- ページタイトルやメニュー欄を記載 -->
+		<h1>C-Share</h1>
+		<label><a href="/Webapp/AccountRegistServlet">アカウント登録</a></label>
+	</header>
+	
+	<form method="POST" action="/Webapp/">
+	<!--  -->
+		<div>
+			<!-- 教師名とパスワードの入力 -->
+			氏名<input type="text" name="teacherName" required>
+			パスワード<input type="password" name="teacherPw" required>
+			<input type="submit" name="login" value="ログイン">
+		</div>
+	</form>
+	<footer>
+	</footer>
 </body>
 </html>
