@@ -9,10 +9,10 @@ public class Attendance implements Serializable{
 	private String attendanceDate; //出欠日
 	
 	public String getAttendantId() {
-		return number;
+		return attendantId;
 	}
 	public void setAttendantId(String attendantId) {
-		this.number = attendantId;
+		this.attendantId = attendantId;
 	}
 	public String getNumber() {
 		return number;
