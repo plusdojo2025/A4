@@ -9,6 +9,8 @@
 </head>
 <body>
 	<header>
+		<h1><a href="/A4/MenuServlet">C-Share</a></h1>
+        <p><a href="/A4/LoginServlet">ログアウト</a></p>
 		<ul>
 			<li><a href="/A4/AttendanceServlet">出欠管理</a></li>
 			<li><a href="/A4/GradeServlet">成績管理</a></li>
@@ -84,8 +86,8 @@
                         </table>
                         <!--更新・削除ボタン-->
                         <p class ="submit">
-                            <input type="submit" name="submit" value="更新">
-                            <input type="submit" name="submit" value="削除"><br>
+                            <input type="submit" name="update" value="更新">
+                            <input type="submit" name="delete" value="削除"><br>
                             <span id='output'></span>
                         </p>
                     </div>
