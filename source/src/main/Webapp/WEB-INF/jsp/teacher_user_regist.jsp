@@ -17,11 +17,12 @@
 			<li>ユーザー一覧</li>
 			<li>チャット</li>
 		</ul>
-	</header>
+</header>
 	
 	<main>
-	<form method="POST" action="/webapp/AccountServlet">
-	
+	<form method="POST" action="/webapp/AccountRegistServlet">
+	</form>
+		<table>
 			  <!--  生徒 -->
               <tr>
               <td>
@@ -61,8 +62,9 @@
                 </label>
               </td>
               </tr>
-
+			</table>
               <!--  保護者 -->
+			<table> 
               <tr>
               <td>
                 <label>保護者<br>
@@ -95,11 +97,12 @@
               </tr>
               
               <tr>
-                <input type="submit" id="register" name="submit" value="登録">
+              <td>
+                <input type="submit" id="register" name="regist" value="登録">
                 <span id="error_message"></span>
               </td>
               </tr>
-              
+			</table>
               <!--  学籍番号の共有 -->
               <script>
   				var number1 = document.getElementById("number1");
