@@ -20,7 +20,7 @@ public class TeacherMenuServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("teacherPw") == null) {
+		if (session.getAttribute("tPw") == null) {
 			response.sendRedirect("/A4/TeacherLoginServlet");
 			return;
 		}
