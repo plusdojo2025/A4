@@ -3,10 +3,17 @@ package dto;
 import java.io.Serializable;
 
 public class Attendance implements Serializable{
+	private String attendantId; //出席ID
 	private String number; //学籍番号
 	private String status; // 出席状況
 	private String attendanceDate; //出欠日
 	
+	public String getAttendantId() {
+		return number;
+	}
+	public void setAttendantId(String attendantId) {
+		this.number = attendantId;
+	}
 	public String getNumber() {
 		return number;
 	}
@@ -25,12 +32,14 @@ public class Attendance implements Serializable{
 	public void setAttendanceDate(String attendanceDate) {
 		this.attendanceDate = attendanceDate;
 	}
-	public Attendance(String number, String status, String attendanceDate) {
+	public Attendance(String attendantId, String number, String status, String attendanceDate) {
+		this.attendantId = attendantId;
 		this.number = number;
 		this.status = status;
 		this.attendanceDate = attendanceDate;
 	}
 	public Attendance() {
+		this.attendantId = "";
 		this.number = "";
 		this.status = "";
 		this.attendanceDate = "";
