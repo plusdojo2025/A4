@@ -13,10 +13,9 @@
 		<label><a href="/A4/LoginServlet">ログアウト</a></label>
 		<!-- メニュー欄 -->
 		<ul>
-			<li><a href="/A4/AttendanceServlet">出欠管理</a></li>
-			<li><a href="/A4/GradeSrevlet">成績管理</a></li>
-			<li><a href="/A4/MessageServlet">連絡管理</a></li>
-			<li><a href="/A4/AccountRegistServlet">ユーザー一覧</a></li>
+			<li><a href="/A4/AttendanceServlet">出席登録・閲覧</a></li>
+			<li><a href="/A4/GradeSrevlet">成績閲覧</a></li>
+			<li><a href="/A4/MessageServlet">連絡閲覧</a></li>
 			<li><a href="/A4/SoServlet">チャット</a></li>
 		</ul>
 	</header>
