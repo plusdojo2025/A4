@@ -21,7 +21,7 @@
 	</header>
 	<div>
 		<!-- カレンダーを制作 -->
-		<h2>○○年○○月</h2>
+		
 		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
 
 		<script>
