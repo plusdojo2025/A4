@@ -22,7 +22,7 @@
 	<input type="submit" id="register" name="regist" value="登録">
 
  <c:forEach var="e" items="${Allaccess}" >
-	<form method="POST" action="/webapp/UpdateDeleteServlet">
+	<form method="POST" action="/A4/UpdateDeleteServlet">
 	氏名<input type="text" name="sName" value="${e.sName}">
 	氏名<input type="text" name="pName" value="${e.pName}"><br>
 	学籍番号<input type="text" name="sNumber" value="${e.sNumber}">
