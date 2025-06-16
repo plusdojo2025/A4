@@ -26,6 +26,9 @@
 		</h2>
 	</form>
 	
+	<!-- ボタンを押すとカレンダーの画面に遷移 -->
+	<a href="teacher_month_attend.jsp">⇦</a>
+	
 	<table>
 	<tr>
 		<!-- 生徒の出席状況ラベル -->
@@ -35,8 +38,19 @@
 	
 	<c:forEach var="e" items="${}">
 		<!-- 生徒の出席状況 -->
-		<td>${.studentName}
-		<td>${.studentAttendance}
+		<form method="POST" action="/A4/GradeServlet">
+			名前
+			<td>${.studentName}
+			
+    		出欠:
+   			<select>
+		        <option value="Present" ${.studentAttendance == 'Present' ? 'selected' : ''}>出席</option>
+		        <option value="Absent" ${.studentAttendance == 'Absent' ? 'selected' : ''}>欠席</option>
+		        <option value="Late" ${.studentAttendance == 'Late' ? 'selected' : ''}>遅刻</option>
+		        <option value="early" ${.studentAttendance == 'early' ? 'selected' : ''}>早退</option>
+	    	</select><br>
+		    <input type="submit" value="登録" />
+		</form>
 	</c:forEach>
 	</table>	
 	<footer>
