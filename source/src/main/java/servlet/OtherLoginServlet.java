@@ -35,15 +35,15 @@ private static final long serialVersionUID = 1L;
 			String sName = request.getParameter("studentName");
 			String sPw = request.getParameter("studentPw");
 		}else if(position.equals("parent")) {
-			String pName = request.getParameter("studentName");
-			String pPw = request.getParameter("studentPw");
+			String pName = request.getParameter("parentName");
+			String pPw = request.getParameter("parentPw");
 		}
 
 		// ログイン処理を行う
 		if(position.equals("student")) {
 			SidpwDAO sDao = new SidpwDAO();
-			Allaccess sip=new Allaccess(sName,sPw);
-			String ans=sDao.isLoginOK(ip);
+			//ここから
+			String ans=sDao.isLoginOK(new Sidpw));
 			if (ans != null) { // ログイン成功
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
