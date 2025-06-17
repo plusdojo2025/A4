@@ -1,7 +1,6 @@
 package servlet;
 import java.io.IOException;
 
-import javax.naming.spi.DirStateFactory.Result;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import dao.PidpwDAO;
 import dao.SidpwDAO;
-import dto.Allaccess;
+import dto.Pidpw;
+import dto.Sidpw;
 
 @WebServlet("/A4/OtherLoginServlet")
 
@@ -43,33 +43,31 @@ private static final long serialVersionUID = 1L;
 		if(position.equals("student")) {
 			SidpwDAO sDao = new SidpwDAO();
 			//ここから
-			String ans=sDao.isLoginOK(new Sidpw));
+			String ans=sDao.isLoginOK(new Sidpw(sName, sPw));
 			if (ans != null) { // ログイン成功
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
-				session.setAttribute("Sidpw", new SidpW);
+				session.setAttribute("Sidpw", new SidpW(sName, sPw));
 				// メニューサーブレットにリダイレクトする
 				response.sendRedirect("/A4/OtherMenuServlet");
 			} else { // ログイン失敗
-				// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-				request.setAttribute("result", new Result("ログイン失敗！", "氏名またはPWに間違いがあります。", "/A4/OtherLoginServlet"));
+				// 結果ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/OtherLoginServlet");
+				dispatcher.forward(request, response);
 			}
 		}else if(position.equals("parent")) {
 			PidpwDAO pDao = new PidpwDAO();
-			Allaccess pip=new Allaccess(pName,pPw);
-			String ans=pDao.isLoginOK(ip);
+			String ans=pDao.isLoginOK(new Pidpw(pName, pPw));
 			if (ans != null) { // ログイン成功
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
-				LoginUser u = new LoginUser();
-				u.setId(id);
-				u.setUser(ans);
-				session.setAttribute("id", u);
+				session.setAttribute("Pidpw", new PidpW(pName,pPw));
 				// メニューサーブレットにリダイレクトする
 				response.sendRedirect("/A4/OtherMenuServlet");
 			} else { // ログイン失敗
-				// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-				request.setAttribute("result", new Result("ログイン失敗！", "氏名またはPWに間違いがあります。", "/A4/OtherLoginServlet"));
+				// 結果ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/OtherLoginServlet");
+				dispatcher.forward(request, response);
 			}
 		}
 	}
