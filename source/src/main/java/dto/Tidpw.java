@@ -31,6 +31,12 @@ public class Tidpw implements Serializable {
 		this.tName = tName;
 		this.tPw = tPw;
 	}
+	
+	public Tidpw(String tName, String tPw) {
+		this.tName = tName;
+		this.tPw = tPw;
+	}
+	
 	public Tidpw() {
 		this.className = "";
 		this.tName = "";
