@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.AttendanceDAO;
 import dto.Attendance;
+import dto.Sidpw;
 
 @WebServlet("/A4/OtherAttendanceServlet")
 public class OtherAttendanceServlet extends HttpServlet {
@@ -26,11 +29,21 @@ public class OtherAttendanceServlet extends HttpServlet {
 			response.sendRedirect("A4/OtherLoginServlet");
 			return;
 		}
-		Attendance studentInfo = new Attendance();
-		//出席情報の取得（編集するかも）
-		String attendanceStatus = studentInfo.getStatus();
+		//学籍番号取得
+		Sidpw studentInfo = new Sidpw();
+		studentInfo = (Sidpw)session.getAttribute("Sidpw");
+		String studentId = studentInfo.getNumber();
+		//その日の日付を取得
+		LocalDate today = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		String formattedDate = today.format(formatter);
+		//出席情報を取得
+		AttendanceDAO attendanceInfo = new AttendanceDAO();
+		Attendance attendance = new Attendance();
+		attendance = attendanceInfo.attendanceSelect(new Attendance(studentId, formattedDate));
+		
 		//リクエスト領域に保存
-		request.setAttribute("status", attendanceStatus);
+		request.setAttribute("attendanceStatus", attendance);
 		
 		// ログインページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/other_login.jsp");
@@ -40,19 +53,21 @@ public class OtherAttendanceServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
-		// リクエストパラメータを取得する
+		// セッションパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String position = request.getParameter("position");
-		String studentName = request.getParameter("studentName"); // 生徒名取得
+		HttpSession session = request.getSession();
+		String position = (String)session.getAttribute("position");
+		//出席情報をリクエスト領域から取得
         AttendanceDAO attendDao = new AttendanceDAO();
-        
-        String attendantId = request.getParameter("attendantId");
-        String number = request.getParameter("number");
+        Attendance attendance = new Attendance();
+        attendance = (Attendance)request.getAttribute("attendanceStatus");
+        String attendantId = attendance.getAttendantId();
+        String number = attendance.getNumber();
         String status = request.getParameter("status");
-        String attendanceDate = request.getParameter("attendanceDate");
+        String attendanceDate = attendance.getAttendanceDate();
         
 		//出席登録・欠席登録
-		if(position.equals("student")) {
+		if(position.equals("生徒")) {
 			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/student_home.jsp");
 				dispatcher.forward(request, response);
@@ -62,7 +77,8 @@ public class OtherAttendanceServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 			
-		}else if(position.equals("parent")) {
+		}
+		else if(position.equals("保護者")) {
 			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/parent_home.jsp");
 				dispatcher.forward(request, response);
@@ -73,16 +89,5 @@ public class OtherAttendanceServlet extends HttpServlet {
 			}
 			
 		}
-		
-		if (!status.isEmpty()) {
-	        AttendanceDAO.saveAttendance(studentName, today.toString(), status);
-	        //登録後はどこに移動？
-	        if ("student".equals(position)) {
-	        	response.sendRedirect("student_today_attend.jsp");
-	        } else if ("parent".equals(position)) {
-	        	response.sendRedirect("parent_today_attend.jsp"); 
-	        }
-		}
-
 	}
 }

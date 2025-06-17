@@ -44,6 +44,11 @@ public class Sidpw implements Serializable{
 		this.sPw = sPw;
 	}
 	
+	public Sidpw(String sName, String number, String sPw) {
+		this.sName = sName;
+		this.number = number;
+		this.sPw = sPw;
+	}
 	public Sidpw() {
 		this.className = "";
 		this.sName = "";
