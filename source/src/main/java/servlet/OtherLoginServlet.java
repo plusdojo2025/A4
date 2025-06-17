@@ -21,6 +21,13 @@ private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
+			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
+			response.sendRedirect("/A4/OtherLoginServlet");
+			return;
+		}
 		// ログインページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/other_login.jsp");
 		dispatcher.forward(request, response);
@@ -42,12 +49,12 @@ private static final long serialVersionUID = 1L;
 		// ログイン処理を行う
 		if(position.equals("生徒")) {
 			SidpwDAO sDao = new SidpwDAO();
-			//ここから
 			String ans=sDao.isLoginOK(new Sidpw(sName, sPw));
 			if (ans != null) { // ログイン成功
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
 				session.setAttribute("Sidpw", new SidpW(sName, sPw));
+				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
 				response.sendRedirect("/A4/OtherMenuServlet");
 			} else { // ログイン失敗
@@ -62,6 +69,7 @@ private static final long serialVersionUID = 1L;
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
 				session.setAttribute("Pidpw", new PidpW(pName,pPw));
+				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
 				response.sendRedirect("/A4/OtherMenuServlet");
 			} else { // ログイン失敗
