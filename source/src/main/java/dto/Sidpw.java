@@ -38,6 +38,12 @@ public class Sidpw implements Serializable{
 		this.number = number;
 		this.sPw = sPw;
 	}
+	
+	public Sidpw(String sName, String sPw) {
+		this.sName = sName;
+		this.sPw = sPw;
+	}
+	
 	public Sidpw() {
 		this.className = "";
 		this.sName = "";
