@@ -40,7 +40,7 @@ private static final long serialVersionUID = 1L;
 		}
 
 		// ログイン処理を行う
-		if(position.equals("student")) {
+		if(position.equals("生徒")) {
 			SidpwDAO sDao = new SidpwDAO();
 			//ここから
 			String ans=sDao.isLoginOK(new Sidpw(sName, sPw));
@@ -55,7 +55,7 @@ private static final long serialVersionUID = 1L;
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/OtherLoginServlet");
 				dispatcher.forward(request, response);
 			}
-		}else if(position.equals("parent")) {
+		}else if(position.equals("保護者")) {
 			PidpwDAO pDao = new PidpwDAO();
 			String ans=pDao.isLoginOK(new Pidpw(pName, pPw));
 			if (ans != null) { // ログイン成功
