@@ -20,15 +20,19 @@ public class TeacherMenuServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("className") == null || session.getAttribute("tPw") == null) {
+		if (session.getAttribute("className") == null && session.getAttribute("tPw") == null) {
 			response.sendRedirect("/A4/TeacherLoginServlet");
 			return;
 		}
-		
+		 
 		
 		// メニューページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/jsp/teacher_home.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_home.jsp");
 		dispatcher.forward(request, response);
+		
+		
+		
+		//
 	}
 
 }
