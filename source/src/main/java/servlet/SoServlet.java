@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.SampleDAO;
+import dao.ChatDAO;
 
 @WebServlet("/SoServlet")
 public class SoServlet extends HttpServlet {
@@ -31,7 +31,7 @@ public class SoServlet extends HttpServlet {
         String inputTime = request.getParameter("input_time");
 
         // データベースにデータを挿入するで
-        SampleDAO dao = new SampleDAO();
+        ChatDAO dao = new ChatDAO();
         int ans = dao.insert(userIDSpeaker, userIDListener, chatString, null, 0, inputTime);
 
         // 挿入が成功したら、JSPにフォワードするで
