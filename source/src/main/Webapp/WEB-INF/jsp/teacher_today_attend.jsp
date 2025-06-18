@@ -40,18 +40,22 @@
 	<c:forEach var="e" items="${}">
 		<!-- 生徒の出席状況 -->
 		<form method="POST" action="/A4/GradeServlet">
-			名前
-			<td>${studentName.name}
-			
-    		出欠:
-   			<select>
-		        <option value="Present" ${studentAttendance.attendance == 'Present' ? 'selected' : ''}>出席</option>
-		        <option value="Absent" ${studentAttendance.attedance == 'Absent' ? 'selected' : ''}>欠席</option>
-		        <option value="Late" ${studentAttendance.attedance == 'Late' ? 'selected' : ''}>遅刻</option>
-		        <option value="early" ${studentAttendance.attedance == 'early' ? 'selected' : ''}>早退</option>
-	    	</select><br>
-		    <input type="submit" value="登録" />
+		    <table>
+		        <tr>
+		            <td>名前: <input type="hidden" name="studentName" value="${studentName.name}"></td>
+		            <td>出欠:
+		                <select name="attup">
+		                    <option value="Present" <c:if test="${studentAttendance.attendance == 'Present'}">selected</c:if>>出席</option>
+		                    <option value="Absent" <c:if test="${studentAttendance.attendance == 'Absent'}">selected</c:if>>欠席</option>
+		                    <option value="Late" <c:if test="${studentAttendance.attendance == 'Late'}">selected</c:if>>遅刻</option>
+		                    <option value="Early" <c:if test="${studentAttendance.attendance == 'Early'}">selected</c:if>>早退</option>
+		                </select>
+		            </td>
+		            <td><input type="submit" value="登録"></td>
+		        </tr>
+		    </table>
 		</form>
+
 	</c:forEach>
 	</table>	
 	<footer>
