@@ -1,5 +1,6 @@
 package servlet;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.AnnouncementsDAO;
+import dao.SidpwDAO;
+import dto.Sidpw;
 
 @WebServlet("/A4/OtherMessageServlet")
 
@@ -43,8 +48,16 @@ public class OtherMessageServlet extends HttpServlet{
 			return;
 		}
 		
+		//インスタンス化
+		AnnouncementsDAO announceDao = new AnnouncementsDAO();
+		ArrayList<announcements> announceList = new ArrayList<announcements>();
+		SidpwDAO sDao = new SidpwDAO();
+		Sidpw sDto = new Sidpw();
 		//
-		
+		sDto = (Sidpw)session.getAttribute("Sidpw");
+		String className = sDto.getClassName();
+		announceList = announceDao.select(className);
+		request.setAttribute("announcements", announceList);
 
 			String position = (String)session.getAttribute("position");
 			// お知らせページにフォワードする
