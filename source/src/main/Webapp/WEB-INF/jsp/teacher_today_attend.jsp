@@ -47,7 +47,7 @@
 		                    <option value="Early" <c:if test="${studentAttendance.attendance == 'Early'}">selected</c:if>>早退</option>
 		                </select>
 		            </td>
-		            <td><input type="submit" value="登録"></td>
+		            <td><input type="submit" value="更新"></td>
 		        </tr>
 		    </table>
 		</form>

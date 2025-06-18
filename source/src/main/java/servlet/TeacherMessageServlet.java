@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.AnnouncementsDAO;
-import dao.TidpwDAO;
+import dto.Allaccess;
+import dto.Announcemnts;
 import dto.Tidpw;
 
 @WebServlet("/A4/OtherMessageServlet")
@@ -30,15 +29,14 @@ public class TeacherMessageServlet extends HttpServlet{
 		}
 		//インスタンス化
 		AnnouncementsDAO announceDao = new AnnouncementsDAO();
-		ArrayList<announcements> announceList = new ArrayList<announcements>();
-		TidpwDAO tDao = new TidpwDAO();
+		ArrayList<Announcemnts> announceList = new ArrayList<Announcemnts>();
 		Tidpw tDto = new Tidpw();
 		//先生情報の取得
 		tDto = (Tidpw)session.getAttribute("Tidpw");
 		//クラス名の取得
 		String className = tDto.getClassName();
 		//DAOの情報の格納、AnnouncementsDAO.javaにメソッド追加の必要あり
-		announceList = announceDao.select(className);
+		announceList = (ArrayList<Announcemnts>) announceDao.select(className);
 		//リクエストスコープへの保存
 		request.setAttribute("announcements", announceList);
 
@@ -56,25 +54,21 @@ public class TeacherMessageServlet extends HttpServlet{
 			return;
 		}
 		
-		//入力情報の取得
-		String announce = request.getParameter("enter");
-		AnnouncementsDAO aDao = new AnnouncementsDAO();
-		//その日の日付を取得
-		LocalDate today = LocalDate.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-		String formattedDate = today.format(formatter);
-		//先生情報の取得
-		Tidpw tDto = new Tidpw();
-		tDto = (Tidpw)session.getAttribute("Tidpw");
-		//クラス名の取得
-		String className = tDto.getClassName();
-		//AnnouncementsDAO.javaにメソッド追加の必要あり
-		if(aDao.insert(className,announce,formattedDate)) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/jsp/teacher_announce.jsp");
-			dispatcher.forward(request, response);
-		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/jsp/teacher_announce.jsp");
-			dispatcher.forward(request, response);
-		}
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String classname = request.getParameter("classname");
+		String enter = request.getParameter("enter");
+		
+		
+		// 更新を行う
+		AnnouncementsDAO annDao = new AnnouncementsDAO();
+		request.getParameter("submit").equals("更新");
+		annDao.insert(new Allaccess(classname, enter));
+		
+	    
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/teacher_today_attend.jsp");
+		dispatcher.forward(request, response);
+			
 	}
 }

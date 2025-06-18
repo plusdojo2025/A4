@@ -8,12 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.Allaccess;
 import dto.Announcemnts;
 
 public class AnnouncementsDAO {
 	
 	//連絡情報を閲覧する
-	public List<Announcemnts> select(Announcemnts card) {
+	public List<Announcemnts> select(String card) {
 		Connection conn = null;
 		List<Announcemnts> cardList = new ArrayList<Announcemnts>();
 
@@ -33,7 +34,7 @@ public class AnnouncementsDAO {
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 			
-			pStmt.setString(1, card.getClassName());
+			pStmt.setString(1, card);
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
@@ -68,7 +69,7 @@ public class AnnouncementsDAO {
 	}
 	
 	//連絡情報を登録する
-	public boolean insert(Announcemnts card) {
+	public boolean insert(Allaccess all) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -82,14 +83,13 @@ public class AnnouncementsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO Announcements (className, announce, announceDate) VALUES (?, ?, ?)";
+			String sql = "INSERT INTO Announcements (className, announce) VALUES (?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 			
-			pStmt.setString(1, card.getClassName());
-			pStmt.setString(2, card.getAnnounce());
-			pStmt.setString(3, card.getAnnounceDate());
+			pStmt.setString(1, all.getClassName());
+			pStmt.setString(2, all.getAnnounce());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

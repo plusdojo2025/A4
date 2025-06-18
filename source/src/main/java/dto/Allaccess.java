@@ -198,6 +198,11 @@ public class Allaccess implements Serializable {
 		this.attendanceDate = attendanceDate;
 	}
 	
+	public Allaccess(String className, String announce) {
+		this.className = className;
+		this.announce = announce;
+	}
+	
 	public Allaccess(String className, String tName, String tPw, String sName, String number, String sPw, String pName,
 			String pPw, String status, String attendanceDate, String announce, String announceDate, String term,
 			String testName, String japanese, String averageJapanese, String math, String averageMath, String science,
