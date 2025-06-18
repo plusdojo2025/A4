@@ -38,10 +38,11 @@ private static final long serialVersionUID = 1L;
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String position = request.getParameter("position");
-		if(position.equals("student")) {
+		if(position.equals("生徒")) {
 			String sName = request.getParameter("studentName");
 			String sPw = request.getParameter("studentPw");
-		}else if(position.equals("parent")) {
+		}
+		else if(position.equals("保護者")) {
 			String pName = request.getParameter("parentName");
 			String pPw = request.getParameter("parentPw");
 		}
@@ -49,30 +50,39 @@ private static final long serialVersionUID = 1L;
 		// ログイン処理を行う
 		if(position.equals("生徒")) {
 			SidpwDAO sDao = new SidpwDAO();
-			String ans=sDao.isLoginOK(new Sidpw(sName, sPw));
-			if (ans != null) { // ログイン成功
+			String sName = request.getParameter("studentName");
+			String sPw = request.getParameter("studentPw");
+			
+			if (sDao.isLoginOK(new Sidpw(sName, sPw))) { // ログイン成功
+				//学籍番号を取得する。
+				String studentId = sDao.studentSelectId(new Sidpw(sName, sPw));
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
-				session.setAttribute("Sidpw", new SidpW(sName, sPw));
+				session.setAttribute("Sidpw", new Sidpw(sName,studentId,sPw));
 				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
 				response.sendRedirect("/A4/OtherMenuServlet");
-			} else { // ログイン失敗
+			}
+			else { // ログイン失敗
 				// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/OtherLoginServlet");
 				dispatcher.forward(request, response);
 			}
-		}else if(position.equals("保護者")) {
+		}
+		else if(position.equals("保護者")) {
 			PidpwDAO pDao = new PidpwDAO();
-			String ans=pDao.isLoginOK(new Pidpw(pName, pPw));
-			if (ans != null) { // ログイン成功
+			String pName = request.getParameter("parentName");
+			String pPw = request.getParameter("parentPw");
+			
+			if (pDao.isLoginOK(new Pidpw(pName, pPw))) { // ログイン成功
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
 				session.setAttribute("Pidpw", new PidpW(pName,pPw));
 				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
 				response.sendRedirect("/A4/OtherMenuServlet");
-			} else { // ログイン失敗
+			}
+			else { // ログイン失敗
 				// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/OtherLoginServlet");
 				dispatcher.forward(request, response);

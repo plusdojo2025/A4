@@ -17,6 +17,7 @@ public class Attendance implements Serializable{
 	public String getNumber() {
 		return number;
 	}
+	
 	public void setNumber(String number) {
 		this.number = number;
 	}
@@ -36,6 +37,10 @@ public class Attendance implements Serializable{
 		this.attendantId = attendantId;
 		this.number = number;
 		this.status = status;
+		this.attendanceDate = attendanceDate;
+	}
+	public Attendance(String number, String attendanceDate) {
+		this.number = number;
 		this.attendanceDate = attendanceDate;
 	}
 	public Attendance() {

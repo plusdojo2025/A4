@@ -17,7 +17,8 @@ public class OtherMenuServlet extends HttpServlet{
         
         // もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null) {
+		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
+			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
 			response.sendRedirect("/A4/OtherLoginServlet");
 			return;
 		}
