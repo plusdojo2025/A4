@@ -40,7 +40,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		//出席情報を取得
 		AttendanceDAO attendanceInfo = new AttendanceDAO();
 		Attendance attendance = new Attendance();
-		attendance = attendanceInfo.attendanceSelect(new Attendance(studentId, formattedDate));
+		attendance = attendanceInfo.attendanceSelect(studentId, formattedDate);
 		
 		//リクエスト領域に保存
 		request.setAttribute("attendanceStatus", attendance);
