@@ -35,9 +35,9 @@ public class TeacherLoginServlet extends HttpServlet {
 		// ログイン処理を行う
 		TidpwDAO tDao = new TidpwDAO();
 				
-		String name=tDao.isLoginOK(new Tidpw(className,teacherName,teacherPw));
+		
 				
-		if (name!=null) { // ログイン成功
+		if (tDao.isLoginOK(new Tidpw(className,teacherName,teacherPw))){ // ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
 			session.setAttribute("Tidpw", new Tidpw(className,teacherName,teacherPw));
