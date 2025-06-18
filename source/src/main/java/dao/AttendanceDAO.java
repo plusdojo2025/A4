@@ -215,4 +215,11 @@ public class AttendanceDAO {
 		// 結果を返す
 		return result;
 	}
+
+	public Attendance attendanceSelect(String studentId, String formattedDate) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	
 }
