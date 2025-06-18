@@ -11,6 +11,7 @@
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<h1>C-Share</h1>
 		<label><a href="/A4/AccountRegistServlet">アカウント登録</a></label>
+		${msg}
 	</header>
 	
 	<form method="POST" action="/A4/">
