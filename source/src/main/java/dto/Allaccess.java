@@ -191,6 +191,13 @@ public class Allaccess implements Serializable {
 	public void setAverageSum(String averageSum) {
 		this.averageSum = averageSum;
 	}
+	
+	public Allaccess(String sName, String status, String attendanceDate) {
+		this.sName = sName;
+		this.status = status;
+		this.attendanceDate = attendanceDate;
+	}
+	
 	public Allaccess(String className, String tName, String tPw, String sName, String number, String sPw, String pName,
 			String pPw, String status, String attendanceDate, String announce, String announceDate, String term,
 			String testName, String japanese, String averageJapanese, String math, String averageMath, String science,

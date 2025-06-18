@@ -30,19 +30,15 @@
 	<!-- ボタンを押すとカレンダーの画面に遷移 -->
 	<a href="teacher_month_attend.jsp">⇦</a>
 	
-	<table>
-	<tr>
-		<!-- 生徒の出席状況ラベル -->
-		<th>名前</th>
-		<th>出欠</th>
-	</tr>
+	<input type="text" name="attdate" value="<%= request.getAttribute("attendanceDate") %>" readonly>
 	
-	<c:forEach var="e" items="${}">
+	<c:forEach var="e" items="${cardList}">
 		<!-- 生徒の出席状況 -->
 		<form method="POST" action="/A4/GradeServlet">
 		    <table>
 		        <tr>
-		            <td>名前: <input type="hidden" name="studentName" value="${studentName.name}"></td>
+		            <td>名前: <input type="hidden" name="number" value="${e.number}">        	
+		            		<input type="hidden" ${e.name}></td>
 		            <td>出欠:
 		                <select name="attup">
 		                    <option value="Present" <c:if test="${studentAttendance.attendance == 'Present'}">selected</c:if>>出席</option>
@@ -56,8 +52,7 @@
 		    </table>
 		</form>
 
-	</c:forEach>
-	</table>	
+	</c:forEach>	
 	<footer>
 	</footer>
 </body>

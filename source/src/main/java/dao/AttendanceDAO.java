@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.Allaccess;
 import dto.Attendance;
 
 public class AttendanceDAO {
@@ -124,7 +125,7 @@ public class AttendanceDAO {
 	}
 	
 	//先生が出席状況を更新する
-	public boolean update(Attendance card) {
+	public boolean update(Allaccess all) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -138,13 +139,14 @@ public class AttendanceDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "UPDATE Attendance SET status = ? WHERE number = ? AND attendanceDate = ?";
+			String sql = "UPDATE Attendance SET status=?, attendanceDate=? WHERE number =?";
+;
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setString(1, card.getStatus());
-			pStmt.setString(2, card.getNumber());
-			pStmt.setString(3, card.getAttendanceDate());
+			pStmt.setString(1, all.getStatus());
+			pStmt.setString(2, all.getAttendanceDate());
+			pStmt.setString(3, all.getNumber());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
