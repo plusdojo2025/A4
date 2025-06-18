@@ -106,7 +106,7 @@ public class ChatEndpoint {
                 }
                 String talk = talkBuilder.toString().trim();
 
-                SampleDAO dao = new SampleDAO();
+                ChatDAO dao = new ChatDAO();
                 int result = dao.insert(user_id_speaker, user_id_listener, talk, null, 0, createdAt);
                 if (result > 0) {
                     logger.log(Level.INFO, "Message saved to database: {0}", message);
