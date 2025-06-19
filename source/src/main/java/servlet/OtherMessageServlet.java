@@ -1,6 +1,7 @@
 package servlet;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.AnnouncementsDAO;
-import dao.SidpwDAO;
 import dto.Announcemnts;
 import dto.Sidpw;
 
@@ -51,8 +51,7 @@ public class OtherMessageServlet extends HttpServlet{
 		
 		//インスタンス化
 		AnnouncementsDAO announceDao = new AnnouncementsDAO();
-		ArrayList<Announcemnts> announceList = new ArrayList<Announcemnts>();
-		SidpwDAO sDao = new SidpwDAO();
+		List<Announcemnts> announceList = new ArrayList<Announcemnts>();
 		Sidpw sDto = new Sidpw();
 		//生徒情報の取得
 		sDto = (Sidpw)session.getAttribute("Sidpw");
