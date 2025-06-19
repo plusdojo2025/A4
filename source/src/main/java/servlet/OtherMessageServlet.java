@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.AnnouncementsDAO;
 import dao.SidpwDAO;
+import dto.Announcemnts;
 import dto.Sidpw;
 
 @WebServlet("/A4/OtherMessageServlet")
@@ -50,7 +51,7 @@ public class OtherMessageServlet extends HttpServlet{
 		
 		//インスタンス化
 		AnnouncementsDAO announceDao = new AnnouncementsDAO();
-		ArrayList<announcements> announceList = new ArrayList<announcements>();
+		ArrayList<Announcemnts> announceList = new ArrayList<Announcemnts>();
 		SidpwDAO sDao = new SidpwDAO();
 		Sidpw sDto = new Sidpw();
 		//生徒情報の取得
