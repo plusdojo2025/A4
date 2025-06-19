@@ -142,8 +142,18 @@ public class AttendanceDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			//SQL文を完成させる
-			pStmt.setString(1,number);
-			pStmt.setString(2,attendanceDate);
+			if(number != null) {
+				pStmt.setString(1,"%"+number+"%");
+			}
+			else {
+				pStmt.setString(1, "%");
+			}
+			if(attendanceDate != null) {
+				pStmt.setString(2,"%"+attendanceDate+"%");
+			}
+			else {
+				pStmt.setString(2, "%");
+			}
 			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
