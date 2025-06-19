@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dto.Sidpw;
 
@@ -194,4 +195,65 @@ public class SidpwDAO {
 		// 結果を返す
 		return result;
 	}
+
+	//クラス名を引数に生徒の情報を取得する
+	public ArrayList<Sidpw> select(String className) {
+		Connection conn = null;
+		ArrayList<Sidpw> studentInfo = new ArrayList<Sidpw>();
+		
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/a4?"
+				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
+			
+			//SQL文を準備する
+			String sql = "SELECT className,sName,number,sPw FROM Sidpw WHERE className LIKE ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			//SQL文を完成させる
+			if(className != null) {
+				pStmt.setString(1,"%"+className+"%");
+			}
+			else {
+				pStmt.setString(1, "%");
+			}
+			
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			
+			//結果表をコレクションにコピーする
+			while(rs.next()) {
+				Sidpw sidpw = new Sidpw(rs.getString("className"),
+										rs.getString("sName"),
+										rs.getString("number"),
+										rs.getString("sPw")
+										);
+				studentInfo.add(sidpw);
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			studentInfo = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			studentInfo = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					studentInfo = null;
+				}
+			}
+		}
+		
+		return studentInfo;
+	}
+	
+	
 }
