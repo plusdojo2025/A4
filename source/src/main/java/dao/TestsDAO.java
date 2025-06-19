@@ -13,7 +13,7 @@ import dto.Tests;
 public class TestsDAO {
 	
 	//成績情報を閲覧する（１学期分）
-	public ArrayList<Tests> select(String testsId) {
+	public ArrayList<Tests> select(int testsId) {
 		Connection conn = null;
 		ArrayList<Tests> testsList = new ArrayList<Tests>();
 
@@ -30,7 +30,7 @@ public class TestsDAO {
 			String sql = "SELECT * FROM Tests WHERE term = ? AND testsId =?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
-			pStmt.setString(1, testsId);
+			pStmt.setInt(1, testsId);
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -38,22 +38,22 @@ public class TestsDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Tests test = new Tests();
-				test.setTestsId(rs.getString("testsId"));
-                test.setNumber(rs.getString("number"));
-                test.setTerm(rs.getString("term"));
+				test.setTestsId(rs.getInt("testsId"));
+                test.setNumber(rs.getInt("number"));
+                test.setTerm(rs.getInt("term"));
                 test.setTestName(rs.getString("testName"));
-                test.setJapanese(rs.getString("japanese"));
-                test.setAverageJapanese(rs.getString("averageJapanese"));
-                test.setMath(rs.getString("math"));
-                test.setAverageMath(rs.getString("averageMath"));
-                test.setScience(rs.getString("science"));
-                test.setAverageScience(rs.getString("averageScience"));
-                test.setSocial(rs.getString("social"));
-                test.setAverageSocial(rs.getString("averageSocial"));
-                test.setEnglish(rs.getString("english"));
-                test.setAverageEnglish(rs.getString("averageEnglish"));
-                test.setSum(rs.getString("sum"));
-                test.setAverageSum(rs.getString("averageSum"));
+                test.setJapanese(rs.getInt("japanese"));
+                test.setAverageJapanese(rs.getInt("averageJapanese"));
+                test.setMath(rs.getInt("math"));
+                test.setAverageMath(rs.getInt("averageMath"));
+                test.setScience(rs.getInt("science"));
+                test.setAverageScience(rs.getInt("averageScience"));
+                test.setSocial(rs.getInt("social"));
+                test.setAverageSocial(rs.getInt("averageSocial"));
+                test.setEnglish(rs.getInt("english"));
+                test.setAverageEnglish(rs.getInt("averageEnglish"));
+                test.setSum(rs.getInt("sum"));
+                test.setAverageSum(rs.getInt("averageSum"));
 
                 testsList.add(test);
 			}
@@ -96,11 +96,11 @@ public class TestsDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			//SQL文を完成させる
-			if(tests.getNumber() != null) {
-				pStmt.setString(1,"%"+tests.getNumber()+"%");
+			if(tests.getNumber() != 0) {
+				pStmt.setInt(1,tests.getNumber());
 			}
 			else {
-				pStmt.setString(1, "%");
+				pStmt.setInt(1, 0);
 			}
 			if(tests.getTestName() != null) {
 				pStmt.setString(2,"%"+tests.getTestName()+"%");
@@ -108,11 +108,11 @@ public class TestsDAO {
 			else {
 				pStmt.setString(2, "%");
 			}
-			if(tests.getTerm() != null) {
-				pStmt.setString(3,"%"+tests.getTerm()+"%");
+			if(tests.getTerm() != 0) {
+				pStmt.setInt(3,tests.getTerm());
 			}
 			else {
-				pStmt.setString(3, "%");
+				pStmt.setInt(3, 0);
 			}
 			
 			// SQL文を実行し、結果表を取得する
@@ -121,22 +121,22 @@ public class TestsDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Tests test = new Tests();
-				test.setTestsId(rs.getString("testsId"));
-			    test.setNumber(rs.getString("number"));
-			    test.setTerm(rs.getString("term"));
+				test.setTestsId(rs.getInt("testsId"));
+			    test.setNumber(rs.getInt("number"));
+			    test.setTerm(rs.getInt("term"));
 			    test.setTestName(rs.getString("testName"));
-			    test.setJapanese(rs.getString("japanese"));
-			    test.setAverageJapanese(rs.getString("averageJapanese"));
-			    test.setMath(rs.getString("math"));
-			    test.setAverageMath(rs.getString("averageMath"));
-			    test.setScience(rs.getString("science"));
-			    test.setAverageScience(rs.getString("averageScience"));
-			    test.setSocial(rs.getString("social"));
-			    test.setAverageSocial(rs.getString("averageSocial"));
-			    test.setEnglish(rs.getString("english"));
-			    test.setAverageEnglish(rs.getString("averageEnglish"));
-			    test.setSum(rs.getString("sum"));
-			    test.setAverageSum(rs.getString("averageSum"));
+			    test.setJapanese(rs.getInt("japanese"));
+			    test.setAverageJapanese(rs.getInt("averageJapanese"));
+			    test.setMath(rs.getInt("math"));
+			    test.setAverageMath(rs.getInt("averageMath"));
+			    test.setScience(rs.getInt("science"));
+			    test.setAverageScience(rs.getInt("averageScience"));
+			    test.setSocial(rs.getInt("social"));
+			    test.setAverageSocial(rs.getInt("averageSocial"));
+			    test.setEnglish(rs.getInt("english"));
+			    test.setAverageEnglish(rs.getInt("averageEnglish"));
+			    test.setSum(rs.getInt("sum"));
+			    test.setAverageSum(rs.getInt("averageSum"));
 			    testsResult.add(test);
 			}
 			
@@ -181,15 +181,15 @@ public class TestsDAO {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			stmt.setString(1, card.getNumber());
-            stmt.setString(2, card.getTerm());
+			stmt.setInt(1, card.getNumber());
+            stmt.setInt(2, card.getTerm());
             stmt.setString(3, card.getTestName());
-            stmt.setString(4, card.getJapanese());
-            stmt.setString(5, card.getMath());
-            stmt.setString(6, card.getScience());
-            stmt.setString(7, card.getSocial());
-            stmt.setString(8, card.getEnglish());
-            stmt.setString(9, card.getJapanese() + card.getMath() + 
+            stmt.setInt(4, card.getJapanese());
+            stmt.setInt(5, card.getMath());
+            stmt.setInt(6, card.getScience());
+            stmt.setInt(7, card.getSocial());
+            stmt.setInt(8, card.getEnglish());
+            stmt.setInt(9, card.getJapanese() + card.getMath() + 
             				card.getScience() + card.getSocial() + 
             				card.getEnglish());
 
@@ -237,13 +237,13 @@ public class TestsDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setString(1, allaccess.getJapanese());
-			pStmt.setString(2, allaccess.getMath());
-			pStmt.setString(3, allaccess.getScience());
-			pStmt.setString(4, allaccess.getSocial());
-			pStmt.setString(5, allaccess.getEnglish());
-			pStmt.setString(6, allaccess.getSum());
-			pStmt.setString(7, allaccess.getTestsId());
+			pStmt.setInt(1, allaccess.getJapanese());
+			pStmt.setInt(2, allaccess.getMath());
+			pStmt.setInt(3, allaccess.getScience());
+			pStmt.setInt(4, allaccess.getSocial());
+			pStmt.setInt(5, allaccess.getEnglish());
+			pStmt.setInt(6, allaccess.getSum());
+			pStmt.setInt(7, allaccess.getTestsId());
 			
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -287,7 +287,7 @@ public class TestsDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setString(1, allaccess.getTestsId());
+			pStmt.setInt(1, allaccess.getTestsId());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

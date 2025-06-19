@@ -39,8 +39,8 @@ public class AnnouncementsDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Announcemnts ann = new Announcemnts();
-                ann.setAnnounceId(rs.getString("announceId"));
-                ann.setClassName(rs.getString("className"));
+                ann.setAnnounceId(rs.getInt("announceId"));
+                ann.setClassName(rs.getInt("className"));
                 ann.setAnnounce(rs.getString("announce"));
                 ann.setAnnounceDate(rs.getString("announceDate"));
 
@@ -88,7 +88,7 @@ public class AnnouncementsDAO {
 
 			// SQL文を完成させる
 			
-			pStmt.setString(1, all.getClassName());
+			pStmt.setInt(1, all.getClassName());
 			pStmt.setString(2, all.getAnnounce());
 
 			// SQL文を実行する

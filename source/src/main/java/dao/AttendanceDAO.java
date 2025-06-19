@@ -37,8 +37,8 @@ public class AttendanceDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Attendance att = new Attendance();
-				att.setAttendantId(rs.getString("attendantId"));
-                att.setNumber(rs.getString("number"));
+				att.setAttendantId(rs.getInt("attendantId"));
+                att.setNumber(rs.getInt("number"));
                 att.setStatus(rs.getString("status"));
                 att.setAttendanceDate(rs.getString("attendanceDate"));
 
@@ -95,8 +95,8 @@ public class AttendanceDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
                 Attendance att = new Attendance();
-                att.setAttendantId(rs.getString("attendantId"));
-                att.setNumber(rs.getString("number"));
+                att.setAttendantId(rs.getInt("attendantId"));
+                att.setNumber(rs.getInt("number"));
                 att.setStatus(rs.getString("status"));
                 att.setAttendanceDate(rs.getString("attendanceDate"));
 
@@ -125,7 +125,7 @@ public class AttendanceDAO {
 	}
 	
 	//学籍番号と日付を引数にその日の出席情報を取得する
-	public Attendance attendanceSelect(String number, String attendanceDate) {
+	public Attendance attendanceSelect(int number, String attendanceDate) {
 		Connection conn = null;
 		Attendance attendanceData = new Attendance();
 		
@@ -142,11 +142,11 @@ public class AttendanceDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			//SQL文を完成させる
-			if(number != null) {
-				pStmt.setString(1,"%"+number+"%");
+			if(number != 0) {
+				pStmt.setInt(1,number);
 			}
 			else {
-				pStmt.setString(1, "%");
+				pStmt.setInt(1, 0);
 			}
 			if(attendanceDate != null) {
 				pStmt.setString(2,"%"+attendanceDate+"%");
@@ -159,7 +159,7 @@ public class AttendanceDAO {
 			ResultSet rs = pStmt.executeQuery();
 			
 			// 結果表をコレクションにコピーする
-			attendanceData.setNumber(rs.getString("number"));
+			attendanceData.setNumber(rs.getInt("number"));
 			attendanceData.setAttendanceDate(rs.getString("attendanceDAte"));
 			
 		}catch (SQLException e) {
@@ -204,7 +204,7 @@ public class AttendanceDAO {
 			// SQL文を完成させる
 			pStmt.setString(1, all.getStatus());
 			pStmt.setString(2, all.getAttendanceDate());
-			pStmt.setString(3, all.getNumber());
+			pStmt.setInt(3, all.getNumber());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -246,10 +246,10 @@ public class AttendanceDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			//SQL文を完成させる
-			pStmt.setString(1, attendance.getNumber());
+			pStmt.setInt(1, attendance.getNumber());
 			pStmt.setString(2, attendance.getStatus());
 			pStmt.setString(3, attendance.getAttendanceDate());
-			pStmt.setString(4, attendance.getAttendantId());
+			pStmt.setInt(4, attendance.getAttendantId());
 			
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -292,7 +292,7 @@ public class AttendanceDAO {
 
 			// SQL文を完成させる
 			
-			pStmt.setString(1, card.getNumber());
+			pStmt.setInt(1, card.getNumber());
 			pStmt.setString(2, card.getStatus());
 			pStmt.setString(3, card.getAttendanceDate());
 

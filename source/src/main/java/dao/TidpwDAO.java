@@ -77,7 +77,7 @@ public class TidpwDAO {
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				
 				// SQL文を完成させる
-				pStmt.setString(1,card.getClassName());
+				pStmt.setInt(1,card.getClassName());
 				pStmt.setString(2,card.getName());
 				pStmt.setString(3,card.getPw());
 				

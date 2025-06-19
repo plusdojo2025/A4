@@ -81,7 +81,7 @@ public class PidpwDAO {
 			
 			// SQL文を完成させる
 			pStmt.setString(1,card.getpName());
-			pStmt.setString(2,card.getNumber());
+			pStmt.setInt(2,card.getNumber());
 			pStmt.setString(3,card.getpPw());
 			
 			// SQL文を実行する
@@ -127,7 +127,7 @@ public class PidpwDAO {
 			// SQL文を完成させる
 			pStmt.setString(1, card.getpName());
 			pStmt.setString(2, card.getpPw());
-			pStmt.setString(3, card.getNumber());
+			pStmt.setInt(3, card.getNumber());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -171,7 +171,7 @@ public class PidpwDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setString(1, card.getNumber());
+			pStmt.setInt(1, card.getNumber());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -197,7 +197,7 @@ public class PidpwDAO {
 	}
 
 	//学籍番号を引数に保護者の情報を取得する
-	public ArrayList<Pidpw> slect(ArrayList<String> studentId) {
+	public ArrayList<Pidpw> slect(ArrayList<Integer> studentId) {
 		Connection conn = null;
 		ArrayList<Pidpw> parentInfo = new ArrayList<Pidpw>();
 		
@@ -222,7 +222,7 @@ public class PidpwDAO {
 			//SQL文を完成させる
 			// setString() を使うことがポイント！
 			for (int i = 0; i < studentId.size(); i++) {
-			    pStmt.setString(i + 1, studentId.get(i));
+			    pStmt.setInt(i + 1, studentId.get(i));
 			}
 			
 			// SQL文を実行し、結果表を取得する
@@ -230,7 +230,7 @@ public class PidpwDAO {
 			
 			while(rs.next()) {
 				Pidpw pidpw = new Pidpw(rs.getString("pName"),
-									    rs.getString("number"),
+									    rs.getInt("number"),
 									    rs.getString("pPw")
 									    );
 				parentInfo.add(pidpw);

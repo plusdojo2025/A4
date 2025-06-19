@@ -79,9 +79,9 @@ public class SidpwDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			// SQL文を完成させる
-			pStmt.setString(1,card.getClassName());
+			pStmt.setInt(1,card.getClassName());
 			pStmt.setString(2,card.getsName());
-			pStmt.setString(3,card.getNumber());
+			pStmt.setInt(3,card.getNumber());
 			pStmt.setString(4,card.getsPw());
 			
 			// SQL文を実行する
@@ -127,7 +127,7 @@ public class SidpwDAO {
 			// SQL文を完成させる
 			pStmt.setString(1, card.getsName());
 			pStmt.setString(2, card.getsPw());
-			pStmt.setString(3, card.getNumber());
+			pStmt.setInt(3, card.getNumber());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -171,7 +171,7 @@ public class SidpwDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setString(1, card.getNumber());
+			pStmt.setInt(1, card.getNumber());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -197,7 +197,7 @@ public class SidpwDAO {
 	}
 
 	//クラス名を引数に生徒の情報を取得する
-	public ArrayList<Sidpw> select(String className) {
+	public ArrayList<Sidpw> select(int className) {
 		Connection conn = null;
 		ArrayList<Sidpw> studentInfo = new ArrayList<Sidpw>();
 		
@@ -214,11 +214,11 @@ public class SidpwDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			//SQL文を完成させる
-			if(className != null) {
-				pStmt.setString(1,"%"+className+"%");
+			if(className != 0) {
+				pStmt.setInt(1,className);
 			}
 			else {
-				pStmt.setString(1, "%");
+				pStmt.setInt(1, 0);
 			}
 			
 			// SQL文を実行し、結果表を取得する
@@ -226,9 +226,9 @@ public class SidpwDAO {
 			
 			//結果表をコレクションにコピーする
 			while(rs.next()) {
-				Sidpw sidpw = new Sidpw(rs.getString("className"),
+				Sidpw sidpw = new Sidpw(rs.getInt("className"),
 										rs.getString("sName"),
-										rs.getString("number"),
+										rs.getInt("number"),
 										rs.getString("sPw")
 										);
 				studentInfo.add(sidpw);
@@ -255,9 +255,9 @@ public class SidpwDAO {
 		return studentInfo;
 	}
 
-	public String studentSelectId(Sidpw sidpw) {
+	public int studentSelectId(Sidpw sidpw) {
 		Connection conn = null;
-		String studentId = "";
+		int studentId = 0;
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -287,14 +287,14 @@ public class SidpwDAO {
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 			
-			studentId = rs.getString("number");
+			studentId = rs.getInt("number");
 			
 		}catch (SQLException e) {
 			e.printStackTrace();
-			studentId = null;
+			studentId = 0;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			studentId = null;
+			studentId = 0;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -302,7 +302,7 @@ public class SidpwDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					studentId = null;
+					studentId = 0;
 				}
 			}
 		}
