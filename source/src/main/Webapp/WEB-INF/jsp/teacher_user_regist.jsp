@@ -98,7 +98,7 @@
               
               <tr>
               <td>
-                <input type="submit" id="register" name="regist" value="登録">
+                <input type="submit" id="register" name="submit" value="登録">
                 <span id="error_message"></span>
               </td>
               </tr>

@@ -30,8 +30,8 @@
 	学籍番号<input type="text" name="pNumber" value="${e.pNumber}"><br>
 	パスワード<input type="password" name="sPw" value="${e.sPw}">
 	パスワード<input type="password" name="pPw" value="${e.pPw}"><br>
-	<input type="submit" name="update" value="更新">
-	<input type="submit" name="delete" value="削除"><br>
+	<input type="submit" name="submit" value="更新">
+	<input type="submit" name="submit" value="削除"><br>
 	</form>
 </c:forEach>
 </body>
