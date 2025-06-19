@@ -3,36 +3,36 @@ package dto;
 import java.io.Serializable;
 
 public class Sidpw implements Serializable{
-	private String className; // クラス名
+	private int className; // クラス名
 	private String sName; // 生徒の氏名
-	private String number; //学籍番号
+	private int number; //学籍番号
 	private String sPw; // 生徒のパスワード
 	
-	public String getClassName() {
+	public int getClassName() {
 		return className;
 	}
 	public String getsName() {
 		return sName;
 	}
-	public String getNumber() {
+	public int getNumber() {
 		return number;
 	}
 	public String getsPw() {
 		return sPw;
 	}
-	public void setClassName(String className) {
+	public void setClassName(int className) {
 		this.className = className;
 	}
 	public void setsName(String sName) {
 		this.sName = sName;
 	}
-	public void setNumber(String number) {
+	public void setNumber(int number) {
 		this.number = number;
 	}
 	public void setsPw(String sPw) {
 		this.sPw = sPw;
 	}
-	public Sidpw(String className, String sName, String number, String sPw) {
+	public Sidpw(int className, String sName, int number, String sPw) {
 		this.className = className;
 		this.sName = sName;
 		this.number = number;
@@ -44,15 +44,15 @@ public class Sidpw implements Serializable{
 		this.sPw = sPw;
 	}
 	
-	public Sidpw(String sName, String number, String sPw) {
+	public Sidpw(String sName, int number, String sPw) {
 		this.sName = sName;
 		this.number = number;
 		this.sPw = sPw;
 	}
 	public Sidpw() {
-		this.className = "";
+		this.className = 0;
 		this.sName = "";
-		this.number = "";
+		this.number = 0;
 		this.sPw = "";
 	}
 	

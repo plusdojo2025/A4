@@ -3,39 +3,86 @@ package dto;
 import java.io.Serializable;
 
 public class Tests implements Serializable{
-	private String testsId; //成績ID
-	private String number; //学籍番号
-	private String term; //学期
+	private int testsId; //成績ID
+	private int number; //学籍番号
+	private int term; //学期
 	private String testName; //テスト名
-	private String japanese; //国語
-	private String averageJapanese; //国語平均点
-	private String math; //数学
-	private String averageMath; //数学平均点
-	private String science; //理科
-	private String averageScience; //理科平均点
-	private String social; //社会
-	private String averageSocial; //社会平均点
-	private String english; //英語
-	private String averageEnglish; //英語平均点
-	private String sum; //総合
-	private String averageSum; //総合平均点
+	private int japanese; //国語
+	private int averageJapanese; //国語平均点
+	private int math; //数学
+	private int averageMath; //数学平均点
+	private int science; //理科
+	private int averageScience; //理科平均点
+	private int social; //社会
+	private int averageSocial; //社会平均点
+	private int english; //英語
+	private int averageEnglish; //英語平均点
+	private int sum; //総合
+	private int averageSum; //総合平均点
 	
-	public String getTestsId() {
+
+	
+	public Tests(int testsId, int number, int term, String testName, int japanese, int averageJapanese, int math,
+			int averageMath, int science, int averageScience, int social, int averageSocial, int english,
+			int averageEnglish, int sum, int averageSum) {
+		this.testsId = testsId;
+		this.number = number;
+		this.term = term;
+		this.testName = testName;
+		this.japanese = japanese;
+		this.averageJapanese = averageJapanese;
+		this.math = math;
+		this.averageMath = averageMath;
+		this.science = science;
+		this.averageScience = averageScience;
+		this.social = social;
+		this.averageSocial = averageSocial;
+		this.english = english;
+		this.averageEnglish = averageEnglish;
+		this.sum = sum;
+		this.averageSum = averageSum;
+	}
+	public Tests() {
+		this.testsId = 0;
+		this.number = 0;
+		this.term = 0;
+		this.testName = "";
+		this.japanese = 0;
+		this.averageJapanese = 0;
+		this.math = 0;
+		this.averageMath = 0;
+		this.science = 0;
+		this.averageScience = 0;
+		this.social = 0;
+		this.averageSocial = 0;
+		this.english = 0;
+		this.averageEnglish = 0;
+		this.sum = 0;
+		this.averageSum = 0;
+	}
+
+	public Tests(int number, int term, String testName) {
+		this.number = number;
+		this.term = term;
+		this.testName = testName;
+	}
+
+	public int getTestsId() {
 		return testsId;
 	}
-	public void setTestsId(String testsId) {
+	public void setTestsId(int testsId) {
 		this.testsId = testsId;
 	}
-	public String getNumber() {
+	public int getNumber() {
 		return number;
 	}
-	public void setNumber(String number) {
+	public void setNumber(int number) {
 		this.number = number;
 	}
-	public String getTerm() {
+	public int getTerm() {
 		return term;
 	}
-	public void setTerm(String term) {
+	public void setTerm(int term) {
 		this.term = term;
 	}
 	public String getTestName() {
@@ -44,119 +91,78 @@ public class Tests implements Serializable{
 	public void setTestName(String testName) {
 		this.testName = testName;
 	}
-	public String getJapanese() {
+	public int getJapanese() {
 		return japanese;
 	}
-	public void setJapanese(String japanese) {
+	public void setJapanese(int japanese) {
 		this.japanese = japanese;
 	}
-	public String getAverageJapanese() {
+	public int getAverageJapanese() {
 		return averageJapanese;
 	}
-	public void setAverageJapanese(String averageJapanese) {
+	public void setAverageJapanese(int averageJapanese) {
 		this.averageJapanese = averageJapanese;
 	}
-	public String getMath() {
+	public int getMath() {
 		return math;
 	}
-	public void setMath(String math) {
+	public void setMath(int math) {
 		this.math = math;
 	}
-	public String getAverageMath() {
+	public int getAverageMath() {
 		return averageMath;
 	}
-	public void setAverageMath(String averageMath) {
+	public void setAverageMath(int averageMath) {
 		this.averageMath = averageMath;
 	}
-	public String getScience() {
+	public int getScience() {
 		return science;
 	}
-	public void setScience(String science) {
+	public void setScience(int science) {
 		this.science = science;
 	}
-	public String getAverageScience() {
+	public int getAverageScience() {
 		return averageScience;
 	}
-	public void setAverageScience(String averageScience) {
+	public void setAverageScience(int averageScience) {
 		this.averageScience = averageScience;
 	}
-	public String getSocial() {
+	public int getSocial() {
 		return social;
 	}
-	public void setSocial(String social) {
+	public void setSocial(int social) {
 		this.social = social;
 	}
-	public String getAverageSocial() {
+	public int getAverageSocial() {
 		return averageSocial;
 	}
-	public void setAverageSocial(String averageSocial) {
+	public void setAverageSocial(int averageSocial) {
 		this.averageSocial = averageSocial;
 	}
-	public String getEnglish() {
+	public int getEnglish() {
 		return english;
 	}
-	public void setEnglish(String english) {
+	public void setEnglish(int english) {
 		this.english = english;
 	}
-	public String getAverageEnglish() {
+	public int getAverageEnglish() {
 		return averageEnglish;
 	}
-	public void setAverageEnglish(String averageEnglish) {
+	public void setAverageEnglish(int averageEnglish) {
 		this.averageEnglish = averageEnglish;
 	}
-	public String getSum() {
+	public int getSum() {
 		return sum;
 	}
-	public void setSum(String sum) {
+	public void setSum(int sum) {
 		this.sum = sum;
 	}
-	public String getAverageSum() {
+	public int getAverageSum() {
 		return averageSum;
 	}
-	public void setAverageSum(String averageSum) {
+	public void setAverageSum(int averageSum) {
 		this.averageSum = averageSum;
 	}
-	public Tests(String testsId, String number, String term, String testName, String japanese, String averageJapanese,
-			String math, String averageMath, String science, String averageScience, String social, String averageSocial,
-			String english, String averageEnglish, String sum, String averageSum) {
-		this.testsId = testsId;
-		this.number = number;
-		this.term = term;
-		this.testName = testName;
-		this.japanese = japanese;
-		this.averageJapanese = averageJapanese;
-		this.math = math;
-		this.averageMath = averageMath;
-		this.science = science;
-		this.averageScience = averageScience;
-		this.social = social;
-		this.averageSocial = averageSocial;
-		this.english = english;
-		this.averageEnglish = averageEnglish;
-		this.sum = sum;
-		this.averageSum = averageSum;
-	}
-	public Tests(String number, String term, String testName) {
-		this.number = number;
-		this.term = term;
-		this.testName = testName;
-	}
-	public Tests() {
-		this.testsId = "";
-		this.number = "";
-		this.term = "";
-		this.testName = "";
-		this.japanese = "";
-		this.averageJapanese = "";
-		this.math = "";
-		this.averageMath = "";
-		this.science = "";
-		this.averageScience = "";
-		this.social = "";
-		this.averageSocial = "";
-		this.english = "";
-		this.averageEnglish = "";
-		this.sum = "";
-		this.averageSum = "";
-	}
+	
+	
 }

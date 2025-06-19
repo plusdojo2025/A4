@@ -3,21 +3,21 @@ package dto;
 import java.io.Serializable;
 
 public class Announcemnts implements Serializable{
-	private String announceId; //連絡ID
-	private String className; //クラス名
+	private int announceId; //連絡ID
+	private int className; //クラス名
 	private String announce; //連絡事項
 	private String announceDate; //登録日時
 	
-	public String getAnnounceId() {
+	public int getAnnounceId() {
 		return announceId;
 	}
-	public void setAnnounceId(String announceId) {
+	public void setAnnounceId(int announceId) {
 		this.announceId = announceId;
 	}
-	public String getClassName() {
+	public int getClassName() {
 		return className;
 	}
-	public void setClassName(String className) {
+	public void setClassName(int className) {
 		this.className = className;
 	}
 	public String getAnnounce() {
@@ -32,15 +32,15 @@ public class Announcemnts implements Serializable{
 	public void setAnnounceDate(String announceDate) {
 		this.announceDate = announceDate;
 	}
-	public Announcemnts(String announceId, String className, String announce, String announceDate) {
+	public Announcemnts(int announceId, int className, String announce, String announceDate) {
 		this.announceId = announceId;
 		this.className = className;
 		this.announce = announce;
 		this.announceDate = announceDate;
 	}
 	public Announcemnts() {
-		this.announceId = "";
-		this.className = "";
+		this.announceId = 0;
+		this.className = 0;
 		this.announce = "";
 		this.announceDate = "";
 	}

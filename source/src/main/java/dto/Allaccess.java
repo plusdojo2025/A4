@@ -3,12 +3,12 @@ package dto;
 import java.io.Serializable;
 
 public class Allaccess implements Serializable {
-	private String className; // クラス名
+	private int className; // クラス名
 	private String tName; // 氏名
 	private String tPw; // パスワード
 	
 	private String sName; // 生徒の氏名
-	private String number; //学籍番号
+	private int number; //学籍番号
 	private String sPw; // 生徒のパスワード
 	
 	private String pName; // 保護者の氏名
@@ -20,200 +20,39 @@ public class Allaccess implements Serializable {
 	private String announce; //連絡事項
 	private String announceDate; //登録日時
 	
-	private String testsId; //テストID
-	private String term; //学期
+	private int testsId; //テストID
+	private int term; //学期
 	private String testName; //テスト名
-	private String japanese; //国語
-	private String averageJapanese; //国語平均点
-	private String math; //数学
-	private String averageMath; //数学平均点
-	private String science; //理科
-	private String averageScience; //理科平均点
-	private String social; //社会
-	private String averageSocial; //社会平均点
-	private String english; //英語
-	private String averageEnglish; //英語平均点
-	private String sum; //総合
-	private String averageSum; //総合平均点
+	private int japanese; //国語
+	private int averageJapanese; //国語平均点
+	private int math; //数学
+	private int averageMath; //数学平均点
+	private int science; //理科
+	private int averageScience; //理科平均点
+	private int social; //社会
+	private int averageSocial; //社会平均点
+	private int english; //英語
+	private int averageEnglish; //英語平均点
+	private int sum; //総合
+	private int averageSum; //総合平均点
 	
-	public String getClassName() {
-		return className;
-	}
-	public String gettName() {
-		return tName;
-	}
-	public String gettPw() {
-		return tPw;
-	}
-	public String getsName() {
-		return sName;
-	}
-	public String getNumber() {
-		return number;
-	}
-	public String getsPw() {
-		return sPw;
-	}
-	public String getpName() {
-		return pName;
-	}
-	public String getpPw() {
-		return pPw;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public String getAttendanceDate() {
-		return attendanceDate;
-	}
-	public String getAnnounce() {
-		return announce;
-	}
-	public String getAnnounceDate() {
-		return announceDate;
-	}
-	public String getTestsId() {
-		return testsId;
-	}
-	public String getTerm() {
-		return term;
-	}
-	public String getTestName() {
-		return testName;
-	}
-	public String getJapanese() {
-		return japanese;
-	}
-	public String getAverageJapanese() {
-		return averageJapanese;
-	}
-	public String getMath() {
-		return math;
-	}
-	public String getAverageMath() {
-		return averageMath;
-	}
-	public String getScience() {
-		return science;
-	}
-	public String getAverageScience() {
-		return averageScience;
-	}
-	public String getSocial() {
-		return social;
-	}
-	public String getAverageSocial() {
-		return averageSocial;
-	}
-	public String getEnglish() {
-		return english;
-	}
-	public String getAverageEnglish() {
-		return averageEnglish;
-	}
-	public String getSum() {
-		return sum;
-	}
-	public String getAverageSum() {
-		return averageSum;
-	}
-	public void setClassName(String className) {
-		this.className = className;
-	}
-	public void settName(String tName) {
-		this.tName = tName;
-	}
-	public void settPw(String tPw) {
-		this.tPw = tPw;
-	}
-	public void setsName(String sName) {
-		this.sName = sName;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
-	public void setsPw(String sPw) {
-		this.sPw = sPw;
-	}
-	public void setpName(String pName) {
-		this.pName = pName;
-	}
-	public void setpPw(String pPw) {
-		this.pPw = pPw;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public void setAttendanceDate(String attendanceDate) {
-		this.attendanceDate = attendanceDate;
-	}
-	public void setAnnounce(String announce) {
-		this.announce = announce;
-	}
-	public void setAnnounceDate(String announceDate) {
-		this.announceDate = announceDate;
-	}
-	public void setTestsId(String testsId) {
-		this.testsId = testsId;
-	}
-	public void setTerm(String term) {
-		this.term = term;
-	}
-	public void setTestName(String testName) {
-		this.testName = testName;
-	}
-	public void setJapanese(String japanese) {
-		this.japanese = japanese;
-	}
-	public void setAverageJapanese(String averageJapanese) {
-		this.averageJapanese = averageJapanese;
-	}
-	public void setMath(String math) {
-		this.math = math;
-	}
-	public void setAverageMath(String averageMath) {
-		this.averageMath = averageMath;
-	}
-	public void setScience(String science) {
-		this.science = science;
-	}
-	public void setAverageScience(String averageScience) {
-		this.averageScience = averageScience;
-	}
-	public void setSocial(String social) {
-		this.social = social;
-	}
-	public void setAverageSocial(String averageSocial) {
-		this.averageSocial = averageSocial;
-	}
-	public void setEnglish(String english) {
-		this.english = english;
-	}
-	public void setAverageEnglish(String averageEnglish) {
-		this.averageEnglish = averageEnglish;
-	}
-	public void setSum(String sum) {
-		this.sum = sum;
-	}
-	public void setAverageSum(String averageSum) {
-		this.averageSum = averageSum;
-	}
 	
-	public Allaccess(String number, String sName, String status, String attendanceDate) {
+	
+	public Allaccess(int number, String sName, String status, String attendanceDate) {
 		this.number= number;
 		this.sName = sName;
 		this.status = status;
 		this.attendanceDate = attendanceDate;
 	}
 	
-	public Allaccess(String className, String announce) {
+	public Allaccess(int className, String announce) {
 		this.className = className;
 		this.announce = announce;
 	}
 	
-	public Allaccess(String testsId, String term, String testName, String japanese,
-			String averageJapanese, String math, String averageMath, String science, String averageScience,
-			String social, String averageSocial, String english, String averageEnglish, String sum, String averageSum) {
+	public Allaccess(int testsId, int term, String testName, int japanese,
+			int averageJapanese, int math, int averageMath, int science, int averageScience,
+			int social, int averageSocial, int english, int averageEnglish, int sum, int averageSum) {
 		this.testsId = testsId;
 		this.term = term;
 		this.testName = testName;
@@ -230,11 +69,13 @@ public class Allaccess implements Serializable {
 		this.sum = sum;
 		this.averageSum = averageSum;
 	}
-	public Allaccess(String className, String tName, String tPw, String sName, String number, String sPw, String pName,
-			String pPw, String status, String attendanceDate, String announce, String announceDate, String testsId, String term,
-			String testName, String japanese, String averageJapanese, String math, String averageMath, String science,
-			String averageScience, String social, String averageSocial, String english, String averageEnglish,
-			String sum, String averageSum) {
+	
+	
+	public Allaccess(int className, String tName, String tPw, String sName, int number, String sPw, String pName,
+			String pPw, String status, String attendanceDate, String announce, String announceDate, int testsId,
+			int term, String testName, int japanese, int averageJapanese, int math, int averageMath, int science,
+			int averageScience, int social, int averageSocial, int english, int averageEnglish, int sum,
+			int averageSum) {
 		this.className = className;
 		this.tName = tName;
 		this.tPw = tPw;
@@ -263,13 +104,13 @@ public class Allaccess implements Serializable {
 		this.sum = sum;
 		this.averageSum = averageSum;
 	}
-	
+
 	public Allaccess() {
-		this.className = "";
+		this.className = 0;
 		this.tName = "";
 		this.tPw = "";
 		this.sName = "";
-		this.number = "";
+		this.number = 0;
 		this.sPw = "";
 		this.pName = "";
 		this.pPw = "";
@@ -277,20 +118,238 @@ public class Allaccess implements Serializable {
 		this.attendanceDate = "";
 		this.announce = "";
 		this.announceDate = "";
-		this.testsId = "";
-		this.term = "";
+		this.testsId = 0;
+		this.term = 0;
 		this.testName = "";
-		this.japanese = "";
-		this.averageJapanese = "";
-		this.math = "";
-		this.averageMath = "";
-		this.science = "";
-		this.averageScience = "";
-		this.social = "";
-		this.averageSocial = "";
-		this.english = "";
-		this.averageEnglish = "";
-		this.sum = "";
-		this.averageSum = "";
+		this.japanese = 0;
+		this.averageJapanese = 0;
+		this.math = 0;
+		this.averageMath = 0;
+		this.science = 0;
+		this.averageScience = 0;
+		this.social = 0;
+		this.averageSocial = 0;
+		this.english = 0;
+		this.averageEnglish = 0;
+		this.sum = 0;
+		this.averageSum = 0;
 	}
+
+	public int getClassName() {
+		return className;
+	}
+
+	public void setClassName(int className) {
+		this.className = className;
+	}
+
+	public String gettName() {
+		return tName;
+	}
+
+	public void settName(String tName) {
+		this.tName = tName;
+	}
+
+	public String gettPw() {
+		return tPw;
+	}
+
+	public void settPw(String tPw) {
+		this.tPw = tPw;
+	}
+
+	public String getsName() {
+		return sName;
+	}
+
+	public void setsName(String sName) {
+		this.sName = sName;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	public String getsPw() {
+		return sPw;
+	}
+
+	public void setsPw(String sPw) {
+		this.sPw = sPw;
+	}
+
+	public String getpName() {
+		return pName;
+	}
+
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+
+	public String getpPw() {
+		return pPw;
+	}
+
+	public void setpPw(String pPw) {
+		this.pPw = pPw;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getAttendanceDate() {
+		return attendanceDate;
+	}
+
+	public void setAttendanceDate(String attendanceDate) {
+		this.attendanceDate = attendanceDate;
+	}
+
+	public String getAnnounce() {
+		return announce;
+	}
+
+	public void setAnnounce(String announce) {
+		this.announce = announce;
+	}
+
+	public String getAnnounceDate() {
+		return announceDate;
+	}
+
+	public void setAnnounceDate(String announceDate) {
+		this.announceDate = announceDate;
+	}
+
+	public int getTestsId() {
+		return testsId;
+	}
+
+	public void setTestsId(int testsId) {
+		this.testsId = testsId;
+	}
+
+	public int getTerm() {
+		return term;
+	}
+
+	public void setTerm(int term) {
+		this.term = term;
+	}
+
+	public String getTestName() {
+		return testName;
+	}
+
+	public void setTestName(String testName) {
+		this.testName = testName;
+	}
+
+	public int getJapanese() {
+		return japanese;
+	}
+
+	public void setJapanese(int japanese) {
+		this.japanese = japanese;
+	}
+
+	public int getAverageJapanese() {
+		return averageJapanese;
+	}
+
+	public void setAverageJapanese(int averageJapanese) {
+		this.averageJapanese = averageJapanese;
+	}
+
+	public int getMath() {
+		return math;
+	}
+
+	public void setMath(int math) {
+		this.math = math;
+	}
+
+	public int getAverageMath() {
+		return averageMath;
+	}
+
+	public void setAverageMath(int averageMath) {
+		this.averageMath = averageMath;
+	}
+
+	public int getScience() {
+		return science;
+	}
+
+	public void setScience(int science) {
+		this.science = science;
+	}
+
+	public int getAverageScience() {
+		return averageScience;
+	}
+
+	public void setAverageScience(int averageScience) {
+		this.averageScience = averageScience;
+	}
+
+	public int getSocial() {
+		return social;
+	}
+
+	public void setSocial(int social) {
+		this.social = social;
+	}
+
+	public int getAverageSocial() {
+		return averageSocial;
+	}
+
+	public void setAverageSocial(int averageSocial) {
+		this.averageSocial = averageSocial;
+	}
+
+	public int getEnglish() {
+		return english;
+	}
+
+	public void setEnglish(int english) {
+		this.english = english;
+	}
+
+	public int getAverageEnglish() {
+		return averageEnglish;
+	}
+
+	public void setAverageEnglish(int averageEnglish) {
+		this.averageEnglish = averageEnglish;
+	}
+
+	public int getSum() {
+		return sum;
+	}
+
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
+
+	public int getAverageSum() {
+		return averageSum;
+	}
+
+	public void setAverageSum(int averageSum) {
+		this.averageSum = averageSum;
+	}
+	
+	
 }

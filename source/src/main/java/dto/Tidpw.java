@@ -3,14 +3,14 @@ package dto;
 import java.io.Serializable;
 
 public class Tidpw implements Serializable {
-	private String className; // クラス名
+	private int className; // クラス名
 	private String tName; // 先生の氏名
 	private String tPw; // 先生のパスワード
 	
-	public String getClassName() {
+	public int getClassName() {
 		return className;
 	}
-	public void setClassName(String className) {
+	public void setClassName(int className) {
 		this.className = className;
 	}
 	public String getName() {
@@ -26,7 +26,7 @@ public class Tidpw implements Serializable {
 		this.tPw = tPw;
 	}
 	
-	public Tidpw(String className, String tName, String tPw) {
+	public Tidpw(int className, String tName, String tPw) {
 		this.className = className;
 		this.tName = tName;
 		this.tPw = tPw;
@@ -38,7 +38,7 @@ public class Tidpw implements Serializable {
 	}
 	
 	public Tidpw() {
-		this.className = "";
+		this.className = 0;
 		this.tName = "";
 		this.tPw = "";
 	}
