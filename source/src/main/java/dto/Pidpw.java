@@ -35,5 +35,9 @@ public class Pidpw implements Serializable{
 		this.number = "";
 		this.pPw = "";
 	}
+	public Pidpw(String pName, String pPw) {
+		this.pName = pName;
+		this.pPw = pPw;
+	}
 	
 }

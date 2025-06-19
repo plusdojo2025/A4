@@ -77,7 +77,7 @@ private static final long serialVersionUID = 1L;
 			if (pDao.isLoginOK(new Pidpw(pName, pPw))) { // ログイン成功
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
-				session.setAttribute("Pidpw", new PidpW(pName,pPw));
+				session.setAttribute("Pidpw", new Pidpw(pName,pPw));
 				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
 				response.sendRedirect("/A4/OtherMenuServlet");
