@@ -30,13 +30,13 @@ public class OtherAccountRegistServlet extends HttpServlet {
         Tidpw tDto = new Tidpw();
 		tDto = (Tidpw)session.getAttribute("Tidpw");
 		//クラス名の取得
-		String className = tDto.getClassName();
+		int className = tDto.getClassName();
         //生徒の情報を取得
         SidpwDAO sDao = new SidpwDAO();
         ArrayList<Sidpw> studentInfo = new ArrayList<Sidpw>();
         studentInfo = sDao.select(className);
         //生徒の情報から学籍番号だけをリストに格納
-        ArrayList<String> studentIdInfo = new ArrayList<String>();
+        ArrayList<Integer> studentIdInfo = new ArrayList<Integer>();
         for(Sidpw id : studentInfo) {
             studentIdInfo.add(id.getNumber());
         }
@@ -62,17 +62,17 @@ public class OtherAccountRegistServlet extends HttpServlet {
 		Tidpw tDto = new Tidpw();
 		tDto = (Tidpw)session.getAttribute("Tidpw");
 		//クラス名の取得
-		String editCName = tDto.getClassName();
+		int editCName = tDto.getClassName();
         //リクエスト領域からアカウント編集画面のデータを取得
 		String editSName = request.getParameter("editStudentName");
-        String editSNum = request.getParameter("editStudentNumber");
+        int editSNum = Integer.parseInt(request.getParameter("editStudentNumber"));
         String editSPw = request.getParameter("editStudentPw");
         String editPName = request.getParameter("editParentName");
         String editPPw = request.getParameter("editParentPw");
         //リクエスト領域からアカウント登録画面のデータを取得
         String registSName = request.getParameter("registStudentName");
-		String registCName = request.getParameter("registClassName");
-        String registSNum = request.getParameter("registStudentNumber");
+		int registCName = Integer.parseInt(request.getParameter("registClassName"));
+        int registSNum = Integer.parseInt(request.getParameter("registStudentNumber"));
         String registSPw = request.getParameter("registStudentPw");
 		String registPName = request.getParameter("registParentName");
         String registPPw = request.getParameter("registParentPw");

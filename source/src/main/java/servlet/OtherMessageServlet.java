@@ -56,7 +56,7 @@ public class OtherMessageServlet extends HttpServlet{
 		//生徒情報の取得
 		sDto = (Sidpw)session.getAttribute("Sidpw");
 		//クラス名の取得
-		String className = sDto.getClassName();
+		int className = sDto.getClassName();
 		//DAOの情報の格納
 		announceList = announceDao.select(className);
 		//リクエストスコープへの保存

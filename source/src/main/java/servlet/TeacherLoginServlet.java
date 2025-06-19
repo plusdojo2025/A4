@@ -28,7 +28,7 @@ public class TeacherLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String className = request.getParameter("className"); 
+		int className = Integer.parseInt(request.getParameter("className")); 
 		String teacherName = request.getParameter("tName"); //入力しなかったら""（空文字）がはいる
 		String teacherPw = request.getParameter("tPw"); //nullがはいるときは間違っているとき
 		

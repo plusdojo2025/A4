@@ -32,7 +32,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		//学籍番号取得
 		Sidpw studentInfo = new Sidpw();
 		studentInfo = (Sidpw)session.getAttribute("Sidpw");
-		String studentId = studentInfo.getNumber();
+		int studentId = studentInfo.getNumber();
 		//その日の日付を取得
 		LocalDate today = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -61,8 +61,8 @@ public class OtherAttendanceServlet extends HttpServlet {
         AttendanceDAO attendDao = new AttendanceDAO();
         Attendance attendance = new Attendance();
         attendance = (Attendance)request.getAttribute("attendanceStatus");
-        String attendantId = attendance.getAttendantId();
-        String number = attendance.getNumber();
+        int attendantId = attendance.getAttendantId();
+        int number = attendance.getNumber();
         String status = request.getParameter("status");
         String attendanceDate = attendance.getAttendanceDate();
         

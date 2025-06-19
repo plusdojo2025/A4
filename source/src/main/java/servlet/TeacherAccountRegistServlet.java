@@ -38,7 +38,7 @@ public class TeacherAccountRegistServlet extends HttpServlet{
         //リクエスト領域からクラス名、氏名、パスワードを取得！！
         //入力値が一時的に保存される部分はどこ？構文おぼえているかな？
     	request.setCharacterEncoding("UTF-8");
-    	String className = request.getParameter("className");
+    	int className = Integer.parseInt(request.getParameter("className"));
     	String teacherName = request.getParameter("teacherName");
     	String teacherPw = request.getParameter("teacherPw");
     	
@@ -52,7 +52,7 @@ public class TeacherAccountRegistServlet extends HttpServlet{
         // 成功したらフォワード先はteacher_login.jsp
         //失敗したらフォワード先はteacher_account.jsp
     	
-    	if (tidpwdao.insert(new Tidpw("className", "teacherName", "teacherPw"))) { // 登録成功
+    	if (tidpwdao.insert(new Tidpw(className, teacherName, teacherPw))) { // 登録成功
     		request.setAttribute("msg", "登録成功しました。");
     		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_login.jsp");
         	dispatcher.forward(request, response);

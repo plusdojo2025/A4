@@ -34,7 +34,7 @@ public class TeacherMessageServlet extends HttpServlet{
 		//先生情報の取得
 		tDto = (Tidpw)session.getAttribute("Tidpw");
 		//クラス名の取得
-		String className = tDto.getClassName();
+		int className = tDto.getClassName();
 		//DAOの情報の格納、AnnouncementsDAO.javaにメソッド追加の必要あり
 		announceList = (ArrayList<Announcemnts>) announceDao.select(className);
 		//リクエストスコープへの保存
@@ -56,7 +56,7 @@ public class TeacherMessageServlet extends HttpServlet{
 		
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String classname = request.getParameter("classname");
+		int classname = Integer.parseInt(request.getParameter("classname"));
 		String enter = request.getParameter("enter");
 		
 		

@@ -43,14 +43,14 @@ public class TeacherAttendanceServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String attdate = request.getParameter("attdate");
-		String number = request.getParameter("number");
+		int number = Integer.parseInt(request.getParameter("number"));
 		String sName = request.getParameter("sName");
 		String attup = request.getParameter("attup");
 		
 		// 更新を行う
 		AttendanceDAO attDao = new AttendanceDAO();
 		request.getParameter("submit").equals("更新");
-		attDao.update(new Allaccess(attdate,number,sName,attup));
+		attDao.update(new Allaccess(number,sName,attup,attdate));
 		
 	    
 		// 結果ページにフォワードする
