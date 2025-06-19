@@ -79,6 +79,87 @@ public class TestsDAO {
 		return testsList;
 	}
 	
+	public ArrayList<Tests> select(Tests tests) {
+		Connection conn = null;
+		ArrayList<Tests> testsResult = new ArrayList<Tests>();
+		
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/a4?"
+				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM Tests WHERE number=? AND testName=? AND term=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			//SQL文を完成させる
+			if(tests.getNumber() != null) {
+				pStmt.setString(1,"%"+tests.getNumber()+"%");
+			}
+			else {
+				pStmt.setString(1, "%");
+			}
+			if(tests.getTestName() != null) {
+				pStmt.setString(2,"%"+tests.getTestName()+"%");
+			}
+			else {
+				pStmt.setString(2, "%");
+			}
+			if(tests.getTerm() != null) {
+				pStmt.setString(3,"%"+tests.getTerm()+"%");
+			}
+			else {
+				pStmt.setString(3, "%");
+			}
+			
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Tests test = new Tests();
+				test.setTestsId(rs.getString("testsId"));
+			    test.setNumber(rs.getString("number"));
+			    test.setTerm(rs.getString("term"));
+			    test.setTestName(rs.getString("testName"));
+			    test.setJapanese(rs.getString("japanese"));
+			    test.setAverageJapanese(rs.getString("averageJapanese"));
+			    test.setMath(rs.getString("math"));
+			    test.setAverageMath(rs.getString("averageMath"));
+			    test.setScience(rs.getString("science"));
+			    test.setAverageScience(rs.getString("averageScience"));
+			    test.setSocial(rs.getString("social"));
+			    test.setAverageSocial(rs.getString("averageSocial"));
+			    test.setEnglish(rs.getString("english"));
+			    test.setAverageEnglish(rs.getString("averageEnglish"));
+			    test.setSum(rs.getString("sum"));
+			    test.setAverageSum(rs.getString("averageSum"));
+			    testsResult.add(test);
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			testsResult = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			testsResult = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					testsResult = null;
+				}
+			}
+		}
+		return testsResult;
+	}
+	
 	//成績情報を登録する
 	public boolean insert(Tests card) {
 		Connection conn = null;
@@ -230,4 +311,6 @@ public class TestsDAO {
 		// 結果を返す
 		return result;
 	}
+
+	
 }
