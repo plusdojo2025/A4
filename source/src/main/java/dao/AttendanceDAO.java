@@ -124,6 +124,54 @@ public class AttendanceDAO {
 		return cardList;
 	}
 	
+	//学籍番号と日付を引数にその日の出席情報を取得する
+	public Attendance attendanceSelect(String number, String attendanceDate) {
+		Connection conn = null;
+		Attendance attendanceData = new Attendance();
+		
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/a4?"
+				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
+			
+			//SQL文を準備する
+			String sql ="SELECT * FROM Attendance WHERE number=? AND attendanceDate=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			//SQL文を完成させる
+			pStmt.setString(1,number);
+			pStmt.setString(2,attendanceDate);
+			
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			
+			// 結果表をコレクションにコピーする
+			attendanceData.setNumber(rs.getString("number"));
+			attendanceData.setAttendanceDate(rs.getString("attendanceDAte"));
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			attendanceData = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			attendanceData = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					attendanceData = null;
+				}
+			}
+		}
+		return attendanceData;
+	}
+	
 	//先生が出席状況を更新する
 	public boolean update(Allaccess all) {
 		Connection conn = null;
@@ -168,6 +216,49 @@ public class AttendanceDAO {
 		}
 
 		// 結果を返す
+		return result;
+	}
+	
+	public boolean update(Attendance attendance) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/a4?"
+				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
+			
+			//SQL文の準備する
+			String sql = "UPDATE Attendance SET number=?,status=?,attendanceDate=? WHERE attendantId=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			//SQL文を完成させる
+			pStmt.setString(1, attendance.getNumber());
+			pStmt.setString(2, attendance.getStatus());
+			pStmt.setString(3, attendance.getAttendanceDate());
+			pStmt.setString(4, attendance.getAttendantId());
+			
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		return result;
 	}
 	
@@ -218,10 +309,9 @@ public class AttendanceDAO {
 		return result;
 	}
 
-	public Attendance attendanceSelect(String studentId, String formattedDate) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
+	
+
+	
 
 	
 }
