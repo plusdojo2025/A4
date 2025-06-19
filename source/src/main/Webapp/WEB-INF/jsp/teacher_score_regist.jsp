@@ -1,22 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>先生専用成績管理</title>
+<title>先生用成績登録</title>
 </head>
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
-		<h1>C-Share</h1>
-		<label>ログアウト</label>
+		<h1><a href="/A4/MenuServlet">C-Share</a></h1>
+		<label><a href="/A4/LoginServlet">ログアウト</a></label>
 		<ul>
-			<li>出欠管理</li>
-			<li>成績管理</li>
-			<li>連絡管理</li>
-			<li>ユーザー一覧</li>
-			<li>チャット</li>
+			<li><a href="/A4/AttendanceServlet">出欠管理</a></li>
+			<li><a href="/A4/GradeServlet">成績管理</a></li>
+			<li><a href="/A4/MessageServlet">連絡管理</a></li>
+			<li><a href="/A4/AccountRegistServlet">ユーザー一覧</a></li>
+			<li><a href="/A4/LoadHistoryServlet">チャット</a></li>
 		</ul>
 	</header>
 	<select>

@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>先生用成績閲覧・登録・更新・削除</title>
+<title>先生用成績閲覧・更新・削除</title>
 </head>
 <body>
 	<header>
 		<h1><a href="/A4/MenuServlet">C-Share</a></h1>
-        <p><a href="/A4/LoginServlet">ログアウト</a></p>
+        <label><a href="/A4/LoginServlet">ログアウト</a></label>
 		<ul>
 			<li><a href="/A4/AttendanceServlet">出欠管理</a></li>
 			<li><a href="/A4/GradeServlet">成績管理</a></li>
