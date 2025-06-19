@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,30 +21,33 @@
 		</ul>
 	</header>
 	<h2>連絡一覧</h2>
+	<!-- 登録日時を表示 -->	
+	<c:forEach var="e" items="${cardList}">
 	<table>
 	  <tr>
-	    <td><!--登録日時を表示--></td>
+	    <td><input type="hidden" ${e.date}></td>
 	  </tr>
 	  <!-- 連絡内容を表示 -->
 	  <tr>
 	  	<td>
-	    	<input type="text" name="announcetext" readonly>
+	    	<input type="hidden" ${e.announcements}>
 	    </td>
 	  </tr>
-	  <tr>
-	    <td>
-	    	<input type="text" name="announcetext" readonly>
-	    </td>
-	  </tr>
+	  </table>
+	  </c:forEach>
 	  <!-- 連絡事項の登録 -->
+	  <form method="POST" action="/A4/TeacherMessageServlet">
+	  <table>
 	  <tr>
-	  	<td>
-	  		<input type="text" name="enter" value="入力" required>
+	  	<td><input type="hidden" name="classname" value="${e.classname}">   
+	  		<input type="text" name="enter" value="入力してください" required>
 	  	</td>
 	  	<td>
 	  		<input type="submit"name="sendMessage" value="送信">
 	  	</td>
 	  </tr>
 	</table>
+	</form>
+	 
 </body>
 </html>
