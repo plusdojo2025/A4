@@ -34,11 +34,11 @@
 	
 	<c:forEach var="e" items="${cardList}">
 		<!-- 生徒の出席状況 -->
-		<form method="POST" action="/A4/GradeServlet">
+		<form method="POST" action="/A4/TeacherAttendanceServlet">
 		    <table>
 		        <tr>
 		            <td>名前: <input type="hidden" name="number" value="${e.number}">        	
-		            		<input type="hidden" ${e.name}></td>
+		            		<input name = sName value = "${e.name}"></td>
 		            <td>出欠:
 		                <select name="attup">
 		                    <option value="Present" <c:if test="${studentAttendance.attendance == 'Present'}">selected</c:if>>出席</option>

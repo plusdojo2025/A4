@@ -38,7 +38,7 @@ public class TeacherMessageServlet extends HttpServlet{
 		//DAOの情報の格納、AnnouncementsDAO.javaにメソッド追加の必要あり
 		announceList = (ArrayList<Announcemnts>) announceDao.select(className);
 		//リクエストスコープへの保存
-		request.setAttribute("announcements", announceList);
+		request.setAttribute("announceList", announceList);
 
 		// お知らせページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/jsp/teacher_announce.jsp");

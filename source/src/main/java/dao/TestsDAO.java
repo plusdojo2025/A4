@@ -6,16 +6,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
+import dto.Allaccess;
 import dto.Tests;
 
 public class TestsDAO {
 	
 	//成績情報を閲覧する（１学期分）
-	public List<Tests> select(Tests card, String term) {
+	public ArrayList<Tests> select(String testsId) {
 		Connection conn = null;
-		List<Tests> cardList = new ArrayList<Tests>();
+		ArrayList<Tests> testsList = new ArrayList<Tests>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -27,10 +27,10 @@ public class TestsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Tests WHERE term = ? AND testName =?";
+			String sql = "SELECT * FROM Tests WHERE term = ? AND testsId =?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
-			pStmt.setString(1, term);
+			pStmt.setString(1, testsId);
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -55,14 +55,14 @@ public class TestsDAO {
                 test.setSum(rs.getString("sum"));
                 test.setAverageSum(rs.getString("averageSum"));
 
-                cardList.add(test);
+                testsList.add(test);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			cardList = null;
+			testsList = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			cardList = null;
+			testsList = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -70,13 +70,13 @@ public class TestsDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					cardList = null;
+					testsList = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return cardList;
+		return testsList;
 	}
 	
 	//成績情報を登録する
@@ -136,7 +136,7 @@ public class TestsDAO {
 	}
 	
 	//成績情報を更新する
-	public boolean update(Tests card) {
+	public boolean update(Allaccess allaccess) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -156,13 +156,13 @@ public class TestsDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setString(1, card.getJapanese());
-			pStmt.setString(2, card.getMath());
-			pStmt.setString(3, card.getScience());
-			pStmt.setString(4, card.getSocial());
-			pStmt.setString(5, card.getEnglish());
-			pStmt.setString(6, card.getSum());
-			pStmt.setString(7, card.getTestsId());
+			pStmt.setString(1, allaccess.getJapanese());
+			pStmt.setString(2, allaccess.getMath());
+			pStmt.setString(3, allaccess.getScience());
+			pStmt.setString(4, allaccess.getSocial());
+			pStmt.setString(5, allaccess.getEnglish());
+			pStmt.setString(6, allaccess.getSum());
+			pStmt.setString(7, allaccess.getTestsId());
 			
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -188,7 +188,7 @@ public class TestsDAO {
 	}
 	
 	//成績情報を削除する
-	public boolean delete(Tests card) {
+	public boolean delete(Allaccess allaccess) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -206,7 +206,7 @@ public class TestsDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setString(1, card.getTestsId());
+			pStmt.setString(1, allaccess.getTestsId());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

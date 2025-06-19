@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +32,9 @@
 			<c:forEach var="student" items="${studentList}" >
 				<li>
                     <!--サーブレットの変更あるかも-->
-                    <a href="/A4/GradeServlet?studentId=${student.id}">
-                        ${student.name}
-                    </a>
+                   	<input type="hidden" name="number" value="${student.number}">       	
+            		<button type="button" onclick="toggleScore('${student.name}')">↓ ${student.name}</button>
+                    
                 </li>
 			</c:forEach>
 		</ul>
@@ -43,18 +43,20 @@
     <!--上記のidをもとにサーブレットで特定の生徒の成績情報をGradeServletから持ってきて、Requestスコープに"selectedStudent"の名前で保存する必要あり。-->
     <div>
         <!--成績表示-->
+        
         <c:if test="${not empty selectedStudent}">
-            <h2>${selectedStudent.name} さんの成績</h2>
-
-            <c:forEach var="score" items="${selectedStudent.scores}">
-                <!--formタグの位置変更あるかも-->
-                <form method="POST" action="/A4/GradeServlet" id="form">
+            <h2><input name = sName ${selectedStudent.name} >さんの成績</h2>
+			<c:forEach var="score" items="${score}">
                     <!--何学期かを表示する部分-->
                     <button type="button" onclick="toggleScore('${score.term}')">↓ ${score.term}</button>
+           			
                     <!--このコードで成績を表示するか否かを決める(ON&OFはJavaScriptで設定)-->
                     <div id="score-${score.term}" style="display: none;">
+                    
                         <!--テスト名の表示-->
                         <p>${score.testName}テスト</p>
+                        <form method="POST" action="/A4/GradeServlet" id="form">
+                        <input type="hidden" name="id" value="${score.id}">
                         <!--選択した生徒の成績の表示-->
                         <table>
                             <!--表形式-->
@@ -67,20 +69,20 @@
                                 <th>総合</th>
                             </tr>
                             <tr>
-                                <td>${score.japanese}</td>
-                                <td>${score.math}</td>
-                                <td>${score.science}</td>
-                                <td>${score.social}</td>
-                                <td>${score.english}</td>
-                                <td>${score.sum}</td>
+                                <td><input type = text name = jap value="${score.japanese}"></td>
+                                <td><input type = text name = mat value="${score.math}"></td>
+                                <td><input type = text name = sci value="${score.science}"></td>
+                                <td><input type = text name = soc value="${score.social}"></td>
+                                <td><input type = text name = eng value="${score.english}"></td>
+                                <td><input type = text name = sum value="${score.sum}"></td>
                             </tr>
                             <tr>
-                                <td>${score.averageJapanese}</td>
-                                <td>${score.averageMath}</td>
-                                <td>${score.averageScience}</td>
-                                <td>${score.averageSocial}</td>
-                                <td>${score.averageEnglish}</td>
-                                <td>${score.averageSum}</td> 
+                                <td><input type = text name = ajap value="${score.averageJapanese}"></td>
+                                <td><input type = text name = amat value="${score.averageMath}"></td>
+                                <td><input type = text name = asci value="${score.averageScience}"></td>
+                                <td><input type = text name = asoc value="${score.averageSocial}"></td>
+                                <td><input type = text name = aeng value="${score.averageEnglish}"></td>
+                                <td><input type = text name = asum value="${score.averageSum}"></td> 
                             </tr>
                             
                         </table>
@@ -90,10 +92,11 @@
                             <input type="submit" name="delete" value="削除"><br>
                             <span id='output'></span>
                         </p>
-                    </div>
-                </form>
+                        </form>
+                    </div>      
             </c:forEach>
         </c:if>
+        
     </div>
 	<footer>
 	

@@ -14,9 +14,9 @@ import dto.Announcemnts;
 public class AnnouncementsDAO {
 	
 	//連絡情報を閲覧する
-	public List<Announcemnts> select(String card) {
+	public List<Announcemnts> select(String announce) {
 		Connection conn = null;
-		List<Announcemnts> cardList = new ArrayList<Announcemnts>();
+		List<Announcemnts> announceList = new ArrayList<Announcemnts>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -34,7 +34,7 @@ public class AnnouncementsDAO {
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 			
-			pStmt.setString(1, card);
+			pStmt.setString(1, announce);
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
@@ -44,14 +44,14 @@ public class AnnouncementsDAO {
                 ann.setAnnounce(rs.getString("announce"));
                 ann.setAnnounceDate(rs.getString("announceDate"));
 
-				cardList.add(ann);
+                announceList.add(ann);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			cardList = null;
+			announceList = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			cardList = null;
+			announceList = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -59,13 +59,13 @@ public class AnnouncementsDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					cardList = null;
+					announceList = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return cardList;
+		return announceList;
 	}
 	
 	//連絡情報を登録する

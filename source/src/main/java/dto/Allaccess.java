@@ -20,6 +20,7 @@ public class Allaccess implements Serializable {
 	private String announce; //連絡事項
 	private String announceDate; //登録日時
 	
+	private String testsId; //テストID
 	private String term; //学期
 	private String testName; //テスト名
 	private String japanese; //国語
@@ -70,6 +71,9 @@ public class Allaccess implements Serializable {
 	}
 	public String getAnnounceDate() {
 		return announceDate;
+	}
+	public String getTestsId() {
+		return testsId;
 	}
 	public String getTerm() {
 		return term;
@@ -149,6 +153,9 @@ public class Allaccess implements Serializable {
 	public void setAnnounceDate(String announceDate) {
 		this.announceDate = announceDate;
 	}
+	public void setTestsId(String testsId) {
+		this.testsId = testsId;
+	}
 	public void setTerm(String term) {
 		this.term = term;
 	}
@@ -192,7 +199,8 @@ public class Allaccess implements Serializable {
 		this.averageSum = averageSum;
 	}
 	
-	public Allaccess(String sName, String status, String attendanceDate) {
+	public Allaccess(String number, String sName, String status, String attendanceDate) {
+		this.number= number;
 		this.sName = sName;
 		this.status = status;
 		this.attendanceDate = attendanceDate;
@@ -203,8 +211,27 @@ public class Allaccess implements Serializable {
 		this.announce = announce;
 	}
 	
+	public Allaccess(String testsId, String term, String testName, String japanese,
+			String averageJapanese, String math, String averageMath, String science, String averageScience,
+			String social, String averageSocial, String english, String averageEnglish, String sum, String averageSum) {
+		this.testsId = testsId;
+		this.term = term;
+		this.testName = testName;
+		this.japanese = japanese;
+		this.averageJapanese = averageJapanese;
+		this.math = math;
+		this.averageMath = averageMath;
+		this.science = science;
+		this.averageScience = averageScience;
+		this.social = social;
+		this.averageSocial = averageSocial;
+		this.english = english;
+		this.averageEnglish = averageEnglish;
+		this.sum = sum;
+		this.averageSum = averageSum;
+	}
 	public Allaccess(String className, String tName, String tPw, String sName, String number, String sPw, String pName,
-			String pPw, String status, String attendanceDate, String announce, String announceDate, String term,
+			String pPw, String status, String attendanceDate, String announce, String announceDate, String testsId, String term,
 			String testName, String japanese, String averageJapanese, String math, String averageMath, String science,
 			String averageScience, String social, String averageSocial, String english, String averageEnglish,
 			String sum, String averageSum) {
@@ -220,6 +247,7 @@ public class Allaccess implements Serializable {
 		this.attendanceDate = attendanceDate;
 		this.announce = announce;
 		this.announceDate = announceDate;
+		this.testsId = testsId;
 		this.term = term;
 		this.testName = testName;
 		this.japanese = japanese;
@@ -249,6 +277,7 @@ public class Allaccess implements Serializable {
 		this.attendanceDate = "";
 		this.announce = "";
 		this.announceDate = "";
+		this.testsId = "";
 		this.term = "";
 		this.testName = "";
 		this.japanese = "";

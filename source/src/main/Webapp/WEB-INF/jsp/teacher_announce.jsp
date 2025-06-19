@@ -22,16 +22,14 @@
 	</header>
 	<h2>連絡一覧</h2>
 	<!-- 登録日時を表示 -->	
-	<c:forEach var="e" items="${cardList}">
+	<c:forEach var="e" items="${announceList}">
 	<table>
 	  <tr>
-	    <td><input type="hidden" ${e.date}></td>
+	    <td>${e.date}</td>
 	  </tr>
 	  <!-- 連絡内容を表示 -->
 	  <tr>
-	  	<td>
-	    	<input type="hidden" ${e.announcements}>
-	    </td>
+	  	<td>${e.announcements}</td>
 	  </tr>
 	  </table>
 	  </c:forEach>
