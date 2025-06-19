@@ -34,7 +34,7 @@
 		<input type="submit" name="search" value="検索"><br>
 	</form>
 	
-	<form method="POST" action="">
+	<form method="POST" action="/A4/TeacherGradeRegistServlet" id="form">
 		<!-- 入力欄 -->
 		<input type="text" name="" value="${}">
 		<!-- 生徒名をリクエスト領域から取得する -->

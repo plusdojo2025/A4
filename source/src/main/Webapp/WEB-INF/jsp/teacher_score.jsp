@@ -55,7 +55,7 @@
                     
                         <!--テスト名の表示-->
                         <p>${score.testName}テスト</p>
-                        <form method="POST" action="/A4/GradeServlet" id="form">
+                        <form method="POST" action="/A4/TeacherGradeServlet" id="form">
                         <input type="hidden" name="id" value="${score.id}">
                         <!--選択した生徒の成績の表示-->
                         <table>
