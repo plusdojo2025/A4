@@ -7,10 +7,18 @@
 <meta charset="UTF-8">
 <title>先生用成績閲覧・更新・削除</title>
 </head>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/teacher.css">
 <body>
 	<header>
-		<h1><a href="/A4/TeacherMenuServlet">C-Share</a></h1>
-        <label><a href="/A4/TeacherLoginServlet">ログアウト</a></label>
+	<label class="out">
+	<a href="/A4/TeacherLoginServlet"><img src = "images/out.png" width="50px" height="50px"></a>
+		</label>
+		<div class="logo">
+			<a href="/webapp/TeacherMenuServlet"><img src = "images/cshare.png" width="300px" height="122px"></a>
+		</div>
+		
+        <nav class = "burner">
 		<ul>
 			<li><a href="/A4/TeacherAttendanceServlet">出欠管理</a></li>
 			<li><a href="/A4/TeacherGradeServlet">成績管理</a></li>
@@ -18,15 +26,17 @@
 			<li><a href="/A4/TeacherAccountRegistServlet">ユーザー一覧管理</a></li>
 			<li><a href="/A4/SoServlet">チャット</a></li>
 		</ul>
+		</nav>
 	</header>
 
 	<div>
 		<!-- 成績登録ボタン -->
-		<input type="submit" name="regist" value="成績登録">
+		<label class="out"><input type="submit" name="regist" value="成績登録"></label>
 	</div>
 
-	<div>
+	<div class="student-container">
 		<!-- 生徒名簿の表示 -->
+		<div class="student-sidebar">
 		<h2>生徒名簿</h2>
 		<ul>
 			<c:forEach var="student" items="${studentList}" >
@@ -41,7 +51,7 @@
 	</div>
 
     <!--上記のidをもとにサーブレットで特定の生徒の成績情報をGradeServletから持ってきて、Requestスコープに"selectedStudent"の名前で保存する必要あり。-->
-    <div>
+    <div class="student-main-content">
         <!--成績表示-->
         
         <c:if test="${not empty selectedStudent}">
@@ -56,7 +66,7 @@
                         <!--テスト名の表示-->
                         <p>${score.testName}テスト</p>
                         <form method="POST" action="/A4/TeacherGradeServlet" id="form">
-                        <input type="hidden" name="id" value="${score.id}">
+                        <input type="hidden" name="id" value="${score.testsId}">
                         <!--選択した生徒の成績の表示-->
                         <table>
                             <!--表形式-->
@@ -96,10 +106,10 @@
                     </div>      
             </c:forEach>
         </c:if>
-        
+        </div>
     </div>
-	<footer>
-	
+	<footer class="footer">
+		<img src = "images/runningman.png">
 	</footer>
 </body>
 </html>
