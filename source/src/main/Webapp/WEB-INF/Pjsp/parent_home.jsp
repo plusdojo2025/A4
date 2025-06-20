@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,8 @@
 	<div>
 		<!-- 最新のお知らせ表示 -->
 		<h2>最新のお知らせ</h2>
-		
+		<p>登録日時：<c:out value="${announcement.announceDate}" /></p>
+		<p>連絡内容：<c:out value="${announcement.announce}" /></p>
 	</div>
 	<footer>
 	</footer>
