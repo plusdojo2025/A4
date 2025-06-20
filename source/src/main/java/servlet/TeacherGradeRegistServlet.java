@@ -48,9 +48,12 @@ public class TeacherGradeRegistServlet {
      		// 検索処理を行う
          	ArrayList<Allaccess> list = new ArrayList<Allaccess>();
          	//DAOで結合を使って生徒名とテスト結果を取得
-         	list = t.select(new Tests(term, test));
+         	list = t.select(term, test);
          	// 検索結果をリクエストスコープに格納する
          	request.setAttribute("scoreList", list);
+         	
+         	RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Sjsp/teacher_score.jsp");
+    		dispatcher.forward(request, response);
      	}
      	else if(submit.equals("登録")) {
      		
@@ -78,10 +81,15 @@ public class TeacherGradeRegistServlet {
      			gradeList.add(new Tests(0,studentId[i],term,test,intJapanese,intMath,intScience,intSocial,intEnglish,intSum));
      		}
      		//DAOに渡す
-     		t.insert(gradeList);
+     		if(t.insert(gradeList)) {
+     			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Sjsp/teacher_score.jsp");
+     			dispatcher.forward(request, response);
+     		}
+     		else {
+     			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Sjsp/teacher_score_regist.jsp");
+     			dispatcher.forward(request, response);
+     		}
      	}
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Sjsp/teacher_score.jsp");
-		dispatcher.forward(request, response);
     }    
 }

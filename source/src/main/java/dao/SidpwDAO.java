@@ -254,6 +254,54 @@ public class SidpwDAO {
 		
 		return studentInfo;
 	}
+	
+	public int select(String studentName) {
+		Connection conn = null;
+		int studentId = 0;
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/a4?"
+				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
+						
+			//SQL文を準備する
+			String sql = "SELECT number FROM Sidpw WHERE sName=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			//SQL文を完成させる
+			if(studentName != null) {
+				pStmt.setString(1,"%"+studentName+"%");
+			}
+			else {
+				pStmt.setString(1, "%");
+			}
+			
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			studentId = rs.getInt("number");
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			studentId = 0;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			studentId = 0;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					studentId = 0;
+				}
+			}
+		}
+		return studentId;
+		
+	}
 
 	public int studentSelectId(Sidpw sidpw) {
 		Connection conn = null;
@@ -308,6 +356,8 @@ public class SidpwDAO {
 		}
 		return studentId;
 	}
+
+	
 	
 	
 }
