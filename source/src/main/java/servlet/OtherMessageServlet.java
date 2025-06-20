@@ -15,7 +15,7 @@ import dao.AnnouncementsDAO;
 import dto.Announcemnts;
 import dto.Sidpw;
 
-@WebServlet("/A4/OtherMessageServlet")
+@WebServlet("/OtherMessageServlet")
 
 public class OtherMessageServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

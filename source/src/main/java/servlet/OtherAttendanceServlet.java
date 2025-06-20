@@ -16,7 +16,7 @@ import dao.AttendanceDAO;
 import dto.Attendance;
 import dto.Sidpw;
 
-@WebServlet("/A4/OtherAttendanceServlet")
+@WebServlet("/OtherAttendanceServlet")
 public class OtherAttendanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

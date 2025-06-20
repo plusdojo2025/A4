@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import dto.Pidpw;
 import dto.Sidpw;
 import dto.Tidpw;
 
+@WebServlet("/OtherAccountRegistServlet")
 //生徒と保護者のアカウントを表示・登録・更新・削除する機能を仲介する
 public class OtherAccountRegistServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 

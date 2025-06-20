@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import dao.TestsDAO;
 import dto.Tests;
 
-@WebServlet("/A4/OtherGradeServlet")
+@WebServlet("/OtherGradeServlet")
 
 public class OtherGradeServlet extends HttpServlet{
 
