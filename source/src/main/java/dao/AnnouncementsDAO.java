@@ -68,6 +68,58 @@ public class AnnouncementsDAO {
 		return announceList;
 	}
 	
+	//連絡登録情報から最新の情報だけを取得する
+	public ArrayList<Announcemnts> select2(String announce) {
+		Connection conn = null;
+		ArrayList<Announcemnts> announcelatest = new ArrayList<Announcemnts>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/a4?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
+					"root", "password");
+
+			// SQL文を準備する
+			String sql = "SELECT * FROM Announcements ORDER BY announceDate DESC LIMIT 1";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Announcemnts ann = new Announcemnts();
+                ann.setAnnounceId(rs.getInt("announceId"));
+                ann.setClassName(rs.getInt("className"));
+                ann.setAnnounce(rs.getString("announce"));
+                ann.setAnnounceDate(rs.getString("announceDate"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			announcelatest = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			announcelatest = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					announcelatest = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return announcelatest;
+	}
+	
 	public ArrayList<Announcemnts> select(int className) {
 		Connection conn = null;
 		ArrayList<Announcemnts> announceList = new ArrayList<Announcemnts>();

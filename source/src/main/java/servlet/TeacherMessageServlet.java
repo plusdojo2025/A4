@@ -30,19 +30,24 @@ public class TeacherMessageServlet extends HttpServlet{
 		//インスタンス化
 		AnnouncementsDAO announceDao = new AnnouncementsDAO();
 		ArrayList<Announcemnts> announceList = new ArrayList<Announcemnts>();
+		
 		Tidpw tDto = new Tidpw();
+		
 		//先生情報の取得
 		tDto = (Tidpw)session.getAttribute("Tidpw");
 		//クラス名の取得
 		int className = tDto.getClassName();
+		
 		//DAOの情報の格納、AnnouncementsDAO.javaにメソッド追加の必要あり
 		announceList = (ArrayList<Announcemnts>) announceDao.select(className);
+		
 		//リクエストスコープへの保存
 		request.setAttribute("announceList", announceList);
+		
 
 		// お知らせページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/jsp/teacher_announce.jsp");
-		dispatcher.forward(request, response);
+		request.getRequestDispatcher("/A4/jsp/teacher_announce.jsp").forward(request, response);
+		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
