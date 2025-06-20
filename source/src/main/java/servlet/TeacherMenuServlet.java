@@ -35,6 +35,8 @@ public class TeacherMenuServlet extends HttpServlet {
 		Announcemnts annDto = new Announcemnts();
 		String announce = annDto.getAnnounce();
 		announcelatest = (ArrayList<Announcemnts>) announceDao.select(announce);
+		
+		//リクエストスコープへの保存
 		request.setAttribute("announcement", announcelatest);
 		
 		// メニューページにフォワードする
