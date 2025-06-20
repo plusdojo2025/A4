@@ -4,35 +4,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>先生用ユーザー一覧</title>
+	<meta charset="UTF-8">
+	<title>先生用ユーザー一覧</title>
+	<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
+	<link rel="stylesheet" href="<c:url value='/css/teacher.css'/>">
 </head>
 <body>
-<header>
-		<h1><a href="/A4/TeacherMenuServlet">C-Share</a></h1>
-		<label><a href="/A4/TeacherLoginServlet">ログアウト</a></label>
-		<ul>
-			<li><a href="/A4/TeacherAttendanceServlet">出欠管理</a></li>
-			<li><a href="/A4/TeacherGradeServlet">成績管理</a></li>
-			<li><a href="/A4/TeacherMessageServlet"></a>連絡管理</li>
-			<li><a href="/A4/TeacherAccountRegistServlet"></a>ユーザー一覧</li>
-			<li><a href="/A4/SoServlet">チャット</a></li>
-		</ul>
-</header>
+	<header>
+			<label class="out"><img src = "images/out.png" width="50px" height="50px"></label>
+			<div class="logo">
+				<a href="/webapp/LoginServlet"><img src = "images/cshare.png" width="300px" height="122px"></a>
+			</div>
+			<nav class = "burner">
+	            <ul>
+	                <li><a href="/A4/AttendanceServlet" class="highlight">出欠管理</a></li>
+	                <li><a href="/A4/GradeServlet" class="highlight">成績管理</a></li>
+	                <li><a href="/A4/MessageServlet" class="highlight">連絡管理</a></li>
+	                <li><a href="/A4/AccountRegistServlet">ユーザー一覧管理</a></li>
+	                <li><a href="/A4/LoadHistoryServlet" class="highlight">チャット</a></li>
+	            </ul>
+	        </nav>
+	</header>
 
-	<input type="submit" id="register" name="regist" value="登録">
+	<label class="out"><a href="/A4/AccountRegistServlet">ユーザー登録</a></label>
+	
+	 <c:forEach var="e" items="${Allaccess}">
+			<form class="access-edit-form" method="POST" action="/A4/UpdateDeleteServlet">
+				<div class="access-wrapper">
+					<div class="access-row">
+						<!-- 生徒 -->
+						<div class="access-column">
+							<label>氏名</label>
+							<input type="text" name="sName" value="${e.sName}">
+	
+							<label>学籍番号</label>
+							<input type="text" name="sNumber" value="${e.sNumber}">
+	
+							<label>パスワード</label>
+							<input type="text" name="sPw" value="${e.sPw}">
+						</div>
 
- <c:forEach var="e" items="${Allaccess}" >
-	<form method="POST" action="/A4/OtherAccountRegistServlet">
-	氏名<input type="text" name="sName" value="${e.sName}">
-	氏名<input type="text" name="pName" value="${e.pName}"><br>
-	学籍番号<input type="text" name="sNumber" value="${e.sNumber}">
-	学籍番号<input type="text" name="pNumber" value="${e.pNumber}"><br>
-	パスワード<input type="password" name="sPw" value="${e.sPw}">
-	パスワード<input type="password" name="pPw" value="${e.pPw}"><br>
-	<input type="submit" name="submit" value="更新">
-	<input type="submit" name="submit" value="削除"><br>
-	</form>
-</c:forEach>
+						<!-- 保護者 -->
+						<div class="access-column">
+							<label>氏名</label>
+							<input type="text" name="pName" value="${e.pName}">
+	
+							<label>学籍番号</label>
+							<input type="text" name="pNumber" value="${e.pNumber}">
+	
+							<label>パスワード</label>
+							<input type="text" name="pPw" value="${e.pPw}">
+						</div>
+					</div>
+
+						<!-- ボタン -->
+					<div class="access-buttons">
+						<input type="submit" name="submit" value="更新">
+						<input type="submit" name="submit" value="削除">
+					</div>
+				</div>	
+			</form>
+		</c:forEach>
+	<footer class="footer">
+		<img src = "images/runningman.png">
+	</footer>
 </body>
 </html>
