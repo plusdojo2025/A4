@@ -12,7 +12,7 @@
 		<h1>C-Share</h1>
 	</header>
 	
-	<form method="POST" action="/A4">
+	<form method="POST" action="/A4/OtherLoguinServlet">
 	<!--  -->
 		<div>
 			<!-- 生徒・保護者の氏名とパスワードの入力 -->

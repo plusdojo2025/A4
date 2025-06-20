@@ -10,7 +10,7 @@
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
-		<h1><a href="/A4/TeacherMenuServlet">C-Share</a></h1>
+		<h1>C-Share</h1>
 		<label><a href="/A4/TeacherLoginServlet">ログアウト</a></label>
 		<ul>
 			<li><a href="/A4/TeacherAttendanceServlet">出欠管理</a></li>

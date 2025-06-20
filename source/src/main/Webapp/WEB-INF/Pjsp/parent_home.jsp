@@ -16,7 +16,7 @@
 			<li><a href="/A4/OtherAttendanceServlet">出席閲覧・欠席登録</a></li>
 			<li><a href="/A4/OtherGradeServlet">成績閲覧</a></li>
 			<li><a href="/A4/OtherMessageServlet">連絡閲覧</a></li>
-			<li><a href="/A4/LoadHistoryServlet">チャット</a></li>
+			<li><a href="/A4/SoServlet">チャット</a></li>
 		</ul>
 	</header>
 	<div>

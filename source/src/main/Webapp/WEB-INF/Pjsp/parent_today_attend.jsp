@@ -9,14 +9,13 @@
 </head>
 <body>
     <header>
-        <h1><a href="/A4/MenuServlet">C-Share</a></h1>
-        <p><a href="/A4/LoginServlet">ログアウト</a></p>
+        <h1><a href="/A4/OtherMenuServlet">C-Share</a></h1>
+        <p><a href="/A4/OtherLoginServlet">ログアウト</a></p>
         <ul>
-			<li><a href="/A4/AttendanceServlet">出欠管理</a></li>
-			<li><a href="/A4/GradeServlet">成績管理</a></li>
-			<li><a href="/A4/MessageServlet">連絡管理</a></li>
-			<li><a href="/A4/AccountRegistServlet">ユーザー一覧管理</a></li>
-			<li><a href="/A4/LoadHistoryServlet">チャット</a></li>
+			<li><a href="/A4/OtherAttendanceServlet">出欠管理</a></li>
+			<li><a href="/A4/OtherGradeServlet">成績管理</a></li>
+			<li><a href="/A4/OtherMessageServlet">連絡管理</a></li>
+			<li><a href="/A4/SoServlet">チャット</a></li>
 		</ul>
     </header>
 

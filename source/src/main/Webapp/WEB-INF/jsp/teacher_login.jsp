@@ -14,7 +14,7 @@
 		${msg}
 	</header>
 	
-	<form method="POST" action="/A4/">
+	<form method="POST" action="/A4/TeacherLoguinServlet">
 	<!--  -->
 		<div>
 			<!-- 教師名とパスワードの入力 -->

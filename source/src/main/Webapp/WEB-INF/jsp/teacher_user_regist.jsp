@@ -20,7 +20,7 @@
 </header>
 	
 	<main>
-	<form method="POST" action="/A4/AccountRegistServlet">
+	<form method="POST" action="/A4/TeacherAccountRegistServlet">
 	</form>
 		<table>
 			  <!--  生徒 -->

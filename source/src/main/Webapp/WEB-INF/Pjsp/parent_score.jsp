@@ -11,12 +11,12 @@
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<h1>C-Share</h1>
-		<label><a href="/A4/LoginServlet">ログアウト</a></label>
+		<label><a href="/A4/OtherLoginServlet">ログアウト</a></label>
 		<ul>
-			<li><a href="/A4/AttendanceServlet">出席閲覧・欠席登録</a></li>
-			<li><a href="/A4/GradeServlet">成績閲覧</a></li>
-			<li><a href="/A4/MessageServlet">連絡閲覧</a></li>
-			<li><a href="/A4/LoadHistoryServlet">チャット</a></li>
+			<li><a href="/A4/OtherAttendanceServlet">出席閲覧・欠席登録</a></li>
+			<li><a href="/A4/OtherGradeServlet">成績閲覧</a></li>
+			<li><a href="/A4/OtherMessageServlet">連絡閲覧</a></li>
+			<li><a href="/A4/SoServlet">チャット</a></li>
 		</ul>
 	</header>
 	<main>
@@ -26,8 +26,13 @@
 	    <option value="2">2学期</option>
 	    <option value="3">3学期</option>
   	</select>
+  	<form method="POST" action="">
+		<!-- テストを検索する -->
+		<input type="text" name="testName">テスト
+		<input type="submit" name="search" value="検索"><br>
+	</form>
 	<c:forEach var="e" items="${}" >
-	<form method="POST" action="/A4/GradeServlet">
+	<form method="POST" action="/A4/OtherGradeServlet">
 		<table>
 			<tr>
 				<td></td>
