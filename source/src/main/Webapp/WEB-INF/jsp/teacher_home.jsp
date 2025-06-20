@@ -16,8 +16,8 @@
 			<li><a href="/A4/TeacherAttendanceServlet">出欠管理</a></li>
 			<li><a href="/A4/TeacherGradeServlet">成績管理</a></li>
 			<li><a href="/A4/TeacherMessageServlet">連絡管理</a></li>
-			<li><a href="/A4/TeacheAccountRegistServlet">ユーザー一覧</a></li>
-			<li><a href="/A4/LoadHistoryServlet">チャット</a></li>
+			<li><a href="/A4/TeacherAccountRegistServlet">ユーザー一覧</a></li>
+			<li><a href="/A4/SoServlet">チャット</a></li>
 		</ul>
 	</header>
 	<div>

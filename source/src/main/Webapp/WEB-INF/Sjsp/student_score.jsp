@@ -10,12 +10,13 @@
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
-		<h1>C-Share</h1>
-		<label><a href="/A4/LoginServlet">ログアウト</a></label>
+		<h1><a href="/A4/TeacherMenuServlet">C-Share</a></h1>
+		<label><a href="/A4/TeacherLoginServlet">ログアウト</a></label>
 		<ul>
-			<li><a href="/A4/AttendanceServlet">出席閲覧・欠席登録</a></li>
-			<li><a href="/A4/GradeServlet">成績閲覧</a></li>
-			<li><a href="/A4/MessageServlet">連絡閲覧</a></li>
+			<li><a href="/A4/TeacherAttendanceServlet">出席閲覧・欠席登録</a></li>
+			<li><a href="/A4/TeacherGradeServlet">成績閲覧</a></li>
+			<li><a href="/A4/TeacherMessageServlet">連絡閲覧</a></li>
+			<li><a href="/A4/SoServlet">チャット</a></li>
 		</ul>
 	</header>
 	<main>

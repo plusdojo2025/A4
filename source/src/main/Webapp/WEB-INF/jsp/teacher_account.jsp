@@ -10,7 +10,7 @@
 	<header>
 		<!-- ページタイトル -->
 		<h1>C-Share</h1>
-		<label><a href="/A4/LoginServlet">ログイン画面に戻る</a></label>
+		<label><a href="/A4/TeacherLoginServlet">ログイン画面に戻る</a></label>
 		${errormsg}
 	</header>
 	<form method="POST" action="">
