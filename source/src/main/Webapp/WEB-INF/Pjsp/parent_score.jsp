@@ -31,7 +31,7 @@
 		<input type="text" name="testName">テスト
 		<input type="submit" name="search" value="検索"><br>
 	</form>
-	<c:forEach var="e" items="${}" >
+	<c:forEach var="e" items="${scoreList}" >
 	<form method="POST" action="/A4/OtherGradeServlet">
 		<table>
 			<tr>
