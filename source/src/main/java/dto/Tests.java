@@ -61,12 +61,32 @@ public class Tests implements Serializable{
 		this.averageSum = 0;
 	}
 
+	
+	public Tests(int testsId, int number, int term, String testName, int japanese, int math, int science, int social,
+			int english, int sum) {
+		this.testsId = testsId;
+		this.number = number;
+		this.term = term;
+		this.testName = testName;
+		this.japanese = japanese;
+		this.math = math;
+		this.science = science;
+		this.social = social;
+		this.english = english;
+		this.sum = sum;
+	}
+	
 	public Tests(int number, int term, String testName) {
 		this.number = number;
 		this.term = term;
 		this.testName = testName;
 	}
 
+	public Tests(int term, String testName) {
+		this.term = term;
+		this.testName = testName;
+	}
+	
 	public int getTestsId() {
 		return testsId;
 	}
