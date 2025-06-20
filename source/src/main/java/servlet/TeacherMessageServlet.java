@@ -16,7 +16,7 @@ import dto.Allaccess;
 import dto.Announcemnts;
 import dto.Tidpw;
 
-@WebServlet("/A4/OtherMessageServlet")
+@WebServlet("TeacherMessageServlet")
 
 public class TeacherMessageServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

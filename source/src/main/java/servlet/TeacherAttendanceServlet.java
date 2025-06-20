@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import dao.AttendanceDAO;
 import dto.Allaccess;
 
-@WebServlet("/A4/TeacherAttendanceServlet")
+@WebServlet("/TeacherAttendanceServlet")
 public class TeacherAttendanceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
