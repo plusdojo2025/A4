@@ -1,1 +1,83 @@
 @charset "UTF-8";
+
+
+html {
+    background-color: #F2F2F2;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    color: #4C6CB3;
+    text-align: right;
+     margin: 30 300 30 0;
+}
+
+.logo {
+    text-align: center;
+}
+
+ /* 未訪問リンク */
+a:link {
+      color: #000000;
+      text-decoration: underline;
+      text-decoration-color: #4C6CB3; /* ← 下線の色を青に */
+      text-decoration-thickness: 2px; /* 下線の太さ */
+      text-underline-offset: 10px;     /* 下線と文字の距離 */
+    }
+
+/* 訪問済みリンク */
+a:visited {
+      color: #000000;
+      text-underline-offset: 10px;     /* 下線と文字の距離 */
+    }
+
+/* マウスホバー時 */
+    a:hover {
+      color: #4C6CB3;
+      text-decoration: underline;
+      text-underline-offset: 10px;     /* 下線と文字の距離 */
+    }
+
+/* クリック中 */
+    a:active {
+      color: #4C6CB3;
+      text-underline-offset: 10px;     /* 下線と文字の距離 */
+    }
+
+    /* そのページじゃないとき */
+.burner a.highlight {
+    color: #a0a0a0;
+    text-decoration: none;
+}
+
+/* .highlight クラスのリンクにホバーしたときの文字色 */
+.burner a.highlight:hover {
+    color: #4C6CB3;  
+}
+
+.out {
+    text-align: right;
+    margin-right: 100px;
+    margin-top: 20px;
+    font-size: large;
+}
+
+
+.burner ul{
+    margin: 30px 0 0 0;
+    padding: 0;
+    list-style-type: none;
+
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    font-size: 22px;
+}
+
+
+.footer {
+    background-image: url(../images/runningman.png);
+    background-repeat: repeat-x;
+}

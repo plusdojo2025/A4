@@ -3,3 +3,437 @@
 html {
     background-color: #F2F2F2;
 }
+
+.regist{
+    
+    text-align: center;
+}
+
+.tregist{
+    text-align: center;
+    gap: 100px;
+}
+
+.attend{
+    margin-left: 50px;
+}
+
+
+.user{
+     margin-left: 40%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 画面全体の高さを確保 */
+}
+
+.content {
+  flex: 1; /* 残りの高さをこの要素で埋める */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+/* 入力フォーム？ */
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 30px;
+  border-collapse: separate;
+  border-spacing: 0 20px; /* 項目間に余白をつける */
+}
+
+td {
+  display: block;
+  width: 100%;
+}
+
+label {
+  font-size: 14px;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s;
+  background-color: #f9f9f9;
+}
+
+input[type="text"]:focus {
+  border-color: #4C6CB3;
+  background-color: #fff;
+}
+
+input[type="submit"] {
+  background-color: #4C6CB3;
+  color: #fff;
+  font-size: 16px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 60px;
+}
+
+input[type="submit"]:hover {
+  background-color: #7a99cf;
+}
+
+#error_message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+}
+
+h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #4C6CB3;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+/*先生アカウント登録画面*/
+.teacher-form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.teacher-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+  margin-top: 16px;
+}
+
+.teacher-form input[type="text"],
+.teacher-form input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.teacher-form input[type="text"]:focus,
+.teacher-form input[type="password"]:focus {
+  border-color: #4C6CB3;
+  background-color: #fff;
+  outline: none;
+}
+
+.teacher-form input[type="submit"] {
+  margin-top: 30px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4C6CB3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 70px;
+}
+
+.teacher-form input[type="submit"]:hover {
+  background-color: #7a99cf;
+}
+
+.teacher-form #error_message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+}
+
+/*ログイン*/
+.login-form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+  margin-top: 16px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: #4C6CB3;
+  background-color: #fff;
+  outline: none;
+}
+
+.login-form input[type="submit"] {
+  margin-top: 30px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4C6CB3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-form input[type="submit"]:hover {
+  background-color: #7a99cf;
+}
+
+/*ユーザーリスト*/
+.access-edit-form {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 24px 30px;
+  border-radius: 12px;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.access-wrapper {
+  border-radius: 12px;
+  border: 1px solid #4C6CB3;
+  padding: 10px 24px;
+  margin-bottom: 24px;  /* ✅ 余白を追加して見やすく */
+  position: relative;   /* ✅ ボタンの位置指定の基準に */
+  padding-bottom: 10px; /* ✅ ボタン用の余白を確保 */
+}
+
+  /* 横並びレイアウト */
+.access-row {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.access-column {
+  flex: 1;
+  min-width: 300px;
+}
+
+.access-column h4 {
+  font-size: 16px;
+  color: red;
+  margin-bottom: 10px;
+}
+
+.access-column label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.access-column input[type="text"],
+.access-column input[type="password"] {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+
+.access-column input:focus {
+  border-color: #4C6CB3;
+  background-color: #fff;
+  outline: none;
+}
+  /* ボタン部分 */
+.access-buttons {
+
+  position: relative;          /* ✅ 枠内の右下に配置 */
+  display: flex;
+  gap: 12px;
+  margin-top: 0;             /* ✅ テキストとの間をなくす */
+  width: 5em;               /* ✅ 幅指定削除で柔軟に */
+  
+}
+
+
+.access-buttons input[type="submit"] {
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 0px;
+  position: relative;
+  left: 680px;
+}
+
+.access-buttons input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+/*成績管理*/
+/* ▼ 全体を横並びにするための親 */
+.student-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px 200px;
+  box-sizing: border-box;
+}
+
+.student-container h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+  margin: 0;
+}
+
+
+/* ▼ 生徒名簿サイドエリア（固定じゃない） */
+.student-sidebar {
+  
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* ▼ サイドバー見出しとリスト */
+.student-sidebar h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.student-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.student-sidebar li {
+  margin-bottom: 8px;
+}
+
+.student-sidebar a {
+  text-decoration: none;
+  color: #007BFF;
+  transition: color 0.3s;
+}
+
+.student-sidebar a:hover {
+  color: #0056b3;
+}
+
+/* ▼ メインコンテンツ */
+.student-main-content {
+  box-sizing: border-box;
+}
+
+.student-main-content h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+
+/*当日出席一覧*/
+.attend2 {
+  width: 100%;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.attend2 table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.attend2 tr {
+    display: flex;
+}
+
+.attend2 th, .attend2 td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.attend2 select {
+  padding: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.attend-form{
+    display: flex;
+}
+
+.attend-form input[type="submit"] {
+
+  margin-top: 0px;
+
+}
