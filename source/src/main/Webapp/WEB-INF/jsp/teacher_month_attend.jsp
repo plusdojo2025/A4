@@ -8,22 +8,27 @@
 </head>
 <body>
 	<header>
-		<!-- ページタイトル -->
-		<h1><a href="/A4/TeacherMenuServlet">C-Share</a></h1>
-		<label><a href="/A4/TeacherLoginServlet">ログアウト</a></label>
-		<!-- メニュー欄 -->
-		<ul>
-			<li><a href="/A4/TeacherAttendanceServlet">出席登録・閲覧</a></li>
-			<li><a href="/A4/TeacherGradeSrevlet">成績閲覧</a></li>
-			<li><a href="/A4/TeacherMessageServlet">連絡閲覧</a></li>
-			<li><a href="/A4/SoServlet">チャット</a></li>
-		</ul>
+		<label class="out"><img src = "<c:url value='/TeacherAccountRegistServlet'/>">width="50px" height="50px"></label>
+		<div class="logo">
+			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" >width="300px" height="122px"></a>
+		</div>
+		<nav class = "burner">
+			<ul>
+				<li><a href="<c:url value='/AttendanceServlet'/>" class="highlight">出欠管理</a></li>
+				<li><a href="<c:url value='/GradeServlet'/>" class="highlight">成績管理</a></li>
+				<li><a href="<c:url value='/MessageServlet'/>" class="highlight">連絡管理</a></li>
+				<li><a href="<c:url value='/AccountRegistServlet'/>">ユーザー一覧管理</a></li>
+				<li><a href="<c:url value='/LoadHistoryServlet'/>" class="highlight">チャット</a></li>
+			</ul>
+		</nav>
 	</header>
 	
 	<div>
 		<!-- カレンダー表示 -->
 		<h2>○○月</h2>
 	</div>
-	
+	<footer class="footer">
+		<img src = "<c:url value='/images/runningman.png'/>">
+	</footer>
 </body>
 </html>
