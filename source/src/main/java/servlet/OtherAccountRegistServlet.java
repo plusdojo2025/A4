@@ -66,6 +66,7 @@ public class OtherAccountRegistServlet extends HttpServlet {
 		//クラス名の取得
 		int editCName = tDto.getClassName();
         //リクエスト領域からアカウント編集画面のデータを取得
+		request.setCharacterEncoding("UTF-8");
 		String editSName = request.getParameter("editStudentName");
         int editSNum = Integer.parseInt(request.getParameter("editStudentNumber"));
         String editSPw = request.getParameter("editStudentPw");

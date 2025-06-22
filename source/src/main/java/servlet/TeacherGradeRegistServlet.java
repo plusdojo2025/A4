@@ -60,6 +60,7 @@ public class TeacherGradeRegistServlet {
      	else if(submit.equals("登録")) {
      		
      		//それぞれの情報をリクエスト領域から取得
+     		request.setCharacterEncoding("UTF-8");
      		String[] studentName = request.getParameterValues("studentName");
      		String[] japanese = request.getParameterValues("japanese");
      		String[] math = request.getParameterValues("math");
