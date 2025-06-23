@@ -6,16 +6,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>先生専用ホーム</title>
-	<!--<link rel="stylesheet" href="<c:url value='/css/common.css'/>">-->
-	<!--<link rel="stylesheet" href="<c:url value='/css/teacher.css'/>">-->
-	<link rel="stylesheet" href="/A4/css/common.css">
-	<link rel="stylesheet" href="/A4/css/teacher.css">
 	</head>
+	<link rel="stylesheet" href="<c:url value='/css/common.css' />">
+	<link rel="stylesheet" href="<c:url value='/css/teacher.css' />">
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<label class="out">
-			<a href="/TeacherLoginServlet"><img src = "images/out.png" width="50px" height="50px"></a>
+			<a href="/A4/TeacherLoginServlet"><img src = "images/out.png" width="50px" height="50px"></a>
 		</label>
 		<div class="logo">
 			<a><img src = "images/cshare.png" width="300px" height="122px"></a>

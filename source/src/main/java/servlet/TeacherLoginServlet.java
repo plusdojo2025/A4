@@ -28,19 +28,16 @@ public class TeacherLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		int className = Integer.parseInt(request.getParameter("className")); 
+		//int className = Integer.parseInt(request.getParameter("className")); 
 		String teacherName = request.getParameter("tName"); //入力しなかったら""（空文字）がはいる
 		String teacherPw = request.getParameter("tPw"); //nullがはいるときは間違っているとき
 		
 		// ログイン処理を行う
-		TidpwDAO tDao = new TidpwDAO();
-				
-		
-				
-		if (tDao.isLoginOK(new Tidpw(className,teacherName,teacherPw))){ // ログイン成功
+		TidpwDAO tDao = new TidpwDAO();		
+		if (tDao.isLoginOK(new Tidpw(teacherName,teacherPw)) != null){ // ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("Tidpw", new Tidpw(className,teacherName,teacherPw));
+			session.setAttribute("Tidpw", new Tidpw(teacherName,teacherPw));
 
 			// メニューサーブレットにリダイレクトする
 			response.sendRedirect("/A4/TeacherMenuServlet");

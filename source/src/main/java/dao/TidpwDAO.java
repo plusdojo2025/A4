@@ -10,9 +10,9 @@ import dto.Tidpw;
 
 public class TidpwDAO {
 	// 引数で指定されたidpwでログイン成功ならtrueを返す
-	public boolean isLoginOK(Tidpw Tidpw) {
+	public Tidpw isLoginOK(Tidpw Tidpw) {
 		Connection conn = null;
-		boolean loginResult = false;
+		Tidpw resultTidpw = null;
 
 		try {
 			// JDBCドライバを読み込む
@@ -24,39 +24,29 @@ public class TidpwDAO {
 					"root", "password");
 
 			// SELECT文を準備する
-			String sql = "SELECT count(*) FROM Tidpw WHERE tName=? AND tPw=?";
+			String sql = "SELECT * FROM Tidpw WHERE tName=? AND tPw=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, Tidpw.getName());
-			pStmt.setString(2, Tidpw.getPw());
+			pStmt.setInt(1, Tidpw.getClassName());
+			pStmt.setString(2, Tidpw.getName());
+			pStmt.setString(3, Tidpw.getPw());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
-			rs.next();
-			if (rs.getInt("count(*)") == 1) {
-				loginResult = true;
+			if(rs.next()) {
+			resultTidpw = new Tidpw();
+            resultTidpw.setName(rs.getString("tName"));
+            resultTidpw.setPw(rs.getString("tPw"));
+            resultTidpw.setClassName(rs.getInt("className")); // className がint型だと仮定
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			loginResult = false;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			loginResult = false;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					loginResult = false;
-				}
+			} catch (Exception e) {
+			    e.printStackTrace();
+			} finally {
+			    if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}
-		}
-
-		// 結果を返す
-		return loginResult;
+			
+		return resultTidpw;
 	}		
 		
 		public boolean insert(Tidpw card) {
