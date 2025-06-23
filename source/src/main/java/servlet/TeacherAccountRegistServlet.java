@@ -20,7 +20,7 @@ import dto.Tidpw;
 
 //このサーブレットは先生のアカウント登録専用のサーブレット!!
 //先生の登録情報をDAOに送信する機能
-@WebServlet("/TeacherAccountRegistServlet ")
+@WebServlet("/TeacherAccountRegistServlet")
 public class TeacherAccountRegistServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
