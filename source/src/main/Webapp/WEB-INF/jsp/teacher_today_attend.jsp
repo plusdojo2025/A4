@@ -40,14 +40,13 @@
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 	    String tDay = today.format(formatter);
 	    }
-	   <h2> 日付： <%= tDay %></h2>
+	  	<div class="attend">
+	        <!--日付表示-->
+	        <a href="teacher_month_attend.jsp">
+	        <img src = "images/calender.png" width="70px" height="70px"></a>
+	        <p>日付：${attendanceDate}</p>
+    	</div>
 	</form>
-	<div  class="attend">
-	<!-- ボタンを押すとカレンダーの画面に遷移 -->
-	<a href="teacher_month_attend.jsp"><img src = "images/calender.png" width="70px" height="70px"></a>
-	
-	<input type="text" name="attdate" value="<%= request.getAttribute("attendanceDate") %>" readonly>
-	</div>
 	
 	<div class="attend2">
 	<form method="POST" action="<c:url value='/TeacherAttendanceServlet' />">

@@ -45,7 +45,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		attendance = attendanceInfo.attendanceSelect(studentId, formattedDate);
 		
 		//リクエスト領域に保存
-		request.setAttribute("attendanceStatus", attendance);
+		request.setAttribute("attendanceDate", attendance);
 		
 		// ユーザーの種類に応じてJSPを振り分け
 		String position = (String) session.getAttribute("position");

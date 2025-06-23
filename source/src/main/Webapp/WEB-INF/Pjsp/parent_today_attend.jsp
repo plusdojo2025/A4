@@ -28,9 +28,9 @@
 
     <div>
         <!--日付表示(のちに変更必要)-->
-        <a href="teacher_month_attend.jsp">
+        <a href="parent_month_attend.jsp">
         <img src = "images/calender.png" width="70px" height="70px"></a>
-        <p>日付：${attendanceStatus}</p>
+        <p>日付：${attendanceDate}</p>
     </div>
     <div>
         <!--生徒の出席状況の表示-->
