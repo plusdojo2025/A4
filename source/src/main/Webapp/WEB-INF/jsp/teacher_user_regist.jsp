@@ -5,27 +5,30 @@
 <head>
 <meta charset="UTF-8">
 <title>先生専用ユーザー登録</title>
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/teacher.css">
+<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/teacher.css'/>">
 </head>
 <body>
 <header>
-		<h1><a href="/A4/TeacherMenuServlet">C-Share</a></h1>
-		<label><a href="/A4/TeacherLoginServlet">ログアウト</a></label>
+		<!-- ページタイトルやメニュー欄を記載 -->
+		<label class="out"><img src = "<c:url value='/TeacherAccountRegistServlet'/>">width="50px" height="50px"></label>
+		<div class="logo">
+			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" >width="300px" height="122px"></a>
+		</div>
 		<nav class = "burner">
             <ul>
-                <li><a href="/A4/AttendanceServlet" class="highlight">出欠管理</a></li>
-                <li><a href="/A4/GradeServlet" class="highlight">成績管理</a></li>
-                <li><a href="/A4/MessageServlet" class="highlight">連絡管理</a></li>
-                <li><a href="/A4/AccountRegistServlet">ユーザー一覧管理</a></li>
-                <li><a href="/A4/LoadHistoryServlet" class="highlight">チャット</a></li>
+                <li><a href="<c:url value='/AttendanceServlet'/>" class="highlight">出欠管理</a></li>
+				<li><a href="<c:url value='/GradeServlet'/>" class="highlight">成績管理</a></li>
+				<li><a href="<c:url value='/MessageServlet'/>" class="highlight">連絡管理</a></li>
+				<li><a href="<c:url value='/AccountRegistServlet'/>">ユーザー一覧管理</a></li>
+				<li><a href="<c:url value='/LoadHistoryServlet'/>" class="highlight">チャット</a></li>
             </ul>
         </nav>
 </header>
 	
 <main>
 	<div class="contact-form-container">
-		<form method="POST" action="/A4/AccountRegistServlet">
+		<form method="POST" action="<c:url value='/AccountRegistServlet'/>" id="form">
 			<table>
 				<!--  生徒 -->
 				<tr>
@@ -109,7 +112,7 @@
 	</script>
 
 	<footer class="footer">
-		<img src = "images/runningman.png">
+		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
 </html>

@@ -7,24 +7,23 @@
 <meta charset="UTF-8">
 <title>先生用成績閲覧・更新・削除</title>
 </head>
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/teacher.css">
+<link rel="stylesheet" href="<c:url value='css/common.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/teacher.css'/>">
 <body>
 	<header>
-	<label class="out">
-	<a href="/A4/TeacherLoginServlet"><img src = "images/out.png" width="50px" height="50px"></a>
-		</label>
+	<!-- ページタイトルやメニュー欄を記載 -->
+		<label class="out"><img src = "<c:url value='/TeacherAccountRegistServlet'/>">width="50px" height="50px"></label>
 		<div class="logo">
-			<a href="/webapp/TeacherMenuServlet"><img src = "images/cshare.png" width="300px" height="122px"></a>
+			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" >width="300px" height="122px"></a>
 		</div>
 		
         <nav class = "burner">
 		<ul>
-			<li><a href="/A4/TeacherAttendanceServlet">出欠管理</a></li>
-			<li><a href="/A4/TeacherGradeServlet">成績管理</a></li>
-			<li><a href="/A4/TeacherMessageServlet">連絡管理</a></li>
-			<li><a href="/A4/TeacherAccountRegistServlet">ユーザー一覧</a></li>
-			<li><a href="/A4/SoServlet">チャット</a></li>
+			<li><a href="<c:url value='/AttendanceServlet'/>" class="highlight">出欠管理</a></li>
+			<li><a href="<c:url value='/GradeServlet'/>" class="highlight">成績管理</a></li>
+			<li><a href="<c:url value='/MessageServlet'/>" class="highlight">連絡管理</a></li>
+			<li><a href="<c:url value='/AccountRegistServlet'/>">ユーザー一覧管理</a></li>
+			<li><a href="<c:url value='/LoadHistoryServlet'/>" class="highlight">チャット</a></li>
 		</ul>
 		</nav>
 	</header>
@@ -65,7 +64,7 @@
                     
                         <!--テスト名の表示-->
                         <p>${score.testName}テスト</p>
-                        <form method="POST" action="/A4/TeacherGradeServlet" id="form">
+                        <form method="POST" action="<c:url value='/TeacherGradeServlet'/>" id="form">
                         <input type="hidden" name="id" value="${score.testsId}">
                         <!--選択した生徒の成績の表示-->
                         <table>
@@ -109,7 +108,7 @@
         </div>
     </div>
 	<footer class="footer">
-		<img src = "images/runningman.png">
+		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
 </html>
