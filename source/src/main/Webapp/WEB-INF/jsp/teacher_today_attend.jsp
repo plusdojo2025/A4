@@ -29,17 +29,6 @@
 	        </nav>
 	</header>
 	<form>
-		
-		
-		<!-- servletからその日の日付を取得 -->
-		String action = request.getParameter("action");
-	    if ("移動".equals(action)) {
-	    	String tDay= request.getAttribute("attendanceDate")
-	    } else {
-	    	LocalDate today = LocalDate now();
-	    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-	    	String tDay = today.format(formatter);
-	    }
 	  	<div class="attend">
 	        <!--日付表示-->
 	        <a href="teacher_month_attend.jsp">
