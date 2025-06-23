@@ -3,19 +3,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>カレンダー</title>
+	<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
+	<link rel="stylesheet" href="<c:url value='/css/parent.css'/>">
+	<link rel="stylesheet" href="<c:url value='/css/student.css'/>">
+	<link rel="stylesheet" href="<c:url value='/css/student_parent_common.css'/>">
 </head>
 <body>
 	<header>
-		<!-- ページタイトル -->
-		<h1><a href="/A4/OtherMenuServlet">C-Share</a></h1>
-		<label><a href="/A4/OtherLoginServlet">ログアウト</a></label>
-		<!-- メニュー欄 -->
+		<!-- ページタイトルやメニュー欄を記載 -->
+		<label class="out"><img src = "<c:url value='/OtherLoginServlet'/>">width="50px" height="50px"></label>
+		<div class="logo">
+			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" >width="300px" height="122px"></a>
+		</div>
 		<ul>
-			<li><a href="/A4/OtherAttendanceServlet">出席閲覧・欠席登録</a></li>
-			<li><a href="/A4/OtherGradeSrevlet">成績閲覧</a></li>
-			<li><a href="/A4/OtherMessageServlet">連絡閲覧</a></li>
+			<li><a href="<c:url value='/OtherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
+			<li><a href="<c:url value='/OtherGradeServlet'/>" class="highlight">成績閲覧</a></li>
+			<li><a href="<c:url value='/OtherMessageServlet'/>" class="highlight">連絡閲覧</a></li>
 		</ul>
 	</header>
 	
@@ -23,6 +28,8 @@
 		<!-- カレンダー表示 -->
 		<h2>○○月</h2>
 	</div>
-
+	<footer>
+		<img src = "<c:url value='/images/runningman.png'/>">
+	</footer>
 </body>
 </html>
