@@ -7,31 +7,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>先生用出欠管理</title>
-</head>
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
+	<meta charset="UTF-8">
+	<title>先生用出欠管理</title>
+	<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/teacher.css'/>">
+</head>
 <body>
 	<header>
-		<!-- ページタイトルやメニュー欄を記載 -->
-		<label class="out">
-			<a href="/A4/TeacherLoginServlet"><img src = "images/out.png" width="50px" height="50px"></a>
-		</label>
-		<div class="logo">
-			<a href="/webapp/TeacherMenuServlet"><img src = "images/cshare.png" width="300px" height="122px"></a>
-		</div>
-		
-		<nav class = "burner">
-			<ul>
-                <li><a href="<c:url value='/TeacherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
-				<li><a href="<c:url value='/TeacherGradeServlet'/>" class="highlight">成績管理</a></li>
-				<li><a href="<c:url value='/TeacherMessageServlet'/>" class="highlight">連絡管理</a></li>
-				<li><a href="<c:url value='/TeacherAccountRegistServlet'/>">ユーザー一覧管理</a></li>
-				<li><a href="<c:url value='/SoServlet'/>" class="highlight">チャット</a></li>
-			</ul>
-		</nav>	
+			<label class="out"><img src = "<c:url value='/TeacherLoginServlet'/>">width="50px" height="50px"></label>
+			<div class="logo">
+				<a href="<c:url value='/TeacherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" >width="300px" height="122px"></a>
+			</div>
+			<nav class = "burner">
+	            <ul>
+	                <li><a href="<c:url value='/TeacherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
+					<li><a href="<c:url value='/TeacherGradeServlet'/>" class="highlight">成績管理</a></li>
+					<li><a href="<c:url value='/TeacherMessageServlet'/>" class="highlight">連絡管理</a></li>
+					<li><a href="<c:url value='/TeacherAccountRegistServlet'/>">ユーザー一覧管理</a></li>
+					<li><a href="<c:url value='/SoServlet'/>" class="highlight">チャット</a></li>
+	            </ul>
+	        </nav>
 	</header>
 	<form>
 		
@@ -86,7 +81,7 @@
 	</form>
 	</div>	
 	<footer class="footer">
-		<img src = "images/runningman.png">
+		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
 </html>

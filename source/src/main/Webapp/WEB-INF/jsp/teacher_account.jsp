@@ -7,17 +7,18 @@
 <title>先生用アカウント登録</title>
 </head>
 <link rel="stylesheet" href="<c:url value='/css/teacher.css' />">
+<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
 <body>
 	<header>
 		<!-- ページタイトル -->
 		<div class="logo">
-			<a href="/webapp/TeacherMenuServlet"><img src = "images/cshare.png" width="300px" height="122px"></a>
+			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" >width="300px" height="122px"></a>
 		</div>
 		
 		${errormsg}
 	</header>
 	<div class="teacher-form-container">
-		<form class="teacher-form" method="POST" action="TeacherAccountRegist">
+		<form class="teacher-form" method="POST" action="<c:url value='/TeacherAccountRegistServlet'/>" id="form">
 			<!-- クラス名入力 -->
 			<label>クラス名</label>
 			<input type="text" name="className">
@@ -34,7 +35,7 @@
 		</form>
 	</div>
 <footer class="footer">
-	<img src = "images/runningman.png">
+	<img src = "<c:url value='/images/runningman.png'/>">
 </footer>	
 </body>
 </html>

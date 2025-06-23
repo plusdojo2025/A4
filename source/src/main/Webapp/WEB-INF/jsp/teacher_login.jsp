@@ -12,16 +12,14 @@
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
-		<label class="out"><a href="<c:url value='/TeacherAccountRegistServlet'/>">アカウント登録</a></label>
-		
 		<div class="logo">
-			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/cshare.png'/>"> width="300px" height="122px"></a>
+			<a><img src = "images/cshare.png" width="300px" height="122px"></a>
 		</div>
 		${msg}
 	</header>
 	
 	<div class="login-form-container">
-		<form class="login-form" method="POST" action="<c:url value='/TeacherLoguinServlet'/>">
+		<form class="login-form" method="POST" action="<c:url value='/TeacherLoginServlet'/>">
 			<div class="tregist">
 				<!-- 教師名とパスワードの入力 -->
 				<div>

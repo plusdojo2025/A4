@@ -28,6 +28,8 @@
 
     <div>
         <!--日付表示(のちに変更必要)-->
+        <a href="teacher_month_attend.jsp">
+        <img src = "images/calender.png" width="70px" height="70px"></a>
         <p>日付：${attendanceStatus}</p>
     </div>
     <div>

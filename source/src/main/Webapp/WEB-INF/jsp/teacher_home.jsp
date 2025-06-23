@@ -77,7 +77,7 @@
 		<p>連絡内容：<c:out value="${announcement.announce}" /></p>		
 	</div>
 	<footer class="footer">
-		<img src = "images/runningman.png">
+		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
 </html>
