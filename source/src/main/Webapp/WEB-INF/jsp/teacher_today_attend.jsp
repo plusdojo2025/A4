@@ -14,9 +14,9 @@
 </head>
 <body>
 	<header>
-			<label class="out"><img src = "<c:url value='/TeacherLoginServlet'/>">width="50px" height="50px"></label>
+			<label class="out"><img src = "<c:url value='/TeacherLoginServlet'/>"width="50px" height="50px"></label>
 			<div class="logo">
-				<a href="<c:url value='/TeacherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" >width="300px" height="122px"></a>
+				<a href="<c:url value='/TeacherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
 			</div>
 			<nav class = "burner">
 	            <ul>

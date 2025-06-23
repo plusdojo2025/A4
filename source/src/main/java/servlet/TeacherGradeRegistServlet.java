@@ -19,25 +19,25 @@ import dto.Tests;
 public class TeacherGradeRegistServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // もしもログインしていなかったらログインサーブレットにリダイレクトする
-        HttpSession session = request.getSession();
-        if (session.getAttribute("tName") == null) {
-            response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
-            return;  
-        }
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession(false); // 既存セッションのみ取得
+		if (session == null || session.getAttribute("Tidpw") == null) {
+		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
+		    return;
+		}
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Sjsp/teacher_score.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_score.jsp");
 		dispatcher.forward(request, response);
 	}   
 	
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // もしもログインしていなかったらログインサーブレットにリダイレクトする
-        HttpSession session = request.getSession();
-        if (session.getAttribute("tName") == null) {
-            response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
-            return;
-        }
+    	// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession(false); // 既存セッションのみ取得
+		if (session == null || session.getAttribute("Tidpw") == null) {
+		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
+		    return;
+		}
         
         // リクエストパラメータを取得する
         request.setCharacterEncoding("UTF-8");
@@ -54,7 +54,7 @@ public class TeacherGradeRegistServlet {
          	// 検索結果をリクエストスコープに格納する
          	request.setAttribute("scoreList", list);
          	
-         	RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Sjsp/teacher_score.jsp");
+         	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_score.jsp");
     		dispatcher.forward(request, response);
      	}
      	else if(submit.equals("登録")) {
@@ -85,11 +85,11 @@ public class TeacherGradeRegistServlet {
      		}
      		//DAOに渡す
      		if(t.insert(gradeList)) {
-     			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Sjsp/teacher_score.jsp");
+     			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_score.jsp");
      			dispatcher.forward(request, response);
      		}
      		else {
-     			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Sjsp/teacher_score_regist.jsp");
+     			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_score_regist.jsp");
      			dispatcher.forward(request, response);
      		}
      	}

@@ -21,10 +21,10 @@ public class TeacherMessageServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null ) {
-			response.sendRedirect("/A4/TeacherLoginServlet");
-			return;
+		HttpSession session = request.getSession(false); // 既存セッションのみ取得
+		if (session == null || session.getAttribute("Tidpw") == null) {
+		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
+		    return;
 		}
 		//インスタンス化
 		AnnouncementsDAO announceDao = new AnnouncementsDAO();
@@ -45,17 +45,17 @@ public class TeacherMessageServlet extends HttpServlet{
 		
 
 		// お知らせページにフォワードする
-		request.getRequestDispatcher("/A4/jsp/teacher_announce.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/teacher_announce.jsp").forward(request, response);
 		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null ) {
-			response.sendRedirect("/A4/TeacherLoginServlet");
-			return;
+		HttpSession session = request.getSession(false); // 既存セッションのみ取得
+		if (session == null || session.getAttribute("Tidpw") == null) {
+		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
+		    return;
 		}
 		
 		// リクエストパラメータを取得する
@@ -71,7 +71,7 @@ public class TeacherMessageServlet extends HttpServlet{
 		
 	    
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/teacher_today_attend.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
 		dispatcher.forward(request, response);
 			
 	}

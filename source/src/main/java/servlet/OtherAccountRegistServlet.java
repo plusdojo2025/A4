@@ -24,7 +24,7 @@ public class OtherAccountRegistServlet extends HttpServlet {
         //もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if(session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null){
-			response.sendRedirect("A4/TeacherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"A4/TeacherLoginServlet");
 			return;
 		}
         //先生が持っている共通の情報はクラス名。それをもとに先生の生徒の情報を取得する。
@@ -57,7 +57,7 @@ public class OtherAccountRegistServlet extends HttpServlet {
         //もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if(session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null){
-			response.sendRedirect("A4/TeacherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"A4/TeacherLoginServlet");
 			return;
 		}
 		Tidpw tDto = new Tidpw();

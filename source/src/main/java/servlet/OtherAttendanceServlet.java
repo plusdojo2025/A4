@@ -26,7 +26,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
 			session.getAttribute("position") == null && session.getAttribute("patrentName") == null) {
-			response.sendRedirect("A4/OtherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"A4/OtherLoginServlet");
 			return;
 		}
 		//学籍番号取得
@@ -50,10 +50,10 @@ public class OtherAttendanceServlet extends HttpServlet {
 		// ユーザーの種類に応じてJSPを振り分け
 		String position = (String) session.getAttribute("position");
 		if ("student".equals(position)) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/student_today_attend.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_today_attend.jsp");
 			dispatcher.forward(request, response);
 		} else if ("parent".equals(position)) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/parent_today_attend.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_today_attend.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
@@ -77,22 +77,22 @@ public class OtherAttendanceServlet extends HttpServlet {
 		//出席登録・欠席登録
 		if(position.equals("生徒")) {
 			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/student_home.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_home.jsp");
 				dispatcher.forward(request, response);
 			}
 			else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/student_score.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_score.jsp");
 				dispatcher.forward(request, response);
 			}
 			
 		}
 		else if(position.equals("保護者")) {
 			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/parent_home.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_home.jsp");
 				dispatcher.forward(request, response);
 			}
 			else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/parent_score.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_score.jsp");
 				dispatcher.forward(request, response);
 			}
 			

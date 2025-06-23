@@ -23,11 +23,11 @@ public class TeacherAttendanceServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
-		//もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if(session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null){
-			response.sendRedirect("A4/TeacherLoginServlet");
-			return;
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession(false); // 既存セッションのみ取得
+		if (session == null || session.getAttribute("Tidpw") == null) {
+		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
+		    return;
 		}
 		
 		//学籍番号取得
@@ -49,17 +49,17 @@ public class TeacherAttendanceServlet extends HttpServlet {
 		request.setAttribute("attendanceDate", attendance);
 		
 		// 出席管理ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/teacher_today_attend.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
 		dispatcher.forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if(session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null){
-			response.sendRedirect("A4/TeacherLoginServlet");
-			return;
+		HttpSession session = request.getSession(false); // 既存セッションのみ取得
+		if (session == null || session.getAttribute("Tidpw") == null) {
+		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
+		    return;
 		}
 		
 		// リクエストパラメータを取得する
@@ -76,7 +76,7 @@ public class TeacherAttendanceServlet extends HttpServlet {
 		
 	    
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/teacher_today_attend.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
 		dispatcher.forward(request, response);
 	}	
 }

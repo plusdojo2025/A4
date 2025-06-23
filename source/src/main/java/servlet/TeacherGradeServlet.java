@@ -82,7 +82,7 @@ public class TeacherGradeServlet extends HttpServlet{
 		
 	    
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/teacher_today_attend.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
 		dispatcher.forward(request, response);
 			
 	}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,11 @@
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<div class="logo">
-			<a href="<c:url value='/OtherLoginServlet'/>"><img src = "<c:url value='/images/cshare.png'/>"> width="300px" height="122px"></a>
+			<img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px">
 		</div>
 	</header>
 	
-	<form method="POST" action="<c:url value='/OtherLoguinServlet'/>" id="form">
+	<form method="POST" action="<c:url value='/OtherLoginServlet'/>" id="form">
 	<!--  -->
 		<div>
 			<!-- 生徒・保護者の氏名とパスワードの入力 -->

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import dao.AnnouncementsDAO;
 import dto.Announcemnts;
-import dto.Tidpw;
 
 @WebServlet("/TeacherMenuServlet")
 public class TeacherMenuServlet extends HttpServlet {
@@ -26,14 +25,11 @@ public class TeacherMenuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		Tidpw loginUser = (Tidpw) (session != null ? session.getAttribute("Tidpw") : null);
-		if (loginUser == null) {
-            // ログインしていない場合はログインページにリダイレクト
-            response.sendRedirect("/A4/TeacherLoginServlet");
-            return;
-        }
-
+		HttpSession session = request.getSession(false); // 既存セッションのみ取得
+		if (session == null || session.getAttribute("Tidpw") == null) {
+		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
+		    return;
+		}
 		 
 		//先生のホーム画面に最新の連絡登録情報を表示する
 		AnnouncementsDAO announceDao = new AnnouncementsDAO();

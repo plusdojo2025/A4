@@ -23,7 +23,7 @@ public class OtherMessageServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
 			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
-			response.sendRedirect("/A4/OtherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"/A4/OtherLoginServlet");
 			return;
 		}
 		String position = (String)session.getAttribute("position");
@@ -44,7 +44,7 @@ public class OtherMessageServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
 			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
-			response.sendRedirect("/A4/OtherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"/A4/OtherLoginServlet");
 			return;
 		}
 		
@@ -64,10 +64,10 @@ public class OtherMessageServlet extends HttpServlet{
 		String position = (String)session.getAttribute("position");
 		// お知らせページにフォワードする
 		if(position.equals("生徒")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Sjsp/parent_annouunce.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_annouunce.jsp");
 			dispatcher.forward(request, response);
 			}else if(position.equals("保護者")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/student_annouunce.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_annouunce.jsp");
 			dispatcher.forward(request, response);
 			}
 		}

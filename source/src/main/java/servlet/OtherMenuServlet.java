@@ -25,7 +25,7 @@ public class OtherMenuServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
 			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
-			response.sendRedirect("/A4/OtherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"/A4/OtherLoginServlet");
 			return;
 		}
 

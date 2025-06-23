@@ -14,9 +14,9 @@
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
-		<label class="out"><img src = "<c:url value='/OtherLoginServlet'/>">width="50px" height="50px"></label>
+		<label class="out"><img src = "<c:url value='/OtherLoginServlet'/>"width="50px" height="50px"></label>
 		<div class="logo">
-			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" >width="300px" height="122px"></a>
+			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
 		</div>
 		<ul>
 			<li><a href="<c:url value='/OtherAttendanceServlet'/>" class="highlight">出欠管理</a></li>

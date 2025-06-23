@@ -20,15 +20,9 @@ private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
-			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
-			response.sendRedirect("/A4/OtherLoginServlet");
-			return;
-		}
+		
 		// ログインページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/other_login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/other_login.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -37,20 +31,24 @@ private static final long serialVersionUID = 1L;
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String position = request.getParameter("position");
+		String sName = "";
+		String sPw = "";
+		String pName = "";
+		String pPw = "";
 		if(position.equals("生徒")) {
-			String sName = request.getParameter("studentName");
-			String sPw = request.getParameter("studentPw");
+			sName = request.getParameter("studentName");
+			sPw = request.getParameter("studentPw");
 		}
 		else if(position.equals("保護者")) {
-			String pName = request.getParameter("parentName");
-			String pPw = request.getParameter("parentPw");
+			pName = request.getParameter("parentName");
+			pPw = request.getParameter("parentPw");
 		}
 
 		// ログイン処理を行う
 		if(position.equals("生徒")) {
 			SidpwDAO sDao = new SidpwDAO();
-			String sName = request.getParameter("otherName");
-			String sPw = request.getParameter("otherPw");
+			sName = request.getParameter("otherName");
+			sPw = request.getParameter("otherPw");
 			
 			if (sDao.isLoginOK(new Sidpw(sName, sPw))) { // ログイン成功
 				//学籍番号を取得する。
@@ -60,18 +58,18 @@ private static final long serialVersionUID = 1L;
 				session.setAttribute("Sidpw", new Sidpw(sName,studentId,sPw));
 				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
-				response.sendRedirect("/A4/OtherMenuServlet");
+				response.sendRedirect(request.getContextPath() + "/A4/OtherMenuServlet");
 			}
 			else { // ログイン失敗
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/OtherLoginServlet");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/other_login.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
 		else if(position.equals("保護者")) {
 			PidpwDAO pDao = new PidpwDAO();
-			String pName = request.getParameter("otherName");
-			String pPw = request.getParameter("otherPw");
+			pName = request.getParameter("otherName");
+			pPw = request.getParameter("otherPw");
 			
 			if (pDao.isLoginOK(new Pidpw(pName, pPw))) { // ログイン成功
 				// セッションスコープにIDを格納する
@@ -79,11 +77,11 @@ private static final long serialVersionUID = 1L;
 				session.setAttribute("Pidpw", new Pidpw(pName,pPw));
 				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
-				response.sendRedirect("/A4/OtherMenuServlet");
+				response.sendRedirect(request.getContextPath() + "/A4/OtherMenuServlet");
 			}
 			else { // ログイン失敗
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/OtherLoginServlet");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/other_login.jsp");
 				dispatcher.forward(request, response);
 			}
 		}

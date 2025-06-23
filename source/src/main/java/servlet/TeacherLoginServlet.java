@@ -29,18 +29,18 @@ public class TeacherLoginServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		//int className = Integer.parseInt(request.getParameter("className")); 
-		String tName = request.getParameter("teacherName"); //入力しなかったら""（空文字）がはいる
-		String tPw = request.getParameter("teacherPw"); //nullがはいるときは間違っているとき
+		String teacherName = request.getParameter("teacherName"); //入力しなかったら""（空文字）がはいる
+		String teacherPw = request.getParameter("teacherPw"); //nullがはいるときは間違っているとき
 		
 		// ログイン処理を行う
 		TidpwDAO tDao = new TidpwDAO();		
-		Tidpw loginUser = tDao.isLoginOK(new Tidpw(tName, tPw));
+		Tidpw loginUser = tDao.isLoginOK(new Tidpw(teacherName, teacherPw));
 		if (loginUser != null) {
 		    HttpSession session = request.getSession();
 		    session.setAttribute("Tidpw", loginUser);
 
 			// メニューサーブレットにリダイレクトする
-			response.sendRedirect("/A4/TeacherMenuServlet");
+			response.sendRedirect(request.getContextPath() + "/A4/TeacherMenuServlet");
 		} else { // ログイン失敗
 
 			// 結果ページにフォワードする
