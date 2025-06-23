@@ -5,8 +5,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>先生専用ログイン</title>
-	<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
-	<link rel="stylesheet" href="<c:url value='/css/teacher.css'/>">
+	<!--<link rel="stylesheet" href="<c:url value='/css/common.css'/>">-->
+	<!--<link rel="stylesheet" href="<c:url value='/css/teacher.css'/>">-->
+	<link rel="stylesheet" href="/A4/css/common.css">
+	<link rel="stylesheet" href="/A4/css/teacher.css">
 </head>
 
 <body>
