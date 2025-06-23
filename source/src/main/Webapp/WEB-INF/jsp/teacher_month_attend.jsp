@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>カレンダー</title>
 </head>
+<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/teacher.css'/>">
 <body>
 	<header>
 		<label class="out"><img src = "<c:url value='/TeacherAccountRegistServlet'/>">width="50px" height="50px"></label>
@@ -26,6 +28,9 @@
 	<div>
 		<!-- カレンダー表示 -->
 		<h2>○○月</h2>
+		<form action="teacher_today_attend.jsp" method="get">
+        <input type="date" name="attendanceDate" required>
+        <input type="submit" name="action" value="移動">
 	</div>
 	<footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">

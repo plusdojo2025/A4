@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -8,7 +11,8 @@
 <title>先生用出欠管理</title>
 </head>
 <link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/teacher.css">
+<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/teacher.css'/>">
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
@@ -21,19 +25,27 @@
 		
 		<nav class = "burner">
 			<ul>
-				<li><a href="/A4/TeacherAttendanceServlet">出欠管理</a></li>
-				<li><a href="/A4/TeacherGradeServlet">成績管理</a></li>
-				<li><a href="/A4/TeacherMessageServlet">連絡管理</a></li>
-				<li><a href="/A4/TeacherAccountRegistServlet">ユーザー一覧</a></li>
-				<li><a href="/A4/SoServlet">チャット</a></li>
+                <li><a href="<c:url value='/TeacherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
+				<li><a href="<c:url value='/TeacherGradeServlet'/>" class="highlight">成績管理</a></li>
+				<li><a href="<c:url value='/TeacherMessageServlet'/>" class="highlight">連絡管理</a></li>
+				<li><a href="<c:url value='/TeacherAccountRegistServlet'/>">ユーザー一覧管理</a></li>
+				<li><a href="<c:url value='/SoServlet'/>" class="highlight">チャット</a></li>
 			</ul>
 		</nav>	
 	</header>
 	<form>
 		
-		<h2>
+		
 		<!-- servletからその日の日付を取得 -->
-		</h2>
+		String action = request.getParameter("action");
+	    if ("移動".equals(action)) {
+	    	String tDay= request.getAttribute("attendanceDate")
+	    } else {
+	    LocalDate today = LocalDate now();
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	    String tDay = today.format(formatter);
+	    }
+	   <h2> 日付： <%= tDay %></h2>
 	</form>
 	<div  class="attend">
 	<!-- ボタンを押すとカレンダーの画面に遷移 -->
@@ -43,7 +55,7 @@
 	</div>
 	
 	<div class="attend2">
-	<form method="POST" action="/A4/TeacherAttendanceServlet">
+	<form method="POST" action="<c:url value='/TeacherAttendanceServlet' />">
 		<c:forEach var="e" items="${cardList}">
 			<!-- 生徒の出席状況 -->
 		    <table>

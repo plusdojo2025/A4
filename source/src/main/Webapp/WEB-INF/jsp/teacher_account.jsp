@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>先生用アカウント登録</title>
 </head>
-<link rel="stylesheet" href="css/teacher.css">
+<link rel="stylesheet" href="<c:url value='/css/teacher.css' />">
 <body>
 	<header>
 		<!-- ページタイトル -->

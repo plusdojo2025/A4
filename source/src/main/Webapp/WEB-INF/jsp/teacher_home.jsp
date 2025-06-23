@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>先生専用ホーム</title>
 </head>
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/teacher.css">
+<link rel="stylesheet" href="<c:url value='/css/common.css' />">
+<link rel="stylesheet" href="<c:url value='/css/teacher.css' />">
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
@@ -21,18 +21,19 @@
 		
 		<nav class = "burner">
 			<ul>
-				<li><a href="/A4/TeacherAttendanceServlet">出欠管理</a></li>
-				<li><a href="/A4/TeacherGradeServlet">成績管理</a></li>
-				<li><a href="/A4/TeacherMessageServlet">連絡管理</a></li>
-				<li><a href="/A4/TeacherAccountRegistServlet">ユーザー一覧</a></li>
-				<li><a href="/A4/SoServlet">チャット</a></li>
+                <li><a href="<c:url value='/TeacherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
+				<li><a href="<c:url value='/TeacherGradeServlet'/>" class="highlight">成績管理</a></li>
+				<li><a href="<c:url value='/TeacherMessageServlet'/>" class="highlight">連絡管理</a></li>
+				<li><a href="<c:url value='/TeacherAccountRegistServlet'/>">ユーザー一覧管理</a></li>
+				<li><a href="<c:url value='/SoServlet'/>" class="highlight">チャット</a></li>
 			</ul>
 		</nav>
 	</header>
 	<div>
 		<!-- カレンダーを制作 -->
 		
-		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script> -->
+		<script src="<c:url value='"https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"' />"></script>
 
 		<script>
 			document.addEventListener('DOMContentLoaded', function () {
