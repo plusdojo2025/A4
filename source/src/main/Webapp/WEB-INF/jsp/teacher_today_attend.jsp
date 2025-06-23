@@ -44,7 +44,7 @@
 	        <!--日付表示-->
 	        <a href="teacher_month_attend.jsp">
 	        <img src = "images/calender.png" width="70px" height="70px"></a>
-	        <p>日付：${attendanceDate}</p>
+	        <p>日付：${attendanceDate.attendanceDate}</p>
     	</div>
 	</form>
 	

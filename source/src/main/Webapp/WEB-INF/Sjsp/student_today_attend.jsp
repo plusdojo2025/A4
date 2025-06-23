@@ -26,7 +26,7 @@
 
     <div>
         <!--日付表示(のちに変更必要)-->
-        <p>日付：${attendanceStatus}</p>
+        <p>日付：${attendanceDate.attendanceDate}</p>
     </div>
     <div>
         <!--生徒の出席状況の表示-->

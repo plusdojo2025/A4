@@ -30,7 +30,7 @@
         <!--日付表示(のちに変更必要)-->
         <a href="parent_month_attend.jsp">
         <img src = "images/calender.png" width="70px" height="70px"></a>
-        <p>日付：${attendanceDate}</p>
+        <p>日付：${attendanceDate.attendanceDate}</p>
     </div>
     <div>
         <!--生徒の出席状況の表示-->

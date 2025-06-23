@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpSession;
 
 import dao.AttendanceDAO;
 import dto.Allaccess;
+import dto.Attendance;
+import dto.Sidpw;
 
 @WebServlet("/TeacherAttendanceServlet")
 public class TeacherAttendanceServlet extends HttpServlet {
@@ -25,6 +29,24 @@ public class TeacherAttendanceServlet extends HttpServlet {
 			response.sendRedirect("A4/TeacherLoginServlet");
 			return;
 		}
+		
+		//学籍番号取得
+		Sidpw studentInfo = new Sidpw();
+		studentInfo = (Sidpw)session.getAttribute("Sidpw");
+		int studentClass = studentInfo.getClassName();
+		
+		// 今日の日付を取得
+	    LocalDate today = LocalDate.now();
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	    String formattedDate = today.format(formatter);
+
+	    // 出席DAOを使ってそのクラスの出席情報を取得
+	    AttendanceDAO attendanceInfo = new AttendanceDAO();
+		Attendance attendance = new Attendance();
+		attendance = attendanceInfo.attendanceSelect(studentClass, formattedDate);
+
+		//リクエスト領域に保存
+		request.setAttribute("attendanceDate", attendance);
 		
 		// 出席管理ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/teacher_today_attend.jsp");
