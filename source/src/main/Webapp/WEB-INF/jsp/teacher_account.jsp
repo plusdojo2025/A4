@@ -11,7 +11,7 @@
 	<header>
 		<!-- ページタイトル -->
 		<div class="logo">
-			<a href="/webapp/TeacherLoginServlet"><img src = "images/cshare.png" width="300px" height="122px"></a>
+			<a href="/webapp/TeacherMenuServlet"><img src = "images/cshare.png" width="300px" height="122px"></a>
 		</div>
 		
 		${errormsg}

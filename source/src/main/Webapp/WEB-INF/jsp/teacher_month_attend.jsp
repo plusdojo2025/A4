@@ -18,7 +18,7 @@
 				<li><a href="<c:url value='/GradeServlet'/>" class="highlight">成績管理</a></li>
 				<li><a href="<c:url value='/MessageServlet'/>" class="highlight">連絡管理</a></li>
 				<li><a href="<c:url value='/AccountRegistServlet'/>">ユーザー一覧管理</a></li>
-				<li><a href="<c:url value='/LoadHistoryServlet'/>" class="highlight">チャット</a></li>
+				<li><a href="<c:url value='/SoServlet'/>" class="highlight">チャット</a></li>
 			</ul>
 		</nav>
 	</header>

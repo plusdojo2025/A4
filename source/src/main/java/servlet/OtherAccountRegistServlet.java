@@ -18,7 +18,6 @@ import dto.Sidpw;
 import dto.Tidpw;
 
 @WebServlet("/OtherAccountRegistServlet")
-//生徒と保護者のアカウントを表示・登録・更新・削除する機能を仲介する
 public class OtherAccountRegistServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {

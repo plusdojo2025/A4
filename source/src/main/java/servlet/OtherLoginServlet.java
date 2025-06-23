@@ -15,7 +15,6 @@ import dto.Pidpw;
 import dto.Sidpw;
 
 @WebServlet("/OtherLoginServlet")
-
 public class OtherLoginServlet extends HttpServlet {
 private static final long serialVersionUID = 1L;
 	

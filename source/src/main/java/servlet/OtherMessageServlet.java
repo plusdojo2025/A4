@@ -16,7 +16,6 @@ import dto.Announcemnts;
 import dto.Sidpw;
 
 @WebServlet("/OtherMessageServlet")
-
 public class OtherMessageServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

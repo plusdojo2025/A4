@@ -14,7 +14,6 @@ import dao.TestsDAO;
 import dto.Tests;
 
 @WebServlet("/OtherGradeServlet")
-
 public class OtherGradeServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
