@@ -33,10 +33,12 @@ public class OtherAttendanceServlet extends HttpServlet {
 		Sidpw studentInfo = new Sidpw();
 		studentInfo = (Sidpw)session.getAttribute("Sidpw");
 		int studentId = studentInfo.getNumber();
+		
 		//その日の日付を取得
 		LocalDate today = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		String formattedDate = today.format(formatter);
+		
 		//出席情報を取得
 		AttendanceDAO attendanceInfo = new AttendanceDAO();
 		Attendance attendance = new Attendance();
@@ -45,9 +47,15 @@ public class OtherAttendanceServlet extends HttpServlet {
 		//リクエスト領域に保存
 		request.setAttribute("attendanceStatus", attendance);
 		
-		// ログインページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/other_login.jsp");
-		dispatcher.forward(request, response);
+		// ユーザーの種類に応じてJSPを振り分け
+		String position = (String) session.getAttribute("position");
+		if ("student".equals(position)) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/student_today_attend.jsp");
+			dispatcher.forward(request, response);
+		} else if ("parent".equals(position)) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/parent_today_attend.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 	
 
