@@ -29,22 +29,22 @@ public class TeacherLoginServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		//int className = Integer.parseInt(request.getParameter("className")); 
-		String teacherName = request.getParameter("tName"); //入力しなかったら""（空文字）がはいる
-		String teacherPw = request.getParameter("tPw"); //nullがはいるときは間違っているとき
+		String tName = request.getParameter("teacherName"); //入力しなかったら""（空文字）がはいる
+		String tPw = request.getParameter("teacherPw"); //nullがはいるときは間違っているとき
 		
 		// ログイン処理を行う
 		TidpwDAO tDao = new TidpwDAO();		
-		if (tDao.isLoginOK(new Tidpw(teacherName,teacherPw)) != null){ // ログイン成功
-			// セッションスコープにIDを格納する
-			HttpSession session = request.getSession();
-			session.setAttribute("Tidpw", new Tidpw(teacherName,teacherPw));
+		Tidpw loginUser = tDao.isLoginOK(new Tidpw(tName, tPw));
+		if (loginUser != null) {
+		    HttpSession session = request.getSession();
+		    session.setAttribute("Tidpw", loginUser);
 
 			// メニューサーブレットにリダイレクトする
 			response.sendRedirect("/A4/TeacherMenuServlet");
 		} else { // ログイン失敗
 
 			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/TeacherLoginServlet");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_login.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

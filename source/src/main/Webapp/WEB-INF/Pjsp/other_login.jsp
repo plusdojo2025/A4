@@ -26,8 +26,8 @@
 			<option value="student">生徒</option>
 			<option value="parent">保護者</option>
 			</select>
-			氏名<input type="text" name="studentName" required>
-			パスワード<input type="password" name="studentPw" required>
+			氏名<input type="text" name="otherName" required>
+			パスワード<input type="password" name="otherPw" required>
 			<input type="submit" name="login" value="ログイン">
 		</div>
 	</form>

@@ -26,25 +26,30 @@ public class TidpwDAO {
 			// SELECT文を準備する
 			String sql = "SELECT * FROM Tidpw WHERE tName=? AND tPw=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setInt(1, Tidpw.getClassName());
-			pStmt.setString(2, Tidpw.getName());
-			pStmt.setString(3, Tidpw.getPw());
-
+			pStmt.setString(1, Tidpw.gettName());
+			pStmt.setString(2, Tidpw.gettPw());
+			
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
-			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
+			// 結果をBeanに詰める
 			if(rs.next()) {
 			resultTidpw = new Tidpw();
-            resultTidpw.setName(rs.getString("tName"));
-            resultTidpw.setPw(rs.getString("tPw"));
-            resultTidpw.setClassName(rs.getInt("className")); // className がint型だと仮定
+            resultTidpw.settName(rs.getString("tName"));
+            resultTidpw.settPw(rs.getString("tPw"));
+            resultTidpw.setClassName(rs.getInt("className"));
+      
 			}
-			} catch (Exception e) {
-			    e.printStackTrace();
-			} finally {
-			    if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
-			}
+		} catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
 			
 		return resultTidpw;
 	}		
@@ -68,8 +73,8 @@ public class TidpwDAO {
 				
 				// SQL文を完成させる
 				pStmt.setInt(1,card.getClassName());
-				pStmt.setString(2,card.getName());
-				pStmt.setString(3,card.getPw());
+				pStmt.setString(2,card.gettName());
+				pStmt.setString(3,card.gettPw());
 				
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {

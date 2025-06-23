@@ -49,8 +49,8 @@ private static final long serialVersionUID = 1L;
 		// ログイン処理を行う
 		if(position.equals("生徒")) {
 			SidpwDAO sDao = new SidpwDAO();
-			String sName = request.getParameter("studentName");
-			String sPw = request.getParameter("studentPw");
+			String sName = request.getParameter("otherName");
+			String sPw = request.getParameter("otherPw");
 			
 			if (sDao.isLoginOK(new Sidpw(sName, sPw))) { // ログイン成功
 				//学籍番号を取得する。
@@ -70,8 +70,8 @@ private static final long serialVersionUID = 1L;
 		}
 		else if(position.equals("保護者")) {
 			PidpwDAO pDao = new PidpwDAO();
-			String pName = request.getParameter("parentName");
-			String pPw = request.getParameter("parentPw");
+			String pName = request.getParameter("otherName");
+			String pPw = request.getParameter("otherPw");
 			
 			if (pDao.isLoginOK(new Pidpw(pName, pPw))) { // ログイン成功
 				// セッションスコープにIDを格納する

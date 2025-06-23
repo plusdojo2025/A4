@@ -7,25 +7,32 @@ public class Tidpw implements Serializable {
 	private String tName; // 先生の氏名
 	private String tPw; // 先生のパスワード
 	
+	
+	
 	public int getClassName() {
 		return className;
 	}
+
+	public String gettName() {
+		return tName;
+	}
+
+	public String gettPw() {
+		return tPw;
+	}
+
 	public void setClassName(int className) {
 		this.className = className;
 	}
-	public String getName() {
-		return tName;
+
+	public void settName(String tName) {
+		this.tName = tName;
 	}
-	public void setName(String name) {
-		this.tName = name;
-	}
-	public String getPw() {
-		return tPw;
-	}
-	public void setPw(String tPw) {
+
+	public void settPw(String tPw) {
 		this.tPw = tPw;
 	}
-	
+
 	public Tidpw(int className, String tName, String tPw) {
 		this.className = className;
 		this.tName = tName;
