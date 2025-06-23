@@ -8,28 +8,29 @@
 	<title>先生用ユーザー一覧</title>
 	<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/teacher.css'/>">
+	
 </head>
 <body>
 	<header>
-			<label class="out"><img src = "images/out.png" width="50px" height="50px"></label>
+			<label class="out"><img src = "<c:url value='/TeacherAccountRegistServlet'/>">width="50px" height="50px"></label>
 			<div class="logo">
-				<a href="/webapp/LoginServlet"><img src = "images/cshare.png" width="300px" height="122px"></a>
+				<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" >width="300px" height="122px"></a>
 			</div>
 			<nav class = "burner">
 	            <ul>
-	                <li><a href="/A4/AttendanceServlet" class="highlight">出欠管理</a></li>
-	                <li><a href="/A4/GradeServlet" class="highlight">成績管理</a></li>
-	                <li><a href="/A4/MessageServlet" class="highlight">連絡管理</a></li>
-	                <li><a href="/A4/AccountRegistServlet">ユーザー一覧管理</a></li>
-	                <li><a href="/A4/LoadHistoryServlet" class="highlight">チャット</a></li>
+	                <li><a href="<c:url value='/AttendanceServlet'/>" class="highlight">出欠管理</a></li>
+	                <li><a href="<c:url value='/GradeServlet'/>" class="highlight">成績管理</a></li>
+	                <li><a href="<c:url value='/MessageServlet'/>" class="highlight">連絡管理</a></li>
+	                <li><a href="<c:url value='/AccountRegistServlet'/>">ユーザー一覧管理</a></li>
+	                <li><a href="<c:url value='/LoadHistoryServlet'/>" class="highlight">チャット</a></li>
 	            </ul>
 	        </nav>
 	</header>
 
-	<label class="out"><a href="/A4/AccountRegistServlet">ユーザー登録</a></label>
+	<label class="out"><a href="<c:url value='/OtherAccountRegistServlet'/>">ユーザー登録</a></label>
 	
 	 <c:forEach var="e" items="${Allaccess}">
-			<form class="access-edit-form" method="POST" action="/A4/UpdateDeleteServlet">
+			<form class="access-edit-form" method="POST" action="<c:url value='/OtherAccountRegistServlet'/>">
 				<div class="access-wrapper">
 					<div class="access-row">
 						<!-- 生徒 -->
@@ -66,7 +67,7 @@
 			</form>
 		</c:forEach>
 	<footer class="footer">
-		<img src = "images/runningman.png">
+		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
 </html>
