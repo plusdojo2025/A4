@@ -36,9 +36,9 @@
 	    if ("移動".equals(action)) {
 	    	String tDay= request.getAttribute("attendanceDate")
 	    } else {
-	    LocalDate today = LocalDate now();
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-	    String tDay = today.format(formatter);
+	    	LocalDate today = LocalDate now();
+	    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	    	String tDay = today.format(formatter);
 	    }
 	  	<div class="attend">
 	        <!--日付表示-->
