@@ -36,7 +36,7 @@
     </div>
     <!-- ボタンを押すとカレンダーの画面に遷移 -->
     <div class="calender">
-    	<a href="<c:url value='/student_month_attend.jsp'/>"><img src = "<c:url value='images/calender.png'/>"width="70px" height="70px"></a>
+    	<a href="<c:url value='/student_month_atted.jsp'/>"><img src = "<c:url value='images/calender.png'/>"width="70px" height="70px"></a>
     </div>
     <div>
         <!--生徒の出席状況の表示-->
