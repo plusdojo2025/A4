@@ -79,7 +79,7 @@ public class TestsDAO {
 		return testsList;
 	}
 	
-	public ArrayList<Tests> select(Tests tests) {
+	public ArrayList<Tests> select1(int number) {
 		Connection conn = null;
 		ArrayList<Tests> testsResult = new ArrayList<Tests>();
 		
@@ -92,28 +92,8 @@ public class TestsDAO {
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Tests WHERE number=? AND testName=? AND term=?";
+			String sql = "SELECT * FROM Tests WHERE number=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			
-			//SQL文を完成させる
-			if(tests.getNumber() != 0) {
-				pStmt.setInt(1,tests.getNumber());
-			}
-			else {
-				pStmt.setInt(1, 0);
-			}
-			if(tests.getTestName() != null) {
-				pStmt.setString(2,"%"+tests.getTestName()+"%");
-			}
-			else {
-				pStmt.setString(2, "%");
-			}
-			if(tests.getTerm() != 0) {
-				pStmt.setInt(3,tests.getTerm());
-			}
-			else {
-				pStmt.setInt(3, 0);
-			}
 			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
