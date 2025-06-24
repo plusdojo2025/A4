@@ -22,7 +22,7 @@
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<label class="out">
-			<a href="<c:url value='TeacherLoginServlet'/>"><img src = "images/out.png" width="50px" height="50px"></a>
+			<a href="<c:url value='TeacherAccountRegistServlet'/>"><img src = "images/out.png" width="50px" height="50px"></a>
 		</label>
 		<div class="logo">
 			<a><img src = "images/cshare.png" width="300px" height="122px"></a>
@@ -33,7 +33,7 @@
                 <li><a href="<c:url value='/TeacherAttendanceServlet'/>">出欠管理</a></li>
 				<li><a href="<c:url value='/TeacherGradeServlet'/>">成績管理</a></li>
 				<li><a href="<c:url value='/TeacherMessageServlet'/>">連絡管理</a></li>
-				<li><a href="<c:url value='/TeacherAccountRegistServlet'/>">ユーザー一覧管理</a></li>
+				<li><a href="<c:url value='/OtherAccountRegistServlet'/>">ユーザー一覧管理</a></li>
 				<li><a href="<c:url value='/SoServlet'/>">チャット</a></li>
 			</ul>
 		</nav>

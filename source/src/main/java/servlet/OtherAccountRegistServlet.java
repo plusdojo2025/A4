@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.PidpwDAO;
 import dao.SidpwDAO;
+import dto.Allaccess;
 import dto.Pidpw;
 import dto.Sidpw;
 import dto.Tidpw;
@@ -27,29 +28,42 @@ public class OtherAccountRegistServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
 			return;
 		}
-        //先生が持っている共通の情報はクラス名。それをもとに先生の生徒の情報を取得する。
-        Tidpw tDto = new Tidpw();
-		tDto = (Tidpw)session.getAttribute("Tidpw");
-		//クラス名の取得
-		int className = tDto.getClassName();
-        //生徒の情報を取得
-        SidpwDAO sDao = new SidpwDAO();
-        ArrayList<Sidpw> studentInfo = new ArrayList<Sidpw>();
-        studentInfo = sDao.select(className);
-        //生徒の情報から学籍番号だけをリストに格納
-        ArrayList<Integer> studentIdInfo = new ArrayList<Integer>();
-        for(Sidpw id : studentInfo) {
-            studentIdInfo.add(id.getNumber());
-        }
-        //学籍番号をもとに保護者の情報を取得
-        PidpwDAO pDao = new PidpwDAO();
-        ArrayList<Pidpw> parentList = new ArrayList<Pidpw>();
-        //PidpwDAO.javaにメソッドを追加必要あり。
-        parentList = pDao.slect(studentIdInfo);
-
-        //リクエスト領域に生徒・保護者の情報を格納
-        request.setAttribute("studentInformation", studentInfo);
-        request.setAttribute("parentInformation", parentList);
+		//sessionからログインしているユーザーのクラスネームを取得
+		Tidpw loginUser =(Tidpw)session.getAttribute("Tidpw");
+		int className = loginUser.getClassName();		
+		System.out.println(className+"：クラスネーム");
+				
+		//クラスネームを元に生徒の情報を取得（ＡｒｒａｙＬｉｓｔに格納）
+		SidpwDAO sdao = new SidpwDAO();
+		ArrayList<Sidpw> list = sdao.select(className);
+		System.out.println(list.size()+":リストのサイズ");
+				
+		//上で取得した生徒の情報をＡｌｌaccessを入れるArrayListに格納しなおす
+		ArrayList<Allaccess> allList = new ArrayList<>();
+		for(Sidpw s : list) {
+			Allaccess all = new Allaccess();
+			all.setsName(s.getsName());
+			all.setNumber(s.getNumber());
+			all.setsPw(s.getsPw());
+			allList.add(all);
+		}
+		System.out.println(allList+":allList.size()");
+		
+		//上記で使用したallaccessに現在生徒の情報が入っているので、
+		//それにプラスして、保護者の情報も追加して入れる
+		PidpwDAO pdao = new PidpwDAO();		
+		for(int i = 0; i<allList.size(); i++) {
+			Pidpw pi = pdao.slectAddParent(allList.get(i).getNumber());
+			allList.get(i).setpName(pi.getpName());
+			allList.get(i).setpPw(pi.getpPw());			
+		}
+		
+		//セットしてJSPが見れるようにする
+		request.setAttribute("Allaccess", allList);
+		
+		//ページのフォワード(jspからjspに移るときがフォワード)をしよう。リンク先の変更を忘れないように！フォワード先はteacher_login.jsp！！
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
+		dispatcher.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
