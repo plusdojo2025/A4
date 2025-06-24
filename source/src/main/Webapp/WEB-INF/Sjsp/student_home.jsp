@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>保護者用連絡通知</title>
+	<title>生徒用ホーム</title>
 	<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/parent.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/student.css'/>">
@@ -14,19 +14,27 @@
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
-		<label class="out"><img src = "<c:url value='/OtherLoginServlet'/>"width="50px" height="50px"></label>
+		<div class="out">
+			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/out.png'/> width="50px" height="50px"></a>
+		</div>
 		<div class="logo">
 			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
 		</div>
-		<ul>
-			<li><a href="<c:url value='/OtherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
-			<li><a href="<c:url value='/OtherGradeServlet'/>" class="highlight">成績閲覧</a></li>
-			<li><a href="<c:url value='/OtherMessageServlet'/>" class="highlight">連絡閲覧</a></li>
-		</ul>
+		
+		<nav class = "burner">
+			<ul>
+				<li><a href="<c:url value='/OtherAttendanceServlet'/>" class="highlight">出席閲覧・出席登録</a></li>
+				<li><a href="<c:url value='/OtherGradeServlet'/>" class="highlight">成績閲覧</a></li>
+				<li><a href="<c:url value='/OtherMessageServlet'/>" class="highlight">連絡閲覧</a></li>
+			</ul>
+		</nav>
 	</header>
-	<div>
+	<div style="display: flex; gap:300px; justify-content: center;">
+		<div>
 		<!-- 時間割を表示する -->
-		<h2>○○年○○月○○日～○○日</h2>
+		<h2>時間割</h2>
+			<img src = "images/jikanwari.png" width="500px" height="300px">
+		</div>
 	</div>
 	<div>
 		<!-- 最新のお知らせ表示 -->

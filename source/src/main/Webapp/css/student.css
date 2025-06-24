@@ -1,1 +1,135 @@
 @charset "UTF-8";
+
+/* bodyタグ　*/
+body {
+	margin:0 0 0 0;
+	padding: 0 0 0 0;
+	color: black;
+	font-size: 16px;
+	background-color: #F2F2F2;
+}
+
+/*ログイン*/
+.login-form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+  margin-top: 16px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: #4C6CB3;
+  background-color: #fff;
+  outline: none;
+}
+
+.login-form input[type="submit"] {
+  margin-top: 30px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4C6CB3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-form input[type="submit"]:hover {
+  background-color: #7a99cf;
+}
+
+
+/* ▼ メインコンテンツ */
+.student-main-content {
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.student-main-content table {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #333;
+  margin: 0 auto;
+}
+
+.my-table {
+	border: 2px solid #4C6CB3;
+	border-collapse: collapse;
+}
+.my-table td {
+	border: 1px solid #4C6CB3;
+	padding: 8px;
+	text-align: center;
+}
+
+/*当日出席一覧*/
+.calender{
+	margin-left: 400px;
+}
+.day {
+	text-align: center;
+	font-size: 24px;
+	margin-bottom: 40px;
+}
+.attend {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.attend2 {
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.attend2 label {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.attend2 select,
+.attend2 p {
+  font-size: 16px;
+}
+.button {
+  margin-top: 10px;
+}
+
+.button input {
+  padding: 8px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+/*連絡通知*/
+.announce {
+	margin:0 auto;
+}
