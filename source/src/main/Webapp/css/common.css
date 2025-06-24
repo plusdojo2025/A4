@@ -22,29 +22,33 @@ h2{
 a:link {
       color: #000000;
       text-decoration: underline;
-      text-decoration-color: #4C6CB3; /* ← 下線の色を青に */
+      text-decoration-color: #4C6CB3; /*下線の色を青に */
       text-decoration-thickness: 2px; /* 下線の太さ */
       text-underline-offset: 10px;     /* 下線と文字の距離 */
     }
 
 /* 訪問済みリンク */
 a:visited {
-      color: #4C6CB3;
+      color: #000000;
+      text-underline-offset: 10px;     /* 下線と文字の距離 */
+      text-decoration: underline;
+      text-decoration-color: #4C6CB3; /*下線の色を青に */
+      text-decoration-thickness: 2px; /* 下線の太さ */
       text-underline-offset: 10px;     /* 下線と文字の距離 */
     }
 
 /* マウスホバー時 */
-    a:hover {
+a:hover {
       color: #4C6CB3;
       text-decoration: underline;
       text-underline-offset: 10px;     /* 下線と文字の距離 */
-    }
+   }
 
 /* クリック中 */
-    a:active {
+a:active {
       color: #4C6CB3;
       text-underline-offset: 10px;     /* 下線と文字の距離 */
-    }
+   }
 
     /* そのページじゃないとき */
 .burner a.highlight {
