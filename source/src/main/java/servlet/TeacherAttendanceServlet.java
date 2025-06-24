@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import dao.AttendanceDAO;
 import dto.Allaccess;
 import dto.Attendance;
-import dto.Sidpw;
+import dto.Tidpw;
 
 @WebServlet("/TeacherAttendanceServlet")
 public class TeacherAttendanceServlet extends HttpServlet {
@@ -31,9 +31,9 @@ public class TeacherAttendanceServlet extends HttpServlet {
 		}
 		
 		//学籍番号取得
-		Sidpw studentInfo = new Sidpw();
-		studentInfo = (Sidpw)session.getAttribute("Sidpw");
-		int studentClass = studentInfo.getClassName();
+		Tidpw tidpw = new Tidpw();
+		tidpw = (Tidpw)session.getAttribute("Tidpw");
+		int studentClass = tidpw.getClassName();
 		
 		// 今日の日付を取得
 	    LocalDate today = LocalDate.now();
