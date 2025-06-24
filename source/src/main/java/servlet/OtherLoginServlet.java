@@ -50,7 +50,7 @@ private static final long serialVersionUID = 1L;
 			sName = request.getParameter("otherName");
 			sPw = request.getParameter("otherPw");
 			
-			if (sDao.isLoginOK(new Sidpw(sName, sPw))) { // ログイン成功
+			if (sDao.isLoginOK(new Sidpw(sName, sPw))!=null) { // ログイン成功
 				//学籍番号を取得する。
 				int studentId = sDao.studentSelectId(new Sidpw(sName, sPw));
 				// セッションスコープにIDを格納する
