@@ -56,36 +56,45 @@
 	</form>
 	
 	<div class="attend2">
-	<form method="POST" action="<c:url value='/TeacherAttendanceServlet' />">
-		<c:forEach var="e" items="${cardList}">
-			<!-- 生徒の出席状況 -->
-		    <table>
-			    <tr>
-		        	<th>名前</th>
-					<th>出欠</th>
-					<th>操作</th>
-				</tr>
-				<tr>
-			        <td>
-			        	<div style="display:flex;">
-			       			<input type="hidden" name="number" value="${e.number}">      	
-		            		<div><input name = sName value = "${e.name}"></div>
-			            		<div class="attend-row">
-					                <select name="attup">
-					                    <option value="Present" <c:if test="${studentAttendance.attendance == 'Present'}">selected</c:if>>出席</option>
-					                    <option value="Absent" <c:if test="${studentAttendance.attendance == 'Absent'}">selected</c:if>>欠席</option>
-					                    <option value="Late" <c:if test="${studentAttendance.attendance == 'Late'}">selected</c:if>>遅刻</option>
-					                    <option value="Early" <c:if test="${studentAttendance.attendance == 'Early'}">selected</c:if>>早退</option>
-					                </select>
-					            </div> 
-			            	<input type="submit" value="更新">
-		            	</div>
-	            	</td>
-		        </tr>
-		    </table>
-		</c:forEach>
-	</form>
-	</div>	
+		<table>
+			<thead>
+			<tr>
+				<th>名前</th>
+				<th>出欠</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<c:forEach var="e" items="${cardList}">
+				
+					<form method="POST" action="/A4/GradeServlet" class="form-flex">
+					<table>
+					<tr>
+						<td class="name-label">${e.name}</td>
+						<td>
+							<div class="selectbox-5">
+							<select name="attendance">
+								<option value="Present" <c:if test="${e.attendance == 'Present'}">selected</c:if>>出席</option>
+								<option value="Absent" <c:if test="${e.attendance == 'Absent'}">selected</c:if>>欠席</option>
+								<option value="Late" <c:if test="${e.attendance == 'Late'}">selected</c:if>>遅刻</option>
+								<option value="Early" <c:if test="${e.attendance == 'Early'}">selected</c:if>>早退</option>
+							</select>
+							</div>
+						</td>
+						<td>
+							<input type="submit" value="更新" class="submit-btn">
+						</td>
+					</tr>
+					</table>
+					</form>
+				
+
+
+
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
 	<footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
