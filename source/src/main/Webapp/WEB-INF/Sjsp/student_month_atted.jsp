@@ -6,7 +6,6 @@
 	<meta charset="UTF-8">
 	<title>カレンダー</title>
 	<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
-	<link rel="stylesheet" href="<c:url value='/css/parent.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/student.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/student_parent_common.css'/>">
 </head>
