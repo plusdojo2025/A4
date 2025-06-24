@@ -45,14 +45,14 @@ public class OtherAttendanceServlet extends HttpServlet {
 		attendance = attendanceInfo.attendanceSelect(studentId, formattedDate);
 		
 		//リクエスト領域に保存
-		request.setAttribute("attendanceDate", attendance);
+		session.setAttribute("attendanceDate", attendance);
 		
 		// ユーザーの種類に応じてJSPを振り分け
 		String position = (String) session.getAttribute("position");
-		if ("student".equals(position)) {
+		if (position.equals("student")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_today_attend.jsp");
 			dispatcher.forward(request, response);
-		} else if ("parent".equals(position)) {
+		} else if (position.equals("parent")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_today_attend.jsp");
 			dispatcher.forward(request, response);
 		}
@@ -68,7 +68,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		//出席情報をリクエスト領域から取得
         AttendanceDAO attendDao = new AttendanceDAO();
         Attendance attendance = new Attendance();
-        attendance = (Attendance)request.getAttribute("attendanceStatus");
+        attendance = (Attendance)session.getAttribute("attendanceDate");
         int attendantId = attendance.getAttendantId();
         int number = attendance.getNumber();
         String status = request.getParameter("status");
@@ -77,7 +77,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		//出席登録・欠席登録
 		if(position.equals("student")) {
 			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_month_attend.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_month_atted.jsp");
 				dispatcher.forward(request, response);
 			}
 			else {

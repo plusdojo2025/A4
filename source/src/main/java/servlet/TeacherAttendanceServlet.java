@@ -3,6 +3,8 @@ package servlet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,8 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.AttendanceDAO;
 import dto.Allaccess;
-import dto.Attendance;
-import dto.Tidpw;
+
 
 @WebServlet("/TeacherAttendanceServlet")
 public class TeacherAttendanceServlet extends HttpServlet {
@@ -29,12 +30,7 @@ public class TeacherAttendanceServlet extends HttpServlet {
 		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
 		    return;
 		}
-		
-		//学籍番号取得
-		Tidpw tidpw = new Tidpw();
-		tidpw = (Tidpw)session.getAttribute("Tidpw");
-		int studentClass = tidpw.getClassName();
-		
+
 		// 今日の日付を取得
 	    LocalDate today = LocalDate.now();
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -42,11 +38,13 @@ public class TeacherAttendanceServlet extends HttpServlet {
 
 	    // 出席DAOを使ってそのクラスの出席情報を取得
 	    AttendanceDAO attendanceInfo = new AttendanceDAO();
-		Attendance attendance = new Attendance();
-		attendance = attendanceInfo.attendanceSelect(studentClass, formattedDate);
+	    List<Allaccess> attendance = new ArrayList<Allaccess>();
+		
+		attendance = attendanceInfo.select(formattedDate);
 
 		//リクエスト領域に保存
-		request.setAttribute("attendanceDate", attendance);
+		request.setAttribute("attendanceList", attendance);
+		request.setAttribute("today", formattedDate);
 		
 		// 出席管理ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
@@ -67,12 +65,11 @@ public class TeacherAttendanceServlet extends HttpServlet {
 		String attdate = request.getParameter("attdate");
 		int number = Integer.parseInt(request.getParameter("number"));
 		String sName = request.getParameter("sName");
-		String attup = request.getParameter("attup");
+		String attendance = request.getParameter("attendance");
 		
 		// 更新を行う
 		AttendanceDAO attDao = new AttendanceDAO();
-		request.getParameter("submit").equals("更新");
-		attDao.update(new Allaccess(number,sName,attup,attdate));
+		attDao.update(new Allaccess(number,sName,attendance,attdate));
 		
 	    
 		// 結果ページにフォワードする

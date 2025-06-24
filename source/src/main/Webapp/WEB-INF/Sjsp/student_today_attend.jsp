@@ -15,7 +15,7 @@
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<div class="out">
-			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/out.png'/>" width="50px" height="50px"></a>
+			<a href="<c:url value='/OtherLoginServlet'/>"><img src = "<c:url value='/images/out.png'/>" width="50px" height="50px"></a>
 		</div>
 		<div class="logo">
 			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
@@ -30,32 +30,35 @@
 		</nav>
 	</header>
 
-    <div class="day">
-        <!--日付表示(のちに変更必要)-->
-        <p>日付：${attendanceDate.attendanceDate}</p>
-    </div>
+    
     <!-- ボタンを押すとカレンダーの画面に遷移 -->
     <div class="calender">
-    	<a href="<c:url value='/student_month_atted.jsp'/>"><img src = "<c:url value='images/calender.png'/>"width="70px" height="70px"></a>
+    <!-- 直接JSPを呼ぶことはできない。 -->
+    	<a href="<c:url value='/WEB-INF/student_month_atted.jsp'/>"><img src = "<c:url value='images/calender.png'/>"width="70px" height="70px"></a>
     </div>
     <div>
         <!--生徒の出席状況の表示-->
-        <form method="POST" action="/A4/OtherAttendServlet" class="form-flex">
+        <form method="POST" action="<c:url value='/OtherAttendanceServlet'/>" class="form-flex">
+        <div class="day">
+        <!--日付表示(のちに変更必要)-->
+        <p>日付：${attendanceDate.attendanceDate}</p>
+    </div>
             <div class="attend">
                 <div class="attend2">
-	               <lavel for="name">名前</lavel>
+	               <label for="name">名前</label>
 	               <label for="status">出欠</label>
                 </div>
                 <div class="attend2">
-                	<lavel for="name">
-               			<p id="student-name">${student.name}</p>
-               			<input type="hidden" name="number" value="${e.number}">
-               		</lavel>
-               		<label for="status">
-               			<select name="status" id="status">
-               				<option value="absent" ${student.attendance == 'absent' ? 'selected' : ''}>出席</option>
-               			</select>
-               		</label>
+                	<div >
+                	<!-- セッションスコープから名前とる -->
+               			<label id="student-name">${sessionScope.Sidpw.sName}</label>
+               			<input type="hidden" name="number" value="${attendanceDate.number}">
+               		</div>
+               		<div >
+               			
+               			<label> ${attendanceDate.status}</label>
+               			
+               		</div>
             	</div>
             	<div class="button">
             		<input type="submit" name="regist" value="出席登録"><br>
