@@ -11,9 +11,9 @@ import dto.Sidpw;
 
 public class SidpwDAO {
 	//生徒のユーザー情報を閲覧
-	public boolean isLoginOK(Sidpw Sidpw) {
+	public Sidpw isLoginOK(Sidpw Sidpw) {
 		Connection conn = null;
-		boolean loginResult = false;
+		Sidpw resultSidpw = null;
 	
 		try {
 			// JDBCドライバを読み込む
@@ -25,7 +25,7 @@ public class SidpwDAO {
 					"root", "password");
 	
 			// SELECT文を準備する
-			String sql = "SELECT count(*) FROM Sidpw WHERE sName=? AND sPw=?";
+			String sql = "SELECT * FROM Sidpw WHERE sName=? AND sPw=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, Sidpw.getsName());
 			pStmt.setString(2, Sidpw.getsPw());
@@ -34,16 +34,19 @@ public class SidpwDAO {
 			ResultSet rs = pStmt.executeQuery();
 	
 			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
-			rs.next();
-			if (rs.getInt("count(*)") == 1) {
-				loginResult = true;
+			if(rs.next()) {
+				resultSidpw = new Sidpw();
+	            resultSidpw.setsName(rs.getString("tName"));
+	            resultSidpw.setsPw(rs.getString("tPw"));
+	            resultSidpw.setClassName(rs.getInt("className"));
+	      
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			loginResult = false;
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			loginResult = false;
+			
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -51,13 +54,13 @@ public class SidpwDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					loginResult = false;
+					
 				}
 			}
 		}
 	
 		// 結果を返す
-		return loginResult;
+		return resultSidpw;
 	}		
 	
 	//生徒のユーザー情報を登録する
