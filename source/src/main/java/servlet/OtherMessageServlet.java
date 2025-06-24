@@ -23,17 +23,17 @@ public class OtherMessageServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
 			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
-			response.sendRedirect(request.getContextPath() +"/A4/OtherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
 			return;
 		}
 		String position = (String)session.getAttribute("position");
 		
 		// お知らせページにフォワードする
 		if(position.equals("student")) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Sjsp/student_announce.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_announce.jsp");
 		dispatcher.forward(request, response);
 		}else if(position.equals("parent")) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Pjsp/parent_announce.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_announce.jsp");
 		dispatcher.forward(request, response);
 		}
 	}
@@ -44,7 +44,7 @@ public class OtherMessageServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
 			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
-			response.sendRedirect(request.getContextPath() +"/A4/OtherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
 			return;
 		}
 		
@@ -64,10 +64,10 @@ public class OtherMessageServlet extends HttpServlet{
 		String position = (String)session.getAttribute("position");
 		// お知らせページにフォワードする
 		if(position.equals("student")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_annouunce.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_announce.jsp");
 			dispatcher.forward(request, response);
 			}else if(position.equals("parent")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_annouunce.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_announce.jsp");
 			dispatcher.forward(request, response);
 			}
 		}
