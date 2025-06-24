@@ -35,14 +35,14 @@ private static final long serialVersionUID = 1L;
 		String sPw = "";
 		String pName = "";
 		String pPw = "";
-		if(position.equals("生徒")) {
-			sName = request.getParameter("studentName");
-			sPw = request.getParameter("studentPw");
-		}
-		else if(position.equals("保護者")) {
-			pName = request.getParameter("parentName");
-			pPw = request.getParameter("parentPw");
-		}
+//		if(position.equals("生徒")) {
+//			sName = request.getParameter("studentName");
+//			sPw = request.getParameter("studentPw");
+//		}
+//		else if(position.equals("保護者")) {
+//			pName = request.getParameter("parentName");
+//			pPw = request.getParameter("parentPw");
+//		}
 
 		// ログイン処理を行う
 		if(position.equals("生徒")) {
@@ -58,7 +58,7 @@ private static final long serialVersionUID = 1L;
 				session.setAttribute("Sidpw", new Sidpw(sName,studentId,sPw));
 				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
-				response.sendRedirect(request.getContextPath() + "/A4/OtherMenuServlet");
+				response.sendRedirect(request.getContextPath() + "/OtherMenuServlet");
 			}
 			else { // ログイン失敗
 				// 結果ページにフォワードする
@@ -77,7 +77,7 @@ private static final long serialVersionUID = 1L;
 				session.setAttribute("Pidpw", new Pidpw(pName,pPw));
 				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
-				response.sendRedirect(request.getContextPath() + "/A4/OtherMenuServlet");
+				response.sendRedirect(request.getContextPath() + "/OtherMenuServlet");
 			}
 			else { // ログイン失敗
 				// 結果ページにフォワードする
