@@ -52,7 +52,7 @@
 			<tbody>
 			<c:forEach var="e" items="${cardList}">
 				
-					<form method="POST" action="/A4/GradeServlet" class="form-flex">
+					<form method="POST" action="/TeacherAttendanceServlet" class="form-flex">
 					<table>
 					<tr>
 						<td class="name-label">${e.name}</td>

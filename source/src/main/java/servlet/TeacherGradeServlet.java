@@ -41,7 +41,6 @@ public class TeacherGradeServlet extends HttpServlet{
         //生徒情報をDAOを経由してデータベースから取得
         int className = loginUser.getClassName();
         
-        
         //クラス内の生徒の情報が欲しいので、引数はなし。DAOの方で生徒の情報をDTOにまとめてArrayList<Sidpw>で戻り値として返す。
         studentList = (ArrayList<Sidpw>)studentInfo.select(className);
         

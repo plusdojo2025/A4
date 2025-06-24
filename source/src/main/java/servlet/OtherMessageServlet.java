@@ -29,11 +29,11 @@ public class OtherMessageServlet extends HttpServlet{
 		String position = (String)session.getAttribute("position");
 		
 		// お知らせページにフォワードする
-		if(position.equals("生徒")) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Sjsp/student_announce.jsp");
+		if(position.equals("student")) {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Sjsp/student_announce.jsp");
 		dispatcher.forward(request, response);
-		}else if(position.equals("保護者")) {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/A4/Pjsp/parent_announce.jsp");
+		}else if(position.equals("parent")) {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Pjsp/parent_announce.jsp");
 		dispatcher.forward(request, response);
 		}
 	}
@@ -63,10 +63,10 @@ public class OtherMessageServlet extends HttpServlet{
 
 		String position = (String)session.getAttribute("position");
 		// お知らせページにフォワードする
-		if(position.equals("生徒")) {
+		if(position.equals("student")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_annouunce.jsp");
 			dispatcher.forward(request, response);
-			}else if(position.equals("保護者")) {
+			}else if(position.equals("parent")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_annouunce.jsp");
 			dispatcher.forward(request, response);
 			}
