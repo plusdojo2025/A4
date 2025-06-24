@@ -19,9 +19,9 @@
 		<nav class = "burner">
 			<ul>
 				<li><a href="<c:url value='/TeacherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
-				<li><a href="<c:url value='/TeacherGradeServlet'/>" class="highlight">成績管理</a></li>
+				<li><a href="<c:url value='/TeacherGradeServlet'/>">成績管理</a></li>
 				<li><a href="<c:url value='/TeacherMessageServlet'/>" class="highlight">連絡管理</a></li>
-				<li><a href="<c:url value='/TeacherAccountRegistServlet'/>">ユーザー一覧管理</a></li>
+				<li><a href="<c:url value='/TeacherAccountRegistServlet'/>" class="highlight">ユーザー一覧管理</a></li>
 				<li><a href="<c:url value='/SoServlet'/>" class="highlight">チャット</a></li>
 			</ul>
 		</nav>
