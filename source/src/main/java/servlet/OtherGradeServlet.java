@@ -28,11 +28,11 @@ public class OtherGradeServlet extends HttpServlet{
 		String position = (String)session.getAttribute("position");
 		
 		// 成績ページにフォワードする
-		if(position.equals("生徒")) {
+		if(position.equals("student")) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_score.jsp");
 		dispatcher.forward(request, response);
 		}
-		else if(position.equals("保護者")) {
+		else if(position.equals("parent")) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_score.jsp");
 		dispatcher.forward(request, response);
 		}
@@ -64,11 +64,11 @@ public class OtherGradeServlet extends HttpServlet{
 
 		String position = (String)session.getAttribute("position");
 		// 成績ページにフォワードする
-		if(position.equals("生徒")) {
+		if(position.equals("student")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_score.jsp");
 			dispatcher.forward(request, response);
 		}
-		else if(position.equals("保護者")) {
+		else if(position.equals("parent")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_score.jsp");
 			dispatcher.forward(request, response);
 		}

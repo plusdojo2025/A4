@@ -39,10 +39,10 @@
 		<h2>生徒名簿</h2>
 		<ul>
 			<c:forEach var="student" items="${studentList}">
-			    <form method="GET" action="TeacherScoreServlet">
-			        <input type="hidden" name="sid" value="${student.number}" />
-			        <button type="submit">${student.sName} さん</button>
-			    </form>
+			   <form method="GET" action="TeacherGradeServlet">
+			       <input type="hidden" name="number" value="${student.number}" />
+			       <button type="submit">${student.sName} さん</button>
+			   </form>
 			</c:forEach>
 
 		</ul>
@@ -51,7 +51,7 @@
     <!--上記のidをもとにサーブレットで特定の生徒の成績情報をGradeServletから持ってきて、Requestスコープに"selectedStudent"の名前で保存する必要あり。-->
     <div class="student-main-content">
         <!--成績表示-->
-        
+        ${number}
         <c:if test="${not empty selectedStudent}">
             <h2><input name = sName ${selectedStudent.sName} >さんの成績</h2>
 			<c:forEach var="score" items="${score}">

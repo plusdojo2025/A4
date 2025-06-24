@@ -283,6 +283,7 @@ public class SidpwDAO {
 			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
+			rs.next();
 			studentId = rs.getInt("number");
 			
 		}catch (SQLException e) {
@@ -323,13 +324,13 @@ public class SidpwDAO {
 			
 			//SQL文を完成させる
 			if(sidpw.getsName() != null) {
-				pStmt.setString(1,"%"+sidpw.getsName()+"%");
+				pStmt.setString(1,sidpw.getsName());
 			}
 			else {
 				pStmt.setString(1, "%");
 			}
 			if(sidpw.getsPw() != null) {
-				pStmt.setString(2,"%"+sidpw.getsPw()+"%");
+				pStmt.setString(2,sidpw.getsPw());
 			}
 			else {
 				pStmt.setString(2, "%");
@@ -337,7 +338,7 @@ public class SidpwDAO {
 			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
-			
+			rs.next();
 			studentId = rs.getInt("number");
 			
 		}catch (SQLException e) {

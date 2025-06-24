@@ -28,36 +28,35 @@ private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String position = request.getParameter("position");
+		
 		String sName = "";
 		String sPw = "";
 		String pName = "";
 		String pPw = "";
-//		if(position.equals("生徒")) {
-//			sName = request.getParameter("studentName");
-//			sPw = request.getParameter("studentPw");
-//		}
-//		else if(position.equals("保護者")) {
-//			pName = request.getParameter("parentName");
-//			pPw = request.getParameter("parentPw");
-//		}
 
 		// ログイン処理を行う
-		if(position.equals("生徒")) {
+		if(position.equals("student")) {
 			SidpwDAO sDao = new SidpwDAO();
 			sName = request.getParameter("otherName");
 			sPw = request.getParameter("otherPw");
 			
+		
 			if (sDao.isLoginOK(new Sidpw(sName, sPw))!=null) { // ログイン成功
 				//学籍番号を取得する。
+		
 				int studentId = sDao.studentSelectId(new Sidpw(sName, sPw));
+		
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
 				session.setAttribute("Sidpw", new Sidpw(sName,studentId,sPw));
 				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
+		
 				response.sendRedirect(request.getContextPath() + "/OtherMenuServlet");
 			}
 			else { // ログイン失敗
@@ -66,7 +65,7 @@ private static final long serialVersionUID = 1L;
 				dispatcher.forward(request, response);
 			}
 		}
-		else if(position.equals("保護者")) {
+		else if(position.equals("parent")) {
 			PidpwDAO pDao = new PidpwDAO();
 			pName = request.getParameter("otherName");
 			pPw = request.getParameter("otherPw");

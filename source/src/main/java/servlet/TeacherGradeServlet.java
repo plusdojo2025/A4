@@ -35,17 +35,26 @@ public class TeacherGradeServlet extends HttpServlet{
         ArrayList<Tests> testsList = new ArrayList<Tests>();
         Sidpw tDto = new Sidpw();
         Tests testsDto = new Tests();
+        String number = request.getParameter("number");
+        
+        
         //生徒情報をDAOを経由してデータベースから取得
         int className = loginUser.getClassName();
+        
         //クラス内の生徒の情報が欲しいので、引数はなし。DAOの方で生徒の情報をDTOにまとめてArrayList<Sidpw>で戻り値として返す。
         studentList = (ArrayList<Sidpw>)studentInfo.select(className);
+        
+        
         //テスト情報をDAOを経由してデータベースから取得
         int Tid = testsDto.getTestsId();
         testsList = (ArrayList<Tests>)testsinfo.select(Tid);
+        
         //そのデータをrequest領域に保存する。
+        request.setAttribute("number", number);
         request.setAttribute("studentList",studentList);
         request.setAttribute("selectedStudent",null);
         request.setAttribute("score",testsList);
+        
         // 成績登録・閲覧・更新・削除ページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_score.jsp");
         dispatcher.forward(request, response);

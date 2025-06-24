@@ -20,25 +20,28 @@
 	</header>
 	
 	<div class="login-form-container">
-	<form method="POST" action="<c:url value='/OtherLoginServlet'/>" id="form">
-		<div class="tregist">
-			<!-- 生徒・保護者の氏名とパスワードの入力 -->
-			<select name="position">
-			<option value="student">生徒</option>
-			<option value="parent">保護者</option>
-			</select>
-			
-			<div>
-				<label for="name">氏名</label><br>
-				<input type="text" name="otherName" required>
+	<form class="login-form" method="POST" action="<c:url value='/OtherLoginServlet'/>" id="form">
+		
+			<div class="login-form-container">
+				
+				<div class="selectbox-5"><!-- 生徒・保護者の氏名とパスワードの入力 -->
+					<select name="position">
+					<option value="student">生徒</option>
+					<option value="parent">保護者</option>
+					</select>
+				</div>
+				<div>
+					<label for="name">氏名</label><br>
+					<input type="text" name="otherName" required>
+				</div>
+				
+				<div>
+					<label for="pw">パスワード</label><br>
+					<input type="password" name="otherPw" required>
+				</div><br>
+				<input type="submit" name="login" value="ログイン">
 			</div>
-			
-			<div>
-				<label for="pw">パスワード</label><br>
-				<input type="password" name="otherPw" required>
-			</div><br>
-			<input type="submit" name="login" value="ログイン">
-		</div>
+		
 	</form>
 	</div>
 	<footer class="footer">

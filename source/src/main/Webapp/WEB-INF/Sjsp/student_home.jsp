@@ -35,13 +35,8 @@
 			<img src = "images/jikanwari.png" width="500px" height="300px">
 		</div>
 	</div>
-	<div>
-		<!-- 最新のお知らせ表示 -->
-		<h2>最新のお知らせ</h2>
-		<p>登録日時：<c:out value="${announcement.announceDate}" /></p>
-		<p>連絡内容：<c:out value="${announcement.announce}" /></p>
-	</div>
-	<footer>
+	
+	<footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>

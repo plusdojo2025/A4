@@ -65,12 +65,7 @@
 		    calendar.render();
 		  });
 		</script>
-		<div>
-			<!-- 最新のお知らせ表示 -->
-			<h2 style="text-align:center;">最新のお知らせ</h2>
-			<p>登録日時：<c:out value="${announcement.announceDate}" /></p>
-			<p>連絡内容：<c:out value="${announcement.announce}" /></p>		
-		</div>
+		
 	<footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
