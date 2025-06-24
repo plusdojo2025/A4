@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import dao.AnnouncementsDAO;
-import dto.Announcemnts;
 
 @WebServlet("/TeacherMenuServlet")
 public class TeacherMenuServlet extends HttpServlet {
@@ -30,16 +26,6 @@ public class TeacherMenuServlet extends HttpServlet {
 		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
 		    return;
 		}
-		 
-		//先生のホーム画面に最新の連絡登録情報を表示する
-		AnnouncementsDAO announceDao = new AnnouncementsDAO();
-		ArrayList<Announcemnts> announcelatest = new ArrayList<Announcemnts>();
-		Announcemnts annDto = new Announcemnts();
-		String announce = annDto.getAnnounce();
-		announcelatest = (ArrayList<Announcemnts>) announceDao.select(announce);
-		
-		//リクエストスコープへの保存
-		request.setAttribute("announcement", announcelatest);
 		
 		// メニューページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_home.jsp");
