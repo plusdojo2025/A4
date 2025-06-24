@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-html {
-    background-color: #F2F2F2;
-}
+
+
+
 
 .regist{
     
@@ -43,6 +43,7 @@ body {
   padding: 0;
 }
 
+
 .contact-form-container {
   max-width: 600px;
   margin: 40px auto;
@@ -58,7 +59,6 @@ table {
 }
 
 td {
-  display: block;
   width: 100%;
 }
 
@@ -214,7 +214,7 @@ h3 {
 }
 
 .login-form input[type="submit"] {
-  margin-top: 30px;
+  margin-top: 100px;
   width: 100%;
   padding: 12px;
   font-size: 16px;
@@ -387,53 +387,120 @@ h3 {
 
 /*当日出席一覧*/
 .attend2 {
-  width: 100%;
+  width: fit-content;
+  margin: 0 auto;
+  min-width: 120px;
   padding: 20px;
   font-family: 'Segoe UI', sans-serif;
+  display: block; /* ← inline-block → block で安定 */
+  
+  
 }
 
 .attend2 table {
-  width: 100%;
+  width: 700px;
   border-collapse: collapse;
 }
 
-.attend2 tr {
-    display: flex;
+.attend2 th, .attend2 td {
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  word-wrap: break-word;
 }
 
-.attend2 th, .attend2 td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: left;
+
+.attend2 th:nth-child(1),
+.attend2 td:nth-child(1) {
+  width: 50%;
+}
+
+.attend2 th:nth-child(2),
+.attend2 td:nth-child(2) {
+  width: 15%;
+}
+
+.attend2 th:nth-child(3),
+.attend2 td:nth-child(3) {
+  width: 15%;
 }
 
 .attend2 select {
-  padding: 6px;
+  padding: 4px;
   font-size: 14px;
-  width: 100%;
+  width: auto;
+  min-width: 100px;
   box-sizing: border-box;
+}
+
+.tbody {
+    table-layout: fixed;
+    text-align: center;
+}
+
+.form-flex {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* 間隔調整 */
+  flex-wrap: wrap; /* スマホ対策。不要なら外してOK */
+}
+
+.name-label {
+  min-width: 100px;
+  font-weight: bold;
 }
 
 .submit-btn {
   padding: 6px 12px;
   font-size: 14px;
-  background-color: #007BFF;
+  background-color: #333333;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  width: auto;
+  box-sizing: border-box;
+  max-width: 130px;
 }
 
 .submit-btn:hover {
   background-color: #0056b3;
 }
 
-.attend-form{
-    display: flex;
+
+
+.attend2 input[type="submit"] {
+  margin-top: 0px;
+  padding: 10px;
+  width: 90px;
 }
 
-.attend-form input[type="submit"] {
+.selectbox-5 {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
 
-  margin-top: 0px;
+.selectbox-5::after {
+    position: absolute;
+    right: 15px;
+    width: 10px;
+    height: 7px;
+    background-color: #4C6CB3;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: '';
+    pointer-events: none;
+}
 
+.selectbox-5 select {
+    appearance: none;
+    min-width: 130px;  /*セレクトボックスの横幅*/
+    height: 2.8em;
+    padding: .4em calc(.8em + 30px) .4em .8em;
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    color: #333333;
+    font-size: 1em;
+    cursor: pointer;
 }
