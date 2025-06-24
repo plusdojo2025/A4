@@ -27,11 +27,11 @@ public class OtherMenuServlet extends HttpServlet{
 
 		
         // ホームページにフォワードする
-        if(session.getAttribute("position").equals("生徒")) {
+        if(session.getAttribute("position").equals("student")) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_home.jsp");
 		    dispatcher.forward(request, response);
         }
-		else if(session.getAttribute("position").equals("保護者")) {
+		else if(session.getAttribute("position").equals("parent")) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_home.jsp");
 		    dispatcher.forward(request, response);
         }
