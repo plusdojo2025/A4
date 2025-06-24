@@ -73,7 +73,7 @@ public class TeacherAccountRegistServlet extends HttpServlet{
 		
 
         //ページのフォワード(jspからjspに移るときがフォワード)をしよう。リンク先の変更を忘れないように！フォワード先はteacher_login.jsp！！
-    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
+    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_account.jsp");
     	dispatcher.forward(request, response);
     }
 

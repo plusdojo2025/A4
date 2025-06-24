@@ -12,7 +12,7 @@
 	<header>
 		<!-- ページタイトル -->
 		<div class="logo">
-			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
+			<a href="<c:url value='/TeacherLoginServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
 		</div>
 		
 		${errormsg}

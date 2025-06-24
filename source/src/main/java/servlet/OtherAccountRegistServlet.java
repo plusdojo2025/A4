@@ -24,7 +24,7 @@ public class OtherAccountRegistServlet extends HttpServlet {
         //もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if(session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null){
-			response.sendRedirect(request.getContextPath() +"A4/TeacherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
 			return;
 		}
         //先生が持っている共通の情報はクラス名。それをもとに先生の生徒の情報を取得する。
@@ -57,7 +57,7 @@ public class OtherAccountRegistServlet extends HttpServlet {
         //もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if(session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null){
-			response.sendRedirect(request.getContextPath() +"A4/TeacherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
 			return;
 		}
 		Tidpw tDto = new Tidpw();
@@ -105,7 +105,7 @@ public class OtherAccountRegistServlet extends HttpServlet {
 			} else { // 削除失敗
 				request.setAttribute("deleteErr","レコードを削除できませんでした。");
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_regist.jsp");
 				dispatcher.forward(request, response);
 			}
         }

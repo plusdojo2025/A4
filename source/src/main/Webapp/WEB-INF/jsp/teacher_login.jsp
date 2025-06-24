@@ -14,7 +14,7 @@
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<label class="out">
-			<a href="/A4/TeacherAccountRegistServlet">アカウント登録</a>
+			<a href="<c:url value='/TeacherAccountRegistServlet'/>">アカウント登録</a>
 		</label>
 		<div class="logo">
 			<a><img src = "images/cshare.png" width="300px" height="122px"></a>
