@@ -63,7 +63,7 @@
             </div>
         </form>
     </div>
-    <footer>
+    <footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
