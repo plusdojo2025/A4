@@ -1,6 +1,5 @@
 package servlet;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.AnnouncementsDAO;
+import dao.SidpwDAO;
 import dto.Announcemnts;
+import dto.Pidpw;
 import dto.Sidpw;
 
 @WebServlet("/OtherMessageServlet")
@@ -27,7 +28,25 @@ public class OtherMessageServlet extends HttpServlet{
 			return;
 		}
 		String position = (String)session.getAttribute("position");
-		
+		int className=0;
+		int studentId=0;
+		if(position.equals("student")) {
+			 // 学生情報からクラス取得
+	        Sidpw student = (Sidpw) session.getAttribute("Sidpw");
+	        className = student.getClassName();
+		}
+		else if(position.equals("parent")) {
+			Pidpw parent = (Pidpw)session.getAttribute("Pidpw");
+			studentId=parent.getNumber();
+			SidpwDAO sDao = new SidpwDAO();
+			className=sDao.studentClassName(studentId);
+		}
+
+        // お知らせ取得
+        AnnouncementsDAO dao = new AnnouncementsDAO();
+        List<Announcemnts> announcements = dao.selectByClass(className);
+
+        request.setAttribute("announceList", announcements);
 		// お知らせページにフォワードする
 		if(position.equals("student")) {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_announce.jsp");
@@ -38,37 +57,5 @@ public class OtherMessageServlet extends HttpServlet{
 		}
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
-			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
-			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
-			return;
-		}
-		
-		//インスタンス化
-		AnnouncementsDAO announceDao = new AnnouncementsDAO();
-		List<Announcemnts> announceList = new ArrayList<Announcemnts>();
-		Sidpw sDto = new Sidpw();
-		//生徒情報の取得
-		sDto = (Sidpw)session.getAttribute("Sidpw");
-		//クラス名の取得
-		int className = sDto.getClassName();
-		//DAOの情報の格納
-		announceList = announceDao.select(className);
-		//リクエストスコープへの保存
-		request.setAttribute("announcements", announceList);
-
-		String position = (String)session.getAttribute("position");
-		// お知らせページにフォワードする
-		if(position.equals("student")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_announce.jsp");
-			dispatcher.forward(request, response);
-			}else if(position.equals("parent")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_announce.jsp");
-			dispatcher.forward(request, response);
-			}
-		}
+	
 }

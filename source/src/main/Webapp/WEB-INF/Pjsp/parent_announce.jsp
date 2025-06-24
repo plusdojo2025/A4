@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,22 +29,11 @@
 		</nav>
 	</header>
 	<h2>連絡一覧</h2>
-		<table class="announce">
-		  <tr>
-		    <td><!--登録日時を表示--></td>
-		  </tr>
-		  <!-- 連絡内容を表示 -->
-		  <tr>
-		  	<td>
-		    	<input type="text" name="announcetext" readonly>
-		    </td>
-		  </tr>
-		  <tr>
-		    <td>
-		    	<input type="text" name="announcetext" readonly>
-		    </td>
-		  </tr>
-		</table>
+		<c:forEach var="a" items="${announceList}">
+		    <p>${a.announceDate}：</p>
+		    <p>${a.announce}</p>
+		    
+		</c:forEach>
 	<footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>	

@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.Allaccess;
 import dto.Announcemnts;
 
 public class AnnouncementsDAO {
@@ -71,7 +70,7 @@ public class AnnouncementsDAO {
 	}
 	
 	//連絡登録情報から最新の情報だけを取得する
-	public ArrayList<Announcemnts> select2(String announce) {
+	public ArrayList<Announcemnts> selectLatest(String announce) {
 		Connection conn = null;
 		ArrayList<Announcemnts> announcelatest = new ArrayList<Announcemnts>();
 
@@ -98,7 +97,7 @@ public class AnnouncementsDAO {
                 ann.setClassName(rs.getInt("className"));
                 ann.setAnnounce(rs.getString("announce"));
                 ann.setAnnounceDate(rs.getString("announceDate"));
-
+                announcelatest.add(ann);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -122,7 +121,7 @@ public class AnnouncementsDAO {
 		return announcelatest;
 	}
 	
-	public ArrayList<Announcemnts> select(int className) {
+	public ArrayList<Announcemnts> selectByClass(int className) {
 		Connection conn = null;
 		ArrayList<Announcemnts> announceList = new ArrayList<Announcemnts>();
 		
@@ -138,14 +137,16 @@ public class AnnouncementsDAO {
 			String sql = "SELECT * FROM Announcements WHERE className=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = pStmt.executeQuery();
+			
 			if(className != 0) {
 				pStmt.setInt(1, className);
 			}
 			else {
 				pStmt.setInt(1,0);
 			}
+			
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
 			
 			while(rs.next()) {
 				Announcemnts ann = new Announcemnts();
@@ -179,7 +180,7 @@ public class AnnouncementsDAO {
 	}
 	
 	//連絡情報を登録する
-	public boolean insert(Allaccess all) {
+	public boolean insert(int className, String enter, String announceDate) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -193,13 +194,13 @@ public class AnnouncementsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "INSERT INTO Announcements (className, announce) VALUES (?, ?)";
+			String sql = "INSERT INTO Announcements (className, announce, announceDate) VALUES (?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			
-			pStmt.setInt(1, all.getClassName());
-			pStmt.setString(2, all.getAnnounce());
+			pStmt.setInt(1, className);
+			pStmt.setString(2, enter);
+			pStmt.setString(3, announceDate);
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
