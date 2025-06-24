@@ -74,7 +74,11 @@ public class TeacherAccountRegistServlet extends HttpServlet{
 
         //ページのフォワード(jspからjspに移るときがフォワード)をしよう。リンク先の変更を忘れないように！フォワード先はteacher_login.jsp！！
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_account.jsp");
+=======
+    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_login.jsp");
+>>>>>>> Stashed changes
 =======
     	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_login.jsp");
 >>>>>>> Stashed changes
