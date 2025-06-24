@@ -20,11 +20,11 @@
 		</div>
 		<nav class = "burner">
             <ul>
-                <li><a href="<c:url value='/TeacherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
-				<li><a href="<c:url value='/TeacherGradeServlet'/>" class="highlight">成績管理</a></li>
+                <li><a href="<c:url value='/TeacherAttendanceServlet'/>"  class="highlight">出欠管理</a></li>
+				<li><a href="<c:url value='/TeacherGradeServlet'/>"  class="highlight">成績管理</a></li>
 				<li><a href="<c:url value='/TeacherMessageServlet'/>" class="highlight">連絡管理</a></li>
 				<li><a href="<c:url value='/TeacherAccountRegistServlet'/>">ユーザー一覧管理</a></li>
-				<li><a href="<c:url value='/SoServlet'/>" class="highlight">チャット</a></li>
+				<li><a href="<c:url value='/SoServlet'/>"  class="highlight">チャット</a></li>
             </ul>
         </nav>
 	</header>
@@ -37,6 +37,7 @@
 					<div class="access-row">
 						<!-- 生徒 -->
 						<div class="access-column">
+							生徒
 							<label>氏名</label>
 							<input type="text" name="sName" value="${e.sName}">
 	
@@ -49,6 +50,7 @@
 
 						<!-- 保護者 -->
 						<div class="access-column">
+							保護者
 							<label>氏名</label>
 							<input type="text" name="pName" value="${e.pName}">
 	
