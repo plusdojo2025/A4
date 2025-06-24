@@ -45,18 +45,18 @@ private static final long serialVersionUID = 1L;
 			sName = request.getParameter("otherName");
 			sPw = request.getParameter("otherPw");
 			
-		System.out.println(sName);
+		
 			if (sDao.isLoginOK(new Sidpw(sName, sPw))!=null) { // ログイン成功
 				//学籍番号を取得する。
-		System.out.println(sPw);
+		
 				int studentId = sDao.studentSelectId(new Sidpw(sName, sPw));
-		System.out.println(studentId);
+		
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
 				session.setAttribute("Sidpw", new Sidpw(sName,studentId,sPw));
 				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
-		System.out.println(position);
+		
 				response.sendRedirect(request.getContextPath() + "/OtherMenuServlet");
 			}
 			else { // ログイン失敗
