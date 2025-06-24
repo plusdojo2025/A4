@@ -28,13 +28,13 @@
 			</ul>
 		</nav>
 	</header>
-	<div style="display: flex; gap:300px; justify-content: center;">
+	
 		<div>
 			<!-- 時間割を表示する -->
 			<h2>時間割</h2>
 			<img src = "images/jikanwari.png" width="500px" height="300px">
 		</div>
-	</div>
+
 	
 	<footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
