@@ -30,11 +30,13 @@ public class AnnouncementsDAO {
 			// SQL文を準備する
 			String sql = "SELECT * FROM Announcements WHERE className = ? ORDER BY announceDate DESC";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			pStmt.setString(1, announce);
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 			
-			pStmt.setString(1, announce);
+			
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {

@@ -255,4 +255,58 @@ public class PidpwDAO {
 		}
 		return parentInfo;
 	}
+	
+	public Pidpw slectAddParent(int studentId) {
+		Connection conn = null;
+		Pidpw pa = null;
+		
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/a4?"
+					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
+
+			
+			//SQL文を準備する
+			String sql = "SELECT pName,number,pPw FROM Pidpw WHERE number =?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			//SQL文を完成させる
+			// setString() を使うことがポイント！
+			
+			pStmt.setInt(1, studentId);
+			
+			
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			
+			while(rs.next()) {
+				pa = new Pidpw(rs.getString("pName"),
+									    rs.getInt("number"),
+									    rs.getString("pPw")
+									    );
+				
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					
+				}
+			}
+		}
+		return pa;
+	}
 }

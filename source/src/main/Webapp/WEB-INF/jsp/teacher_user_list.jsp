@@ -41,7 +41,7 @@
 							<input type="text" name="sName" value="${e.sName}">
 	
 							<label>学籍番号</label>
-							<input type="text" name="sNumber" value="${e.sNumber}">
+							<input type="text" name="sNumber" value="${e.number}">
 	
 							<label>パスワード</label>
 							<input type="text" name="sPw" value="${e.sPw}">
@@ -53,7 +53,7 @@
 							<input type="text" name="pName" value="${e.pName}">
 	
 							<label>学籍番号</label>
-							<input type="text" name="pNumber" value="${e.pNumber}">
+							<input type="text" name="pNumber" value="${e.number}">
 	
 							<label>パスワード</label>
 							<input type="text" name="pPw" value="${e.pPw}">
