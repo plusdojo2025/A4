@@ -36,8 +36,8 @@ public class SidpwDAO {
 			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
 			if(rs.next()) {
 				resultSidpw = new Sidpw();
-	            resultSidpw.setsName(rs.getString("tName"));
-	            resultSidpw.setsPw(rs.getString("tPw"));
+	            resultSidpw.setsName(rs.getString("sName"));
+	            resultSidpw.setsPw(rs.getString("sPw"));
 	            resultSidpw.setClassName(rs.getInt("className"));
 	      
 			}

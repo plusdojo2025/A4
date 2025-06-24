@@ -6,7 +6,6 @@
 	<meta charset="UTF-8">
 	<title>生徒用連絡通知</title>
 	<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
-	<link rel="stylesheet" href="<c:url value='/css/parent.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/student.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/student_parent_common.css'/>">
 </head>
@@ -29,7 +28,7 @@
 		</nav>
 	</header>
 	<h2>連絡一覧</h2>
-	<table>
+	<table class="announce">
 	  <tr>
 	    <td><!--登録日時を表示--></td>
 	  </tr>
