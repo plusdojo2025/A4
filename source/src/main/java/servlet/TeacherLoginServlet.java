@@ -40,7 +40,7 @@ public class TeacherLoginServlet extends HttpServlet {
 		    session.setAttribute("Tidpw", loginUser);
 
 			// メニューサーブレットにリダイレクトする
-			response.sendRedirect(request.getContextPath() + "/A4/TeacherMenuServlet");
+			response.sendRedirect(request.getContextPath() + "/TeacherMenuServlet");
 		} else { // ログイン失敗
 
 			// 結果ページにフォワードする
