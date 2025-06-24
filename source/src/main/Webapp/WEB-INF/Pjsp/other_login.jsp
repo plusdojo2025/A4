@@ -15,9 +15,10 @@
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<div class="logo">
-			<img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px">
+			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
 		</div>
 	</header>
+	
 	<div class="login-form-container">
 	<form method="POST" action="<c:url value='/OtherLoginServlet'/>" id="form">
 		<div class="tregist">
@@ -26,19 +27,21 @@
 			<option value="student">生徒</option>
 			<option value="parent">保護者</option>
 			</select>
+			
 			<div>
-			<label for="name">氏名</label><br>
+				<label for="name">氏名</label><br>
 				<input type="text" name="otherName" required>
 			</div>
+			
 			<div>
-			<label for="pw">パスワード</label><br>
+				<label for="pw">パスワード</label><br>
 				<input type="password" name="otherPw" required>
-			</div>
+			</div><br>
 			<input type="submit" name="login" value="ログイン">
 		</div>
 	</form>
 	</div>
-	<footer>
+	<footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
