@@ -44,7 +44,7 @@ public class OtherMessageServlet extends HttpServlet{
 		HttpSession session = request.getSession();
 		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
 			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
-			response.sendRedirect(request.getContextPath() +"/A4/OtherLoginServlet");
+			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
 			return;
 		}
 		
