@@ -30,7 +30,7 @@
 
 	<div>
 		<!-- 成績登録ボタン -->
-		<label class="out"><input type="submit" name="regist" value="成績登録"></label>
+		<label class="out"><a href="<c:url value='/TeacherGradeRegistServlet'/>"><input type="submit" name="regist" value="成績登録"></a></label>
 	</div>
 
 	<div class="student-container">
@@ -38,14 +38,13 @@
 		<div class="student-sidebar">
 		<h2>生徒名簿</h2>
 		<ul>
-			<c:forEach var="student" items="${studentList}" >
-				<li>
-                    <!--サーブレットの変更あるかも-->
-                   	<input type="hidden" name="number" value="${student.number}">       	
-            		<button type="button" onclick="toggleScore('${student.name}')">↓ ${student.name}</button>
-                    
-                </li>
+			<c:forEach var="student" items="${studentList}">
+			    <form method="GET" action="TeacherScoreServlet">
+			        <input type="hidden" name="sid" value="${student.number}" />
+			        <button type="submit">${student.sName} さん</button>
+			    </form>
 			</c:forEach>
+
 		</ul>
 	</div>
 
@@ -54,10 +53,10 @@
         <!--成績表示-->
         
         <c:if test="${not empty selectedStudent}">
-            <h2><input name = sName ${selectedStudent.name} >さんの成績</h2>
+            <h2><input name = sName ${selectedStudent.sName} >さんの成績</h2>
 			<c:forEach var="score" items="${score}">
                     <!--何学期かを表示する部分-->
-                    <button type="button" onclick="toggleScore('${score.term}')">↓ ${score.term}</button>
+                    <button type="button" onclick="toggleScore('${score.term}')"> ${score.term}</button>
            			
                     <!--このコードで成績を表示するか否かを決める(ON&OFはJavaScriptで設定)-->
                     <div id="score-${score.term}" style="display: none;">

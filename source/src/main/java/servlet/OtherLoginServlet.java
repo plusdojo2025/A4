@@ -77,7 +77,7 @@ private static final long serialVersionUID = 1L;
 				session.setAttribute("Pidpw", new Pidpw(pName,pPw));
 				session.setAttribute("position", position);
 				// メニューサーブレットにリダイレクトする
-				response.sendRedirect(request.getContextPath() + "/A4/OtherMenuServlet");
+				response.sendRedirect(request.getContextPath() + "/OtherMenuServlet");
 			}
 			else { // ログイン失敗
 				// 結果ページにフォワードする
