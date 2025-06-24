@@ -29,7 +29,7 @@
 		</nav>
 	</header>
 	
-		<div>
+		<div class = "time">
 			<!-- 時間割を表示する -->
 			<h2>時間割</h2>
 			<img src = "images/jikanwari.png" width="500px" height="300px">
