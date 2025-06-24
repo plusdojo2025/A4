@@ -80,12 +80,6 @@ public class TeacherAccountRegistServlet extends HttpServlet{
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-    	// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession(false); // 既存セッションのみ取得
-		if (session == null || session.getAttribute("Tidpw") == null) {
-		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
-		    return;
-		}
     	
     	
         //リクエスト領域からクラス名、氏名、パスワードを取得！！
