@@ -20,7 +20,7 @@ h2{
 
  /* 未訪問リンク */
 a:link {
-      color: #4C6CB3;
+      color: #000000;
       text-decoration: underline;
       text-decoration-color: #4C6CB3; /* ← 下線の色を青に */
       text-decoration-thickness: 2px; /* 下線の太さ */
