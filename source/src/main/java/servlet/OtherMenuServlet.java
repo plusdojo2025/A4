@@ -28,7 +28,7 @@ public class OtherMenuServlet extends HttpServlet{
 			response.sendRedirect(request.getContextPath() +"/A4/OtherLoginServlet");
 			return;
 		}
-
+System.out.println(session.getAttribute("position"));
 		//生徒・保護者のホーム画面に最新の連絡登録情報を表示する
 		AnnouncementsDAO announceDao = new AnnouncementsDAO();
 		ArrayList<Announcemnts> announcelatest = new ArrayList<Announcemnts>();
@@ -40,6 +40,7 @@ public class OtherMenuServlet extends HttpServlet{
 		request.setAttribute("announcement", announcelatest);
 		
         // ホームページにフォワードする
+
         if(session.getAttribute("position").equals("生徒")) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_home.jsp");
 		    dispatcher.forward(request, response);
