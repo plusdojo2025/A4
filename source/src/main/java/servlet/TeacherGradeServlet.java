@@ -20,12 +20,12 @@ import dto.Tests;
 public class TeacherGradeServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // もしもログインしていなかったらログインサーブレットにリダイレクトする
-        HttpSession session = request.getSession();
-        if (session.getAttribute("tName") == null) {
-            response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
-            return;
-        }
+    	// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession(false); // 既存セッションのみ取得
+		if (session == null || session.getAttribute("Tidpw") == null) {
+		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
+		    return;
+		}
         //インスタンス化
         SidpwDAO studentInfo = new SidpwDAO();
         TestsDAO testsinfo = new TestsDAO();
@@ -42,7 +42,7 @@ public class TeacherGradeServlet extends HttpServlet{
         testsList = (ArrayList<Tests>)testsinfo.select(Tid);
         //そのデータをrequest領域に保存する。
         request.setAttribute("studentList",studentList);
-        request.setAttribute("selectedStudent;",studentList);
+        request.setAttribute("selectedStudent",studentList);
         request.setAttribute("score",testsList);
         // 成績登録・閲覧・更新・削除ページにフォワードする
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_score.jsp");
@@ -51,12 +51,12 @@ public class TeacherGradeServlet extends HttpServlet{
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // もしもログインしていなかったらログインサーブレットにリダイレクトする
-        HttpSession session = request.getSession();
-        if (session.getAttribute("tName") == null) {
-            response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
-            return;
-        }
+    	// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession(false); // 既存セッションのみ取得
+		if (session == null || session.getAttribute("Tidpw") == null) {
+		    response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
+		    return;
+    			}
         request.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(request.getParameter("id"));
         int jap = Integer.parseInt(request.getParameter("jap"));
