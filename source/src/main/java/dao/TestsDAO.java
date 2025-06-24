@@ -13,7 +13,7 @@ import dto.Tests;
 public class TestsDAO {
 	
 	//成績情報を閲覧する（１学期分）
-	public ArrayList<Tests> select(int testsId) {
+	public ArrayList<Tests> select(int testId) {
 		Connection conn = null;
 		ArrayList<Tests> testsList = new ArrayList<Tests>();
 
@@ -27,10 +27,10 @@ public class TestsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Tests WHERE term = ? AND testsId =?";
+			String sql = "SELECT * FROM Tests WHERE testsId =?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
-			pStmt.setInt(1, testsId);
+			pStmt.setInt(1, testId);
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
