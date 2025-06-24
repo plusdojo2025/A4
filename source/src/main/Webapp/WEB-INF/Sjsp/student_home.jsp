@@ -23,7 +23,7 @@
 		
 		<nav class = "burner">
 			<ul>
-				<li><a href="<c:url value='/OtherAttendanceServlet'/>" class="highlight">出席閲覧・出席登録</a></li>
+				<li><a href="<c:url value='/OtherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
 				<li><a href="<c:url value='/OtherGradeServlet'/>" class="highlight">成績閲覧</a></li>
 				<li><a href="<c:url value='/OtherMessageServlet'/>" class="highlight">連絡閲覧</a></li>
 			</ul>
