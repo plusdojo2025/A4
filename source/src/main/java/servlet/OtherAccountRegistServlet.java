@@ -94,12 +94,12 @@ public class OtherAccountRegistServlet extends HttpServlet {
         //name属性の"submit"で登録・更新・削除をif文で分けて処理を行う。
         if(request.getParameter("submit").equals("更新")) {
             if (sDao.update(new Sidpw(editCName,editSName,editSNum,editSPw)) && pDao.update(new Pidpw(editPName,editSNum,editPPw))) { // 更新失敗
-            	request.setAttribute("errormsg","レコードを更新できませんでした。");
+            	request.setAttribute("msg","レコードを更新しました。");
             	// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
 				dispatcher.forward(request, response);
 			} else { // 更新成功
-				request.setAttribute("msg","レコードを更新しました。");
+				request.setAttribute("errormsg","レコードを更新できませんでした。");
 				// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
 				dispatcher.forward(request, response);
