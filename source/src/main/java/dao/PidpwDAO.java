@@ -71,12 +71,12 @@ public class PidpwDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/A4?"
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/a4?"
 					+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true",
 					"root", "password");
 			
 			// SQL文を準備する
-			String sql = "INSERT INTO Pidpw (sName, number, sPw) VALUES (?, ?, ?)";
+			String sql = "INSERT INTO Pidpw (pName, number, pPw) VALUES (?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			// SQL文を完成させる
@@ -121,7 +121,7 @@ public class PidpwDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "UPDATE Pidpw SET sName = ?, sPw = ? WHERE number = ?";
+			String sql = "UPDATE Pidpw SET pName = ?, pPw = ? WHERE number = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

@@ -117,7 +117,7 @@ public class OtherAccountRegistServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
 				dispatcher.forward(request, response);
 			}
-        	}
+        }
         
 
 
