@@ -209,7 +209,7 @@ public class AttendanceDAO {
 
 			// SQL文を準備する
 			String sql = "UPDATE Attendance SET status=? WHERE number =? AND attendaceDate=?";
-;
+
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -253,15 +253,14 @@ public class AttendanceDAO {
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
 			
 			//SQL文の準備する
-			String sql = "UPDATE Attendance SET number=?,status=?,attendanceDate=? WHERE attendantId=?";
+			String sql = "UPDATE Attendance SET status=?, number=?, attendanceDate=? WHERE attendantId=?;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			System.out.println(sql);
 			//SQL文を完成させる
-			pStmt.setInt(1, attendance.getNumber());
-			pStmt.setString(2, attendance.getStatus());
-			pStmt.setString(3, attendance.getAttendanceDate());
-			pStmt.setInt(4, attendance.getAttendantId());
-			
+			pStmt.setString(1, attendance.getStatus());              // 新しい出欠ステータス
+			pStmt.setInt(2, attendance.getNumber());                 // 学籍番号
+			pStmt.setString(3, attendance.getAttendanceDate());      // 日付（例："2025-06-25"）
+			pStmt.setInt(4, attendance.getAttendantId()); 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;

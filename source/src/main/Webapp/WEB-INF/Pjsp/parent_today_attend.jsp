@@ -57,7 +57,7 @@
 		            <label>${attendanceDate.status}</label>
 		        </div>
 		        <div class="button">
-		            <input type="submit" name="regist" value="欠席登録" onclick="absenceAlert()"><br>
+		            <input type="submit" name="regist" value="欠席登録" onclick="return absenceAlert();"><br>
 		        </div>
 		    </div>
 		</form>
@@ -74,6 +74,7 @@ function outAlert() {
 
 function absenceAlert() {
   alert("欠席登録してよろしいですか？");
+  return true;
 }
 </script>
 </html>
