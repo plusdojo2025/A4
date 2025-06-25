@@ -71,9 +71,6 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <input type="hidden" name="number" value="${e.number}">
-                                    <input type="hidden" name="sName" value="${e.sName}">
-                                    <input type="hidden" name="attdate" value="${e.attendanceDate}">
                                     <input type="submit" value="更新" class="submit-btn">
                                 </td>
                             </tr>
