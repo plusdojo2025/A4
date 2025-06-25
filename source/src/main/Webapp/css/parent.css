@@ -10,7 +10,6 @@ body {
 }
 
 input[type="text"] {
-  width: 100%;
   padding: 12px 14px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -51,7 +50,7 @@ input[type="submit"] {
 /*ログイン*/
 .login-form-container {
   max-width: 400px;
-  margin: 40px auto;
+  margin: 10px auto;
   padding: 30px;
   border-radius: 12px;
   text-align: center;
@@ -101,6 +100,11 @@ input[type="submit"] {
   background-color: #7a99cf;
 }
 
+.button input[type="submit"]{
+	padding: 10px 10px;
+	margin: 10px 10px;
+	width: auto;
+}
 
 /* ▼ メインコンテンツ */
 .student-main-content {
