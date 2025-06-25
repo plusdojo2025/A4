@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,16 @@
 	<link rel="stylesheet" href="<c:url value='/css/common.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/parent.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/student_parent_common.css'/>">
+	<!-- FullCalendar CDN -->
+  	<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css" rel="stylesheet" />
+  	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
+    <style>
+      #calendar {
+        max-width: 900px;
+        margin: 40px auto;
+      }
+    </style>
 </head>
 <body>
 	<header>
@@ -28,11 +39,34 @@
 		</nav>
 	</header>
 
-	<div>
-		<!-- カレンダー表示 -->
-		<h2>○○月</h2>
-		
-	</div>
+	<div id="calendar"></div>
+
+  <!-- POSTでServletに送信するフォーム -->
+  <form id="dateForm" action="<c:url value='/OtherAttendanceServlet' />" method="POST">
+    <input type="hidden" name="date" id="dateInput">
+  </form>
+
+  <script>
+    // カレンダーの日付をクリックしたとき
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarEl = document.getElementById('calendar');
+
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        selectable: true,
+        dateClick: function(info) {
+          const clickedDate = info.dateStr; // "2025-06-16" 形式
+          alert("送信する日付: " + clickedDate); // デバッグ用
+
+          // フォームに値をセットして送信
+          document.getElementById('dateInput').value = clickedDate;
+          document.getElementById('dateForm').submit();
+        }
+      });
+
+      calendar.render();
+    });
+  </script>
 	<footer>
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
