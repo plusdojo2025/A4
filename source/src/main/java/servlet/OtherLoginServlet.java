@@ -44,16 +44,14 @@ private static final long serialVersionUID = 1L;
 			SidpwDAO sDao = new SidpwDAO();
 			sName = request.getParameter("otherName");
 			sPw = request.getParameter("otherPw");
+			Sidpw sloginUser = sDao.isLoginOK(new Sidpw(sName,sPw));
 			
-		
-			if (sDao.isLoginOK(new Sidpw(sName, sPw))!=null) { // ログイン成功
+			if (sloginUser != null) { // ログイン成功
 				//学籍番号を取得する。
-		
-				int studentId = sDao.studentSelectId(new Sidpw(sName, sPw));
 		
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
-				session.setAttribute("Sidpw", new Sidpw(sName,studentId,sPw));
+				session.setAttribute("Sidpw", sloginUser);
 				session.setAttribute("position", position);
 				
 				// メニューサーブレットにリダイレクトする
@@ -69,11 +67,12 @@ private static final long serialVersionUID = 1L;
 			PidpwDAO pDao = new PidpwDAO();
 			pName = request.getParameter("otherName");
 			pPw = request.getParameter("otherPw");
+			Pidpw ploginUser = pDao.isLoginOK(new Pidpw(pName,pPw));
 			
-			if (pDao.isLoginOK(new Pidpw(pName, pPw))) { // ログイン成功
+			if (ploginUser != null) { // ログイン成功
 				// セッションスコープにIDを格納する
 				HttpSession session = request.getSession();
-				session.setAttribute("Pidpw", new Pidpw(pName,pPw));
+				session.setAttribute("Pidpw", ploginUser);
 				session.setAttribute("position", position);
 				
 				// メニューサーブレットにリダイレクトする

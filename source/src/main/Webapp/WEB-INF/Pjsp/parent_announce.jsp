@@ -28,7 +28,7 @@
 			</ul>
 		</nav>
 	</header>
-	<h2>連絡一覧</h2>
+	<h2>連絡一覧</h2>                
 		<c:forEach var="a" items="${announceList}">
 		    <p>${a.announceDate}：</p>
 		    <p>${a.announce}</p>

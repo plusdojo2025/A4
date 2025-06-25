@@ -42,12 +42,12 @@ public class OtherMessageServlet extends HttpServlet{
 	        
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_announce.jsp");
 			dispatcher.forward(request, response);
+			
 		} else if(position.equals("parent")) {
 			Pidpw parent = (Pidpw)session.getAttribute("Pidpw");
 			studentId=parent.getNumber();
 			SidpwDAO sDao = new SidpwDAO();
 			className=sDao.studentClassName(studentId);
-			
 			// お知らせ取得
 	        List<Announcemnts> announcements = dao.selectByClass(className);
 	        request.setAttribute("announceList", announcements);

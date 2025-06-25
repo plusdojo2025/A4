@@ -33,7 +33,7 @@ public class SidpwDAO {
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 	
-			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
+			// 結果をBeanに詰める
 			if(rs.next()) {
 				resultSidpw = new Sidpw();
 	            resultSidpw.setsName(rs.getString("sName"));
@@ -340,6 +340,7 @@ public class SidpwDAO {
 			ResultSet rs = pStmt.executeQuery();
 			rs.next();
 			studentId = rs.getInt("number");
+			
 			
 		}catch (SQLException e) {
 			e.printStackTrace();

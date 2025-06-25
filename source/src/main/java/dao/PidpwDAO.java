@@ -12,9 +12,9 @@ import dto.Pidpw;
 
 public class PidpwDAO {
 	//保護者のユーザー情報を閲覧
-	public boolean isLoginOK(Pidpw Pidpw) {
+	public Pidpw isLoginOK(Pidpw Pidpw) {
 		Connection conn = null;
-		boolean loginResult = false;
+		Pidpw resultPidpw = null;
 
 		try {
 			// JDBCドライバを読み込む
@@ -26,7 +26,7 @@ public class PidpwDAO {
 					"root", "password");
 
 			// SELECT文を準備する
-			String sql = "SELECT count(*) FROM Pidpw WHERE pName=? AND pPw=?";
+			String sql = "SELECT * FROM Pidpw WHERE pName=? AND pPw=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, Pidpw.getpName());
 			pStmt.setString(2, Pidpw.getpPw());
@@ -34,32 +34,27 @@ public class PidpwDAO {
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
-			// ユーザーIDとパスワードが一致するユーザーがいれば結果をtrueにする
-			rs.next();
-			if (rs.getInt("count(*)") == 1) {
-				loginResult = true;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			loginResult = false;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			loginResult = false;
-		} finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-					loginResult = false;
+			// 結果をBeanに詰める
+				if(rs.next()) {
+				resultPidpw = new Pidpw();
+	            resultPidpw.setpName(rs.getString("tName"));
+	            resultPidpw.setpPw(rs.getString("tPw"));
+	      
 				}
-			}
-		}
+			} catch (SQLException | ClassNotFoundException e) {
+	            e.printStackTrace();
+	        } finally {
+	            try {
+	                if (conn != null) conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
 
-		// 結果を返す
-		return loginResult;
-	}		
+				
+			return resultPidpw;
+				
+		}	
 	
 	//保護者のユーザー情報を登録
 	public boolean insert(Pidpw card) {
