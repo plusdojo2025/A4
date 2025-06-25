@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 public class TeacherDisplayAttendanceServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession(false); // 既存セッションのみ取得

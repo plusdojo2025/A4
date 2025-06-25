@@ -43,7 +43,7 @@
   <div id="calendar"></div>
 
   <!-- POSTでServletに送信するフォーム -->
-  <form id="dateForm" action="<c:url value='/TeacherAttendanceServlet' />" method="POST">
+  <form id="dateForm" action="<c:url value='/TeacherDisplayAttendanceServlet' />" method="POST">
     <input type="hidden" name="date" id="dateInput">
   </form>
 
