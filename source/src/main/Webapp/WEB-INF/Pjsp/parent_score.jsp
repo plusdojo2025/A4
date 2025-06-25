@@ -14,7 +14,7 @@
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<div class="out">
-			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/out.png'/> width="50px" height="50px"></a>
+			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/out.png'/>" width="50px" height="50px"></a>
 		</div>
 		<div class="logo">
 			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
@@ -30,12 +30,14 @@
 	</header>
 	<main>
 	<div class="student-main-content">
-		<select>
-			<!-- 学期選択 -->
-		    <option value="1">1学期</option>
-		    <option value="2">2学期</option>
-		    <option value="3">3学期</option>
-	  	</select>
+		<div class="selectbox-5">
+			<select>
+				<!-- 学期選択 -->
+			    <option value="1">1学期</option>
+			    <option value="2">2学期</option>
+			    <option value="3">3学期</option>
+		  	</select>
+		 </div> 	
 	  	<form method="POST" action="">
 			<!-- テストを検索する -->
 			<input type="text" name="testName">テスト
@@ -76,7 +78,7 @@
 		</c:forEach>
 	</div>	
 	</main>
-	<footer>
+	<footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>

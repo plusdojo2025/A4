@@ -41,7 +41,7 @@
 		<p>登録日時：<c:out value="${announcement.announceDate}" /></p>
 		<p>連絡内容：<c:out value="${announcement.announce}" /></p>
 	</div>
-	<footer>
+	<footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>

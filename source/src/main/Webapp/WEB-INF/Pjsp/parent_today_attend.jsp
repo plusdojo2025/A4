@@ -15,7 +15,7 @@
     <header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<div class="out">
-			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/out.png'/> width="50px" height="50px"></a>
+			<a href="<c:url value='/OtherLoginServlet'/>"><img src = "<c:url value='/images/out.png'/>" width="50px" height="50px"></a>
 		</div>
 		<div class="logo">
 			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
@@ -41,7 +41,7 @@
         <form method="POST" action="<c:url value='/OtherAttendanceServlet'/>" class="form-flex">
         <div class="day">
         <!--日付表示(のちに変更必要)-->
-        <p>日付：${attendanceDate.attendanceDate}</p>
+        <p>日付：${today}</p>
     </div>
             <div class="attend">
                 <div class="attend2">
@@ -66,7 +66,7 @@
             </div>
         </form>
     </div>
-    <footer>
+    <footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
