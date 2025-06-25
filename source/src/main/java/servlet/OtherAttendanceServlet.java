@@ -24,8 +24,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
-			session.getAttribute("position") == null && session.getAttribute("patrentName") == null) {
+		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
 			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
 			return;
 		}
