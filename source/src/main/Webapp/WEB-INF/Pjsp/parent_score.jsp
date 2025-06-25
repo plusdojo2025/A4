@@ -14,11 +14,8 @@
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<div class="out">
-<<<<<<< HEAD
 			<a href="<c:url value='/OtherLoginServlet'/>" onclick="return outAlert();"><img src = "<c:url value='/images/out.png'/>" width="50px" height="50px"></a>
-=======
 			<a href="<c:url value='/OtherLoginServlet'/>"><img src = "<c:url value='/images/out.png'/>" width="50px" height="50px"></a>
->>>>>>> 1fc07903cf9eac5d1815d3355298ffd6a9455a60
 		</div>
 		<div class="logo">
 			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
