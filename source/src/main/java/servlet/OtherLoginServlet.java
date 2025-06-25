@@ -55,8 +55,8 @@ private static final long serialVersionUID = 1L;
 				HttpSession session = request.getSession();
 				session.setAttribute("Sidpw", new Sidpw(sName,studentId,sPw));
 				session.setAttribute("position", position);
+				
 				// メニューサーブレットにリダイレクトする
-		
 				response.sendRedirect(request.getContextPath() + "/OtherMenuServlet");
 			}
 			else { // ログイン失敗
@@ -75,6 +75,7 @@ private static final long serialVersionUID = 1L;
 				HttpSession session = request.getSession();
 				session.setAttribute("Pidpw", new Pidpw(pName,pPw));
 				session.setAttribute("position", position);
+				
 				// メニューサーブレットにリダイレクトする
 				response.sendRedirect(request.getContextPath() + "/OtherMenuServlet");
 			}
