@@ -30,19 +30,23 @@
 	</header>
 	<main>
 	<div class="student-main-content">
-		<select>
-			<!-- 学期選択 -->
-		    <option value="1">1学期</option>
-		    <option value="2">2学期</option>
-		    <option value="3">3学期</option>
-	  	</select>
-	  	<form method="POST" action="">
+	
+		<form method="POST" action="<c:url value='/OtherGradeServlet'/>">
+			<div class="selectbox-5">
+				<select>
+					<!-- 学期選択 -->
+				    <option value="1">1学期</option>
+				    <option value="2">2学期</option>
+				    <option value="3">3学期</option>
+			  	</select>
+	  		</div>
+	  		
 			<!-- テストを検索する -->
 			<input type="text" name="testName">テスト
 			<input type="submit" name="search" value="検索"><br>
 		</form>
 		<c:forEach var="e" items="${scoreList}" >
-		<form method="POST" action="/A4/OtherGradeServlet">
+		<form method="POST" action="<c:url value='/OtherGradeServlet'/>">
 			<table>
 				<tr>
 					<td></td>

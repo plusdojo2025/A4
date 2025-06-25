@@ -95,7 +95,7 @@ body {
 
 /*当日出席一覧*/
 .calender{
-	margin-left: 400px;
+	margin-left: 15%;
 }
 .day {
 	text-align: center;
@@ -132,8 +132,31 @@ body {
   padding: 8px 20px;
   font-size: 16px;
   cursor: pointer;
+  background-color: #b0c4de;
 }
 
+/*成績表示*/
+.student-main-content input[type="text"]{
+	width: 100px;
+	padding: 15px;
+	margin: auto 10px
+}
+
+.student-main-content input[type="submit"]{
+	width: 100px;
+	padding: 12px;
+	background-color: #b0c4de;
+}
+
+.my-table {
+	border: 2px solid #4C6CB3;
+	border-collapse: collapse;
+}
+.my-table td {
+	border: 1px solid #4C6CB3;
+	padding: 8px;
+	text-align: center;
+}
 
 /*連絡通知*/
 .announce {
