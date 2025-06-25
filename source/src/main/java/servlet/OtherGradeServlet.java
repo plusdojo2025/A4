@@ -51,13 +51,13 @@ public class OtherGradeServlet extends HttpServlet{
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		int number = Integer.parseInt(request.getParameter("number"));
-		String test = request.getParameter("testName");
+		String testName = request.getParameter("testName");
 		int term = Integer.parseInt(request.getParameter("term"));
 			
 		// 検索処理を行う
 		TestsDAO t = new TestsDAO();
 		ArrayList<Tests> list = new ArrayList<Tests>();
-		list = t.select(new Tests(number, term, test));
+		list = t.select(new Tests(number, term, testName));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("scoreList", list);
