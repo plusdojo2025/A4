@@ -1,1 +1,59 @@
 @charset "UTF-8";
+
+/*ログイン*/
+.login-form-container {
+  max-width: 400px;
+  margin: 70px auto;
+  border-radius: 12px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+  margin-top: 16px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  border-color: #4C6CB3;
+  background-color: #fff;
+  outline: none;
+}
+
+.login-form input[type="submit"] {
+  margin-top: 60px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4C6CB3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-form input[type="submit"]:hover {
+  background-color: #7a99cf;
+}
+
+.button input[type="submit"]{
+	padding: 10px 10px;
+	margin: 10px 10px;
+	width: auto;
+}

@@ -42,7 +42,7 @@
 	 	</table>
 	</c:forEach>
 	<!-- 連絡事項の登録 -->
-	<form method="POST" action="<c:url value='/TeacherMessageServlet'/>" id="form">
+	<form method="POST" action="<c:url value='/TeacherMessageServlet'/>" id="form" class="contact">
 		<table>
 			<tr>
 				<td>

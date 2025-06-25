@@ -9,6 +9,11 @@ body {
 	background-color: #F2F2F2;
 }
 
+.logo {
+    margin-top: 30px;
+}
+
+
 input[type="text"] {
   padding: 12px 14px;
   font-size: 16px;
@@ -47,64 +52,6 @@ input[type="submit"] {
 	margin: 0 auto;
 }
 
-/*ログイン*/
-.login-form-container {
-  max-width: 400px;
-  margin: 10px auto;
-  padding: 30px;
-  border-radius: 12px;
-  text-align: center;
-}
-
-.login-form label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 14px;
-  color: #333;
-  margin-top: 16px;
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"] {
-  width: 100%;
-  padding: 12px 14px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s;
-  box-sizing: border-box;
-}
-
-.login-form input[type="text"]:focus,
-.login-form input[type="password"]:focus {
-  border-color: #4C6CB3;
-  background-color: #fff;
-  outline: none;
-}
-
-.login-form input[type="submit"] {
-  margin-top: 30px;
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  background-color: #4C6CB3;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.login-form input[type="submit"]:hover {
-  background-color: #7a99cf;
-}
-
-.button input[type="submit"]{
-	padding: 10px 10px;
-	margin: 10px 10px;
-	width: auto;
-}
 
 /* ▼ メインコンテンツ */
 .student-main-content {
@@ -222,4 +169,5 @@ input[type="submit"] {
     color: #333333;
     font-size: 1em;
     cursor: pointer;
+    display: inline-flex;
 }

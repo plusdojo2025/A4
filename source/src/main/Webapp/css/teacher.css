@@ -508,3 +508,35 @@ h3 {
     font-size: 1em;
     cursor: pointer;
 }
+
+
+/*連絡管理*/
+.contact{
+	width: 70%;
+	text-align: center;
+}
+
+.contact input[type="text"] {
+	text-align: center;
+	width: 70%;
+}
+
+.contact input[type="submit"] {
+	margin-top: 0px;
+}
+
+form.contact {
+  margin: 0 auto;     /* 横方向の中央寄せ */
+}
+
+
+.message-block {
+  padding: 10px 0;
+  border-bottom: 1px dashed #aaa;
+}
+
+/* 最後のメッセージだけ線を非表示にする（任意） */
+.message-block:last-child {
+  border-bottom: none;
+}
+
