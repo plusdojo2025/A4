@@ -24,6 +24,7 @@ public class TeacherAttendanceServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
+		
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession(false); // 既存セッションのみ取得
 		if (session == null || session.getAttribute("Tidpw") == null) {
@@ -41,7 +42,7 @@ public class TeacherAttendanceServlet extends HttpServlet {
 	    List<Allaccess> attendance = new ArrayList<Allaccess>();
 		
 		attendance = attendanceInfo.select(formattedDate);
-
+		
 		//リクエスト領域に保存
 		request.setAttribute("attendanceList", attendance);
 		request.setAttribute("today", formattedDate);

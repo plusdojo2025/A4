@@ -53,6 +53,7 @@
                 	<!-- セッションスコープから名前とる -->
                			<label id="student-name">${sessionScope.Sidpw.sName}</label>
                			<input type="hidden" name="number" value="${attendanceDate.number}">
+               			<input type="hidden" name="status" value="欠席">
                		</div>
                		<div >
                			
