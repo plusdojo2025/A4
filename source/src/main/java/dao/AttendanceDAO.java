@@ -243,7 +243,7 @@ public class AttendanceDAO {
 	public boolean update(Attendance attendance) {
 		Connection conn = null;
 		boolean result = false;
-
+		System.out.println("よくぞここまで来た。");
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -255,7 +255,7 @@ public class AttendanceDAO {
 			//SQL文の準備する
 			String sql = "UPDATE Attendance SET number=?,status=?,attendanceDate=? WHERE attendantId=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			
+			System.out.println(sql);
 			//SQL文を完成させる
 			pStmt.setInt(1, attendance.getNumber());
 			pStmt.setString(2, attendance.getStatus());

@@ -39,6 +39,7 @@
     <div>
         <!--生徒の出席状況の表示-->
         <form method="POST" action="<c:url value='/OtherAttendanceServlet'/>" class="form-flex">
+<<<<<<< Updated upstream
         <div class="day">
         <!--日付表示(のちに変更必要)-->
         <p>日付：${today}</p>
@@ -66,6 +67,29 @@
             	</div>
             </div>
         </form>
+=======
+		    <input type="hidden" name="number" value="${attendanceDate.number}">
+		    <input type="hidden" name="status" value="欠席">
+		    
+		    <div class="day">
+		        <p>日付：${today}</p>
+		    </div>
+		    
+		    <div class="attend">
+		        <div class="attend2">
+		            <label for="name">名前</label>
+		            <label for="status">出欠</label>
+		        </div>
+		        <div class="attend2">
+		            <label id="student-name">${sessionScope.Sidpw.sName}</label>
+		            <label>${attendanceDate.status}</label>
+		        </div>
+		        <div class="button">
+		            <input type="submit" name="regist" value="欠席登録"><br>
+		        </div>
+		    </div>
+		</form>
+>>>>>>> Stashed changes
     </div>
     <footer class="footer">
 		<img src = "<c:url value='/images/runningman.png'/>">
