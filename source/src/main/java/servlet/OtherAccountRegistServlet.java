@@ -93,12 +93,12 @@ public class OtherAccountRegistServlet extends HttpServlet {
 
         //name属性の"submit"で登録・更新・削除をif文で分けて処理を行う。
         if(request.getParameter("submit").equals("更新")) {
-            if (sDao.update(new Sidpw(editCName,editSName,editSNum,editSPw)) && pDao.update(new Pidpw(editPName,editSNum,editPPw))) { // 更新成功
+            if (sDao.update(new Sidpw(editCName,editSName,editSNum,editSPw)) && pDao.update(new Pidpw(editPName,editSNum,editPPw))) { // 更新失敗
             	request.setAttribute("errormsg","レコードを更新できませんでした。");
             	// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
 				dispatcher.forward(request, response);
-			} else { // 更新失敗
+			} else { // 更新成功
 				request.setAttribute("msg","レコードを更新しました。");
 				// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
@@ -106,12 +106,12 @@ public class OtherAccountRegistServlet extends HttpServlet {
 			}
         }
         else if(request.getParameter("submit").equals("削除")) {
-            if (sDao.delete(new Sidpw(editCName,editSName,editSNum,editSPw)) && pDao.delete(new Pidpw(editPName,editSNum,editPPw))) { // 削除成功
+            if (sDao.delete(new Sidpw(editCName,editSName,editSNum,editSPw)) && pDao.delete(new Pidpw(editPName,editSNum,editPPw))) { // 削除失敗
             	request.setAttribute("errormsg","レコードを削除できませんでした。");
             	// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
 				dispatcher.forward(request, response);
-			} else { // 削除失敗
+			} else { // 削除成功
 				request.setAttribute("msg","レコードを削除しました。");
 				// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");

@@ -26,7 +26,7 @@ public class OtherAccountRegistServlet2 extends HttpServlet{
 			return;
 		}
 		
-		//ページのフォワード(jspからjspに移るときがフォワード)をしよう。リンク先の変更を忘れないように！フォワード先はteacher_login.jsp！！
+		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_regist.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -55,12 +55,12 @@ public class OtherAccountRegistServlet2 extends HttpServlet{
         PidpwDAO pDao = new PidpwDAO();
         if(request.getParameter("submit").equals("登録")) {
 	        if (sDao.insert(new Sidpw(registCName,registSName,registSNum,registSPw)) && pDao.insert(new Pidpw(registPName,registSNum,registPPw))) { // 登録成功
-	        	request.setAttribute("msg","レコードを登録しました。");
+	        	request.setAttribute("errormsg","レコードを登録できませんでした。");
 	        	// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_regist.jsp");
 				dispatcher.forward(request, response);
 			} else { // 登録失敗
-				request.setAttribute("errormsg","レコードを登録できませんでした。");
+				request.setAttribute("msg","レコードを登録しました。");
 				// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_regist.jsp");
 				dispatcher.forward(request, response);
