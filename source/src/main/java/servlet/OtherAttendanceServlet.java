@@ -35,9 +35,9 @@ public class OtherAttendanceServlet extends HttpServlet {
 		
 		//その日の日付を取得
 		LocalDate today = LocalDate.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String formattedDate = today.format(formatter);
-		
+
 		//出席情報を取得
 		AttendanceDAO attendanceInfo = new AttendanceDAO();
 		Attendance attendance = new Attendance();
@@ -46,6 +46,9 @@ public class OtherAttendanceServlet extends HttpServlet {
 		//リクエスト領域に保存
 		request.setAttribute("attendanceDate", attendance);
 		request.setAttribute("today", formattedDate);
+		
+		session.setAttribute("attendanceDate", attendance);
+		session.setAttribute("today",formattedDate);
 		
 		// ユーザーの種類に応じてJSPを振り分け
 		String position = (String) session.getAttribute("position");
@@ -74,12 +77,14 @@ public class OtherAttendanceServlet extends HttpServlet {
         String status = request.getParameter("status");
         System.out.println(status);
         
-        String attendanceDate = attendance.getAttendanceDate();
-        String date = attendanceDate.replace("/","-");
+        String attendanceDate = (String)session.getAttribute("today");
         
+        System.out.println(position);
+        System.out.println(attendanceDate);
+        System.out.println(attendantId);
 		//出席登録・欠席登録
 		if(position.equals("student")) {
-			if(attendDao.update(new Attendance(attendantId,number,status,date))) {
+			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
 				response.sendRedirect(request.getContextPath() + "/OtherAttendanceServlet");
 			}
 			else {
@@ -89,7 +94,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 			
 		}
 		else if(position.equals("parent")) {
-			if(attendDao.update(new Attendance(attendantId,number,status,date))) {
+			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
 				response.sendRedirect(request.getContextPath() + "/OtherAttendanceServlet");
 			}
 			else {

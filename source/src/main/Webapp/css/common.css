@@ -84,4 +84,5 @@ a:active {
 .footer {
     background-image: url(../images/runningman.png);
     background-repeat: repeat-x;
+    margin-top: 100px;
 }
