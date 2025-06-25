@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.TidpwDAO;
 import dto.Tidpw;
@@ -25,12 +24,7 @@ import dto.Tidpw;
 public class TeacherAccountRegistServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-    	//もしもログインしていなかったらログインサーブレットにリダイレクトする
-    	HttpSession session = request.getSession();
-    	if(session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null){
-    		response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
-    		return;
-    	}
+    	
     	//ページのフォワード(jspからjspに移るときがフォワード)をしよう。リンク先の変更を忘れないように！フォワード先はteacher_login.jsp！！
     	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_account.jsp");
     	dispatcher.forward(request, response);

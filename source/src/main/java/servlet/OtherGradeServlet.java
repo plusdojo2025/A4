@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.TestsDAO;
+import dto.Pidpw;
+import dto.Sidpw;
 import dto.Tests;
 
 @WebServlet("/OtherGradeServlet")
@@ -47,22 +49,32 @@ public class OtherGradeServlet extends HttpServlet{
 			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
 			return;
 		}
-
-		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		int number = Integer.parseInt(request.getParameter("number"));
+		String position = (String)session.getAttribute("position");
+		int studentId=0;
+		// リクエストパラメータを取得する
+		if(position.equals("student")) {
+			Sidpw studentInfo = new Sidpw();
+			studentInfo = (Sidpw)session.getAttribute("Sidpw");
+			studentId = studentInfo.getNumber();
+		}
+		else if(position.equals("parent")) {
+			Pidpw parentInfo = new Pidpw();
+			parentInfo = (Pidpw)session.getAttribute("Pidpw");
+			studentId = parentInfo.getNumber();
+		}
 		String testName = request.getParameter("testName");
 		int term = Integer.parseInt(request.getParameter("term"));
 			
 		// 検索処理を行う
 		TestsDAO t = new TestsDAO();
 		ArrayList<Tests> list = new ArrayList<Tests>();
-		list = t.select(new Tests(number, term, testName));
+		list = t.select(new Tests(studentId, term, testName));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("scoreList", list);
 
-		String position = (String)session.getAttribute("position");
+		
 		// 成績ページにフォワードする
 		if(position.equals("student")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_score.jsp");

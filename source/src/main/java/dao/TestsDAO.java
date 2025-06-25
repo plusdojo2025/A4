@@ -230,21 +230,21 @@ public class TestsDAO {
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
 
 			// SQL文を準備する
-			String sql ="";
+			String sql ="SELECT * FROM Tests WHERE number=? AND term=? AND testName=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			//SQL文を完成させる
-			if(tests.getTerm() != 0) {
+			if(tests.getNumber() != 0) {
 				pStmt.setInt(1,tests.getTerm());
 			}
 			else {
 				pStmt.setInt(1, 0);
 			}
-			if(tests.getTestName() != null) {
-				pStmt.setString(2,tests.getTestName());
+			if(tests.getTerm() != 0) {
+				pStmt.setInt(2,tests.getTerm());
 			}
 			else {
-				pStmt.setString(2, "%");
+				pStmt.setInt(2, 0);
 			}
 			if(tests.getTestName
 					() != null) {
