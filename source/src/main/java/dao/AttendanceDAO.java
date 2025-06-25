@@ -14,10 +14,11 @@ import dto.Attendance;
 public class AttendanceDAO {
 	
 	//出席状況を閲覧する(今日)
-	public List<Allaccess> select(String date) {
+	public List<Allaccess> select(String date1) {
 		Connection conn = null;
 		List<Allaccess> cardList = new ArrayList<Allaccess>();
-
+		String date = date1.replace("/","-");
+		
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -30,6 +31,7 @@ public class AttendanceDAO {
 			// SQL文を準備する
 			String sql = "SELECT Sidpw.sName,Attendance.number,Attendance.status,Attendance.attendanceDate"
 					+" FROM Attendance JOIN Sidpw ON Attendance.number = Sidpw.number WHERE attendanceDate = ? ";
+			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			pStmt.setString(1,date);
@@ -128,9 +130,10 @@ public class AttendanceDAO {
 	}
 	
 	//学籍番号と日付を引数にその日の出席情報を取得する
-	public Attendance attendanceSelect(int number, String attendanceDate) {
+	public Attendance attendanceSelect(int number, String date) {
 		Connection conn = null;
 		Attendance attendanceData = new Attendance();
+		String attendanceDate = date.replace("/","-");
 		
 		try {
 			// JDBCドライバを読み込む

@@ -71,13 +71,15 @@ public class OtherAttendanceServlet extends HttpServlet {
         int attendantId = attendance.getAttendantId();
         int number = attendance.getNumber();
         String status = request.getParameter("status");
+        System.out.println(status);
+        
         String attendanceDate = attendance.getAttendanceDate();
+        String date = attendanceDate.replace("/","-");
         
 		//出席登録・欠席登録
 		if(position.equals("student")) {
-			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_month_atted.jsp");
-				dispatcher.forward(request, response);
+			if(attendDao.update(new Attendance(attendantId,number,status,date))) {
+				response.sendRedirect(request.getContextPath() + "/OtherAttendanceServlet");
 			}
 			else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_today_attend.jsp");
@@ -86,9 +88,8 @@ public class OtherAttendanceServlet extends HttpServlet {
 			
 		}
 		else if(position.equals("parent")) {
-			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_month_attend.jsp");
-				dispatcher.forward(request, response);
+			if(attendDao.update(new Attendance(attendantId,number,status,date))) {
+				response.sendRedirect(request.getContextPath() + "/OtherAttendanceServlet");
 			}
 			else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_today_attend.jsp");
