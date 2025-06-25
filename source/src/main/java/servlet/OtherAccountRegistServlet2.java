@@ -53,13 +53,15 @@ public class OtherAccountRegistServlet2 extends HttpServlet{
         //以下で必要なDAOやDTO, ArrayListをインスタンス化
         SidpwDAO sDao = new SidpwDAO();
         PidpwDAO pDao = new PidpwDAO();
-        if(request.getParameter("submit").equals("登録")) {
-	        if (sDao.insert(new Sidpw(registCName,registSName,registSNum,registSPw)) && pDao.insert(new Pidpw(registPName,registSNum,registPPw))) { // 登録成功
+        if(request.getParameter("regist").equals("登録")) {
+        	boolean ans1=sDao.insert(new Sidpw(registCName,registSName,registSNum,registSPw));
+        	boolean ans2=pDao.insert(new Pidpw(registPName,registSNum,registPPw));
+	        if (!(ans1 && ans2)) { // 登録失敗
 	        	request.setAttribute("errormsg","レコードを登録できませんでした。");
 	        	// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_regist.jsp");
 				dispatcher.forward(request, response);
-			} else { // 登録失敗
+			} else { // 登録成功
 				request.setAttribute("msg","レコードを登録しました。");
 				// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_regist.jsp");
