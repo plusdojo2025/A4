@@ -41,7 +41,7 @@
         <form method="POST" action="<c:url value='/OtherAttendanceServlet'/>" class="form-flex">
         <div class="day">
         <!--日付表示(のちに変更必要)-->
-        <p>日付：${attendanceDate.attendanceDate}</p>
+        <p>日付：${today}</p>
     </div>
             <div class="attend">
                 <div class="attend2">
