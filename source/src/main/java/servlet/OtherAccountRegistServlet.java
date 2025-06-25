@@ -68,9 +68,9 @@ public class OtherAccountRegistServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-        //もしもログインしていなかったらログインサーブレットにリダイレクトする
+    	//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null){
+		if(session.getAttribute("Tidpw") == null ){
 			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
 			return;
 		}
@@ -80,18 +80,11 @@ public class OtherAccountRegistServlet extends HttpServlet {
 		int editCName = tDto.getClassName();
         //リクエスト領域からアカウント編集画面のデータを取得
 		request.setCharacterEncoding("UTF-8");
-		String editSName = request.getParameter("editStudentName");
-        int editSNum = Integer.parseInt(request.getParameter("editStudentNumber"));
-        String editSPw = request.getParameter("editStudentPw");
-        String editPName = request.getParameter("editParentName");
-        String editPPw = request.getParameter("editParentPw");
-        //リクエスト領域からアカウント登録画面のデータを取得
-        String registSName = request.getParameter("registStudentName");
-		int registCName = Integer.parseInt(request.getParameter("registClassName"));
-        int registSNum = Integer.parseInt(request.getParameter("registStudentNumber"));
-        String registSPw = request.getParameter("registStudentPw");
-		String registPName = request.getParameter("registParentName");
-        String registPPw = request.getParameter("registParentPw");
+		String editSName = request.getParameter("sName");
+        int editSNum = Integer.parseInt(request.getParameter("number"));
+        String editSPw = request.getParameter("sPw");
+        String editPName = request.getParameter("pName");
+        String editPPw = request.getParameter("pPw");
         
 
         //以下で必要なDAOやDTO, ArrayListをインスタンス化
@@ -101,40 +94,31 @@ public class OtherAccountRegistServlet extends HttpServlet {
         //name属性の"submit"で登録・更新・削除をif文で分けて処理を行う。
         if(request.getParameter("submit").equals("更新")) {
             if (sDao.update(new Sidpw(editCName,editSName,editSNum,editSPw)) && pDao.update(new Pidpw(editPName,editSNum,editPPw))) { // 更新成功
-				// 結果ページにフォワードする
+            	request.setAttribute("errormsg","レコードを更新できませんでした。");
+            	// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
 				dispatcher.forward(request, response);
 			} else { // 更新失敗
-				request.setAttribute("updateErr","レコードを更新できませんでした。");
+				request.setAttribute("msg","レコードを更新しました。");
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_regist.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
 				dispatcher.forward(request, response);
 			}
         }
         else if(request.getParameter("submit").equals("削除")) {
             if (sDao.delete(new Sidpw(editCName,editSName,editSNum,editSPw)) && pDao.delete(new Pidpw(editPName,editSNum,editPPw))) { // 削除成功
-				// 結果ページにフォワードする
+            	request.setAttribute("errormsg","レコードを削除できませんでした。");
+            	// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
 				dispatcher.forward(request, response);
 			} else { // 削除失敗
-				request.setAttribute("deleteErr","レコードを削除できませんでした。");
-				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_regist.jsp");
-				dispatcher.forward(request, response);
-			}
-        }
-        else if(request.getParameter("submit").equals("登録")) {
-            if (sDao.insert(new Sidpw(registCName,registSName,registSNum,registSPw)) && pDao.insert(new Pidpw(registPName,registSNum,registPPw))) { // 登録成功
+				request.setAttribute("msg","レコードを削除しました。");
 				// 結果ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_list.jsp");
 				dispatcher.forward(request, response);
-			} else { // 登録失敗
-				request.setAttribute("updateErr","レコードを登録できませんでした。");
-				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_regist.jsp");
-				dispatcher.forward(request, response);
 			}
-        }
+        	}
+        
 
 
     }

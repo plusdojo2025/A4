@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,11 +24,13 @@
 				<li><a href="<c:url value='/OtherAccountRegistServlet'/>">ユーザー一覧管理</a></li>
             </ul>
         </nav>
+        ${msg}
+        ${errormsg}
 </header>
 	
 <main>
 	<div class="contact-form-container">
-		<form method="POST" action="<c:url value='/AccountRegistServlet'/>" id="form">
+		<form method="POST" action="<c:url value='/OtherAccountRegistServlet2'/>" id="form">
 			<table>
 				<!--  生徒 -->
 				<tr>

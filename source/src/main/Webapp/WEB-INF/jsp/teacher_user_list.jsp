@@ -27,12 +27,14 @@
 				
             </ul>
         </nav>
+        
 	</header>
-
-	<label class="out"><a class="out" href="<c:url value='/OtherAccountRegistServlet'/>">ユーザー登録</a></label>
+	${msg}
+    ${errormsg}
+	<label class="out"><a href="<c:url value='/OtherAccountRegistServlet2'/>">ユーザー登録</a></label>
 	
 	 <c:forEach var="e" items="${Allaccess}">
-			<form class="access-edit-form" method="POST" action="<c:url value='/OtherAccountRegistServlet2'/>">
+			<form class="access-edit-form" method="POST" action="<c:url value='/OtherAccountRegistServlet'/>">
 				<div class="access-wrapper">
 					<div class="access-row">
 						<!-- 生徒 -->
@@ -42,7 +44,7 @@
 							<input type="text" name="sName" value="${e.sName}">
 	
 							<label>学籍番号</label>
-							<input type="text" name="sNumber" value="${e.number}">
+							<input type="text" name="number" value="${e.number}">
 	
 							<label>パスワード</label>
 							<input type="text" name="sPw" value="${e.sPw}">
@@ -55,7 +57,7 @@
 							<input type="text" name="pName" value="${e.pName}">
 	
 							<label>学籍番号</label>
-							<input type="text" name="pNumber" value="${e.number}">
+							<input type="text" name="number" value="${e.number}">
 	
 							<label>パスワード</label>
 							<input type="text" name="pPw" value="${e.pPw}">
