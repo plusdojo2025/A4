@@ -15,7 +15,7 @@
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<div class="logo">
-			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
+			<img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px">
 		</div>
 	</header>
 	
