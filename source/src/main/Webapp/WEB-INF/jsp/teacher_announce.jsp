@@ -33,11 +33,11 @@
 	<c:forEach var="e" items="${announceList}">
 		<table>
 			<tr>
-				<td>${e.date}</td>
+				<td>${e.announceDate}</td>
 			</tr>
 			<!-- 連絡内容を表示 -->
 			<tr>
-	  			<td>${e.announcements}</td>
+	  			<td>${e.announce}</td>
 	 		</tr>
 	 	</table>
 	</c:forEach>
@@ -46,7 +46,7 @@
 		<table>
 			<tr>
 				<td>
-					<input type="hidden" name="classname" value="${e.classname}">   
+					<input type="hidden" name="classname" value="${sessionScope.Tidpw.className}">   
 		  			<input type="text" name="enter" value="入力してください" required>
 	  			</td>
 	  			<td>
