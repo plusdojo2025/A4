@@ -29,10 +29,10 @@
         </nav>
 	</header>
 
-	<label class="out"><a href="<c:url value='/OtherAccountRegistServlet'/>">ユーザー登録</a></label>
+	<label class="out"><a class="out" href="<c:url value='/OtherAccountRegistServlet'/>">ユーザー登録</a></label>
 	
 	 <c:forEach var="e" items="${Allaccess}">
-			<form class="access-edit-form" method="POST" action="<c:url value='/OtherAccountRegistServlet'/>">
+			<form class="access-edit-form" method="POST" action="<c:url value='/OtherAccountRegistServlet2'/>">
 				<div class="access-wrapper">
 					<div class="access-row">
 						<!-- 生徒 -->
