@@ -37,8 +37,8 @@ public class PidpwDAO {
 			// 結果をBeanに詰める
 				if(rs.next()) {
 				resultPidpw = new Pidpw();
-	            resultPidpw.setpName(rs.getString("tName"));
-	            resultPidpw.setpPw(rs.getString("tPw"));
+	            resultPidpw.setpName(rs.getString("pName"));
+	            resultPidpw.setpPw(rs.getString("pPw"));
 	      
 				}
 			} catch (SQLException | ClassNotFoundException e) {

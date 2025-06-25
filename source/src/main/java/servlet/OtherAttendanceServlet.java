@@ -42,7 +42,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		AttendanceDAO attendanceInfo = new AttendanceDAO();
 		Attendance attendance = new Attendance();
 		attendance = attendanceInfo.attendanceSelect(studentId, formattedDate);
-		
+		System.out.println(attendance.getAttendantId());
 		//リクエスト領域に保存
 		request.setAttribute("attendanceDate", attendance);
 		request.setAttribute("today", formattedDate);
@@ -85,9 +85,11 @@ public class OtherAttendanceServlet extends HttpServlet {
 		//出席登録・欠席登録
 		if(position.equals("student")) {
 			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
+				System.out.println("こんばんはだよ～");
 				response.sendRedirect(request.getContextPath() + "/OtherAttendanceServlet");
 			}
 			else {
+				System.out.println("こんばんはだよ～しっぱい");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_today_attend.jsp");
 				dispatcher.forward(request, response);
 			}
@@ -95,9 +97,11 @@ public class OtherAttendanceServlet extends HttpServlet {
 		}
 		else if(position.equals("parent")) {
 			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
+				System.out.println("こんちくわだよ～");
 				response.sendRedirect(request.getContextPath() + "/OtherAttendanceServlet");
 			}
 			else {
+				System.out.println("こんちくわだよ～失敗");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_today_attend.jsp");
 				dispatcher.forward(request, response);
 			}

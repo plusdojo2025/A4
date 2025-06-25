@@ -12,7 +12,7 @@
 <body>
 	<header>
 		<label class="out">
-			<a href="<c:url value='TeacherLoginServlet'/>"><img src = "images/out.png" width="50px" height="50px"></a>
+			<a href="<c:url value='TeacherLogoutServlet'/>"><img src = "images/out.png" width="50px" height="50px"></a>
 		</label>
 		<div class="logo">
 			<a href="<c:url value='/TeacherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>

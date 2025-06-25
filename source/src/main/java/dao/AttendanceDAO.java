@@ -253,7 +253,7 @@ public class AttendanceDAO {
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
 			
 			//SQL文の準備する
-			String sql = "UPDATE Attendance SET status=?, number=?, attendanceDate=? WHERE attendantId=?;";
+			String sql = "UPDATE Attendance SET status=?, number=?, attendanceDate=? WHERE attendantId=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			System.out.println(sql);
 			//SQL文を完成させる

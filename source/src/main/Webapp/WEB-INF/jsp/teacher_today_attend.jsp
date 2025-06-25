@@ -15,7 +15,7 @@
 <body>
     <header>
         <label class="out">
-            <a href="<c:url value='TeacherLoginServlet'/>">
+            <a href="<c:url value='TeacherLogoutServlet'/>">
                 <img src="images/out.png" width="50px" height="50px">
             </a>
         </label>
