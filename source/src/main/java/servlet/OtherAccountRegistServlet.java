@@ -24,7 +24,7 @@ public class OtherAccountRegistServlet extends HttpServlet {
             throws ServletException, IOException {
         //もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("teacherName") == null && session.getAttribute("teacherPw") == null){
+		if(session.getAttribute("Tidpw") == null ){
 			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
 			return;
 		}
