@@ -24,7 +24,7 @@
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<div class="out">
-			<a href="<c:url value='/LoginServlet'/>"><img src = "<c:url value='/images/out.png'/>" width="50px" height="50px"></a>
+			<a href="<c:url value='/OtherLoginServlet'/>"><img src = "<c:url value='/images/out.png'/>" width="50px" height="50px"></a>
 		</div>
 		<div class="logo">
 			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
@@ -39,14 +39,7 @@
 		</nav>
 	</header>
 
-<<<<<<< HEAD
-	<div>
-		<!-- カレンダー表示 -->
-		<h2>○○月</h2>
-		
-	</div>
-	<footer class="footer">
-=======
+
 	<div id="calendar"></div>
 
   <!-- POSTでServletに送信するフォーム -->
@@ -75,8 +68,8 @@
       calendar.render();
     });
   </script>
-	<footer>
->>>>>>> 2ceaacf1e0a4658dfd7c4b6bac7b6572a84c4627
+	<footer class="footer">
+
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>

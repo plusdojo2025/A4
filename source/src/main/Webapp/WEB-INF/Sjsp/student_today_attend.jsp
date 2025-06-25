@@ -34,7 +34,7 @@
     <!-- ボタンを押すとカレンダーの画面に遷移 -->
     <div class="calender">
     <!-- 直接JSPを呼ぶことはできない。 -->
-    	<a href="<c:url value='/WEB-INF/student_month_atted.jsp'/>"><img src = "<c:url value='images/calender.png'/>"width="70px" height="70px"></a>
+    	<a href="<c:url value='/OtherDisplayCalenderServlet'/>"><img src = "<c:url value='images/calender.png'/>"width="70px" height="70px"></a>
     </div>
     <div>
         <!--生徒の出席状況の表示-->

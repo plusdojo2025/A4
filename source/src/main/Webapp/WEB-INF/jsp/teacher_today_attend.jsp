@@ -38,7 +38,7 @@
     <form>
         <div class="attend">
             <!--日付表示-->
-            <a href="teacher_month_attend.jsp">
+            <a href="<c:url value='/TeacherDisplayCalenderServlet'/>">
                 <img src="images/calender.png" width="70px" height="70px">
             </a>
             <p>日付：${today}</p>
@@ -71,9 +71,6 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <input type="hidden" name="number" value="${e.number}">
-                                    <input type="hidden" name="sName" value="${e.sName}">
-                                    <input type="hidden" name="attdate" value="${e.attendanceDate}">
                                     <input type="submit" value="更新" class="submit-btn">
                                 </td>
                             </tr>
