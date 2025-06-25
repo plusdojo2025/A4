@@ -30,7 +30,7 @@
 
 	<div>
 		<!-- 成績登録ボタン -->
-		<label class="out"><a href="<c:url value='/TeacherGradeRegistServlet'/>"><input type="submit" name="regist" value="成績登録"></a></label>
+		<label class="out"><a href="<c:url value='/TeacherGradeRegistServlet'/>">成績登録</a></label>
 	</div>
 
 	

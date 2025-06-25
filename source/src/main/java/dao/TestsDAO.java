@@ -155,8 +155,8 @@ public class TestsDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT s.sName t.term t.testName t.japanese t.math t.science t.social t.english t.sum"
-					+ "FROM Sidpw s JOIN Tests t ON s.number = t.number WHERE t.term=? AND t.testName";
+			String sql = "SELECT s.sName, t.term, t.testName, t.japanese, t.math, t.science, t.social, t.english, t.sum"
+					+ " FROM Sidpw s JOIN Tests t ON s.number = t.number WHERE t.term = ? AND t.testName = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -166,7 +166,7 @@ public class TestsDAO {
 				pStmt.setInt(1, 0);
 			}
 			if (testName != null) {
-				pStmt.setString(2, "%" + testName + "%");
+				pStmt.setString(2, testName);
 			} else {
 				pStmt.setString(2, "%");
 			}
