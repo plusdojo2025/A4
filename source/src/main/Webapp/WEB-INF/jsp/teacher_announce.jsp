@@ -22,7 +22,7 @@
                 <li><a href="<c:url value='/TeacherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
 				<li><a href="<c:url value='/TeacherGradeServlet'/>" class="highlight">成績管理</a></li>
 				<li><a href="<c:url value='/TeacherMessageServlet'/>">連絡管理</a></li>
-				<li><a href="<c:url value='/TeacherAccountRegistServlet'/>" class="highlight">ユーザー一覧管理</a></li>
+				<li><a href="<c:url value='/OtherAccountRegistServlet'/>" class="highlight">ユーザー一覧管理</a></li>
 				
             </ul>
         </nav>
