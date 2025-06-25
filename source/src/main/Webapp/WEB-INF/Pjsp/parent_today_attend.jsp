@@ -15,7 +15,7 @@
     <header>
 		<!-- ページタイトルやメニュー欄を記載 -->
 		<div class="out">
-			<a href="<c:url value='/OtherLoginServlet'/>"><img src = "<c:url value='/images/out.png'/>" width="50px" height="50px"></a>
+			<a href="<c:url value='/OtherLoginServlet'/>" onclick="return outAlert();"><img src = "<c:url value='/images/out.png'/>" width="50px" height="50px"></a>
 		</div>
 		<div class="logo">
 			<a href="<c:url value='/OtherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
@@ -62,7 +62,7 @@
                		</div>
             	</div>
             	<div class="button">
-            		<input type="submit" name="regist" value="欠席登録"><br>
+            		<input type="submit" name="regist" value="欠席登録" onclick="absenceAlert()"><br>
             	</div>
             </div>
         </form>
@@ -71,4 +71,13 @@
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
+<script>
+function outAlert() {
+	return confirm("ログアウトしてよろしいですか？");
+  }
+
+function absenceAlert() {
+  alert("欠席登録してよろしいですか？");
+}
+</script>
 </html>
