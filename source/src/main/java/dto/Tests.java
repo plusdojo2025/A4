@@ -76,6 +76,26 @@ public class Tests implements Serializable{
 		this.sum = sum;
 	}
 	
+	
+	public Tests(int testsId, int japanese, int averageJapanese, int math, int averageMath, int science,
+			int averageScience, int social, int averageSocial, int english, int averageEnglish, int sum,
+			int averageSum) {
+		super();
+		this.testsId = testsId;
+		this.japanese = japanese;
+		this.averageJapanese = averageJapanese;
+		this.math = math;
+		this.averageMath = averageMath;
+		this.science = science;
+		this.averageScience = averageScience;
+		this.social = social;
+		this.averageSocial = averageSocial;
+		this.english = english;
+		this.averageEnglish = averageEnglish;
+		this.sum = sum;
+		this.averageSum = averageSum;
+	}
+	
 	public Tests(int number, int term, String testName) {
 		this.number = number;
 		this.term = term;
