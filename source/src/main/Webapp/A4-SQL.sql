@@ -1,8 +1,8 @@
--- cshare SQL
 
---先生登録データ
+
+-- 先生登録データ
 CREATE TABLE Tidpw (
-  className INT PRIMARY KEY CHECK (className BETWEEN 10 AND 40),
+  className INT PRIMARY KEY ,
   tName VARCHAR(20) NOT NULL,
   tPw VARCHAR(20) NOT NULL
 );
@@ -13,11 +13,11 @@ VALUES (11, 'dojouser1', '#SEplus2025SEplus'),
 
 
 
---生徒登録データ
+-- 生徒登録データ
 CREATE TABLE Sidpw (
-  className INT CHECK (className BETWEEN 10 AND 40) NOT NULL,
+  className INT  NOT NULL,
   sName VARCHAR(20) NOT NULL,
-  number INT PRIMARY KEY CHECK (number BETWEEN 100000 AND 999999),
+  number INT PRIMARY KEY ,
   sPw VARCHAR(20) NOT NULL,
   FOREIGN KEY (className) REFERENCES Tidpw(className) ON DELETE CASCADE
 );
@@ -32,13 +32,13 @@ VALUES
   (12, '斎藤亮', 251208, '#SEplus2025SEplus');
 
 
---保護者登録データ
+-- 保護者登録データ
 CREATE TABLE Pidpw (
   pName VARCHAR(20) NOT NULL,
   number INT NOT NULL,
   pPw VARCHAR(20) NOT NULL,
   PRIMARY KEY (number),
-  CHECK (number BETWEEN 100000 AND 999999),
+  
   FOREIGN KEY (number) REFERENCES Sidpw(number) ON DELETE CASCADE
 );
 
@@ -52,16 +52,16 @@ VALUES
   ('斎藤雄太', 251208, '#SEplus2025SEplus');
 
 
---出席情報
+--  出席情報
 CREATE TABLE Attendance (
   attendantId INT AUTO_INCREMENT PRIMARY KEY,
-  number INT CHECK (number BETWEEN 100000 AND 999999),
+  number INT ,
   status ENUM ('出席', '欠席', '遅刻', '早退') NOT NULL,
   attendanceDate DATE NOT NULL,
   FOREIGN KEY (number) REFERENCES Sidpw(number) ON DELETE CASCADE
 );
 
---成績管理
+-- 成績管理
 CREATE TABLE Tests (
   testsId INT AUTO_INCREMENT PRIMARY KEY,
   number INT NOT NULL,
@@ -79,21 +79,8 @@ CREATE TABLE Tests (
   averageEnglish INT,
   sum INT,
   averageSum INT,
-  FOREIGN KEY (number) REFERENCES Sidpw(number) ON DELETE CASCADE,
-  CHECK (number BETWEEN 100000 AND 999999),
-  CHECK (term BETWEEN 0 AND 9),
-  CHECK (japanese BETWEEN 0 AND 100),
-  CHECK (averageJapanese BETWEEN 0 AND 100),
-  CHECK (math BETWEEN 0 AND 100),
-  CHECK (averageMath BETWEEN 0 AND 100),
-  CHECK (science BETWEEN 0 AND 100),
-  CHECK (averageScience BETWEEN 0 AND 100),
-  CHECK (social BETWEEN 0 AND 100),
-  CHECK (averageSocial BETWEEN 0 AND 100),
-  CHECK (english BETWEEN 0 AND 100),
-  CHECK (averageEnglish BETWEEN 0 AND 100),
-  CHECK (sum BETWEEN 0 AND 500),
-  CHECK (averageSum BETWEEN 0 AND 500)
+  FOREIGN KEY (number) REFERENCES Sidpw(number) ON DELETE CASCADE
+  
 );
 
 INSERT INTO Tests (
@@ -110,12 +97,12 @@ VALUES
   (251107, 1, '中間', 65, 70, 70, 75, 72, 72, 68, 69, 74, 73, 349, 359);
 
 
---連絡管理
+-- 連絡管理
 CREATE TABLE Announcements (
   announceId INT AUTO_INCREMENT PRIMARY KEY,
   className INT NOT NULL,
   announce TEXT NOT NULL,
   announceDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  CHECK (className BETWEEN 10 AND 40),
+ 
   FOREIGN KEY (className) REFERENCES Tidpw(className) ON DELETE CASCADE
 );
