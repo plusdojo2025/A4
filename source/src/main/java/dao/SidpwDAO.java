@@ -39,6 +39,7 @@ public class SidpwDAO {
 	            resultSidpw.setsName(rs.getString("sName"));
 	            resultSidpw.setsPw(rs.getString("sPw"));
 	            resultSidpw.setClassName(rs.getInt("className"));
+	            resultSidpw.setNumber(rs.getInt("number"));
 	      
 			}
 		} catch (SQLException e) {

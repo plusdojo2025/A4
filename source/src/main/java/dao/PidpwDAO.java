@@ -39,6 +39,7 @@ public class PidpwDAO {
 				resultPidpw = new Pidpw();
 	            resultPidpw.setpName(rs.getString("pName"));
 	            resultPidpw.setpPw(rs.getString("pPw"));
+	            resultPidpw.setNumber(rs.getInt("number"));
 	      
 				}
 			} catch (SQLException | ClassNotFoundException e) {
