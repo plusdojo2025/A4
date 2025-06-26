@@ -219,21 +219,13 @@ public class TestsDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (tests.getNumber() != 0) {
-				pStmt.setInt(1, tests.getTerm());
-			} else {
-				pStmt.setInt(1, 0);
-			}
-			if (tests.getTerm() != 0) {
+			
+				pStmt.setInt(1, tests.getNumber());
+			
 				pStmt.setInt(2, tests.getTerm());
-			} else {
-				pStmt.setInt(2, 0);
-			}
-			if (tests.getTestName() != null) {
+			
 				pStmt.setString(3, tests.getTestName());
-			} else {
-				pStmt.setString(3, "%");
-			}
+			
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -275,7 +267,7 @@ public class TestsDAO {
 				}
 			}
 		}
-		return null;
+		return testsResult;
 	}
 
 	// 成績情報を登録する
