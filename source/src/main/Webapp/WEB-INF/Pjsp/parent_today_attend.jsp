@@ -36,12 +36,15 @@
     <!-- 直接JSPを呼ぶことはできない。 -->
     	<a href="<c:url value='/OtherDisplayCalenderServlet'/>"><img src = "<c:url value='images/calender.png'/>"width="70px" height="70px"></a>
     </div>
+    ${msg}
+    ${errormsg}
     <div>
         <!--生徒の出席状況の表示-->
         <form method="POST" action="<c:url value='/OtherAttendanceServlet'/>" class="form-flex">
-
-		    <input type="hidden" name="number" value="${attendanceDate.number}">
-		    <input type="hidden" name="status" value="欠席">
+			<input type="hidden" name="attid" value="${attendance.attendantId}">
+		    <input type="hidden" name="number" value="${attendance.number}">
+		    <input type="hidden" name="attdate" value="${attendance.attendanceDate}">
+		    <input type="hidden" value="欠席">
 		    
 		    <div class="day">
 		        <p>日付：${today}</p>
@@ -54,10 +57,10 @@
 		        </div>
 		        <div class="attend2">
 		            <label id="student-name">${sessionScope.Sidpw.sName}</label>
-		            <label>${attendanceDate.status}</label>
+		            <label><input type="hidden" name="status" ${attendance.status}></label>
 		        </div>
 		        <div class="button">
-		            <input type="submit" name="regist" value="欠席登録" onclick="showConfirm()"><br>
+		            <input type="submit" name="submit" value="欠席登録" onclick="showConfirm()"><br>
 		        </div>
 		    </div>
 		</form>
