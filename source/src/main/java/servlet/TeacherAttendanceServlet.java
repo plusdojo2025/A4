@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -33,19 +32,15 @@ public class TeacherAttendanceServlet extends HttpServlet {
 		}
 
 		// 今日の日付を取得
-	    LocalDate today = LocalDate.now();
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-	    String formattedDate = today.format(formatter);
+	    String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-	    // 出席DAOを使ってそのクラスの出席情報を取得
-	    AttendanceDAO attendanceInfo = new AttendanceDAO();
-	    List<Allaccess> attendance = new ArrayList<Allaccess>();
-		
-		attendance = attendanceInfo.select(formattedDate);
-		
+	    // 出席DAOを使ってそのクラスの生徒の出席情報を取得
+	    AttendanceDAO dao = new AttendanceDAO();
+	    List<Allaccess> attendanceList = dao.select(today);
+
 		//リクエスト領域に保存
-		request.setAttribute("attendanceList", attendance);
-		request.setAttribute("today", formattedDate);
+		request.setAttribute("attendanceList", attendanceList);
+		request.setAttribute("today", today); // 日付も渡す
 		
 		// 出席管理ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
