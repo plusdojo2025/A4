@@ -43,8 +43,7 @@ public class OtherGradeServlet extends HttpServlet{
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("position") == null && session.getAttribute("studentName") == null ||
-			session.getAttribute("position") == null && session.getAttribute("parentName") == null) {
+		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
 			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
 			return;
 		}

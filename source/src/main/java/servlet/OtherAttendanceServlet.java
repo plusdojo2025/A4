@@ -64,9 +64,14 @@ public class OtherAttendanceServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
+			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
+			return;
+		}
 		// セッションパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
+		
 		String position = (String)session.getAttribute("position");
 		//出席情報をリクエスト領域から取得
         AttendanceDAO attendDao = new AttendanceDAO();
