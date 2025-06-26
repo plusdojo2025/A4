@@ -41,11 +41,11 @@
             <a href="<c:url value='/TeacherDisplayCalenderServlet'/>">
                 <img src="images/calender.png" width="70px" height="70px">
             </a>
-            <p>日付：${today}</p>
+            
         </div>
     </form>
-
     <div class="attend2">
+    	<h2>（${today}）</h2>
         <table>
             <thead>
                 <tr>
@@ -54,30 +54,30 @@
                     <th>操作</th>
                 </tr>
             </thead>
-            <tbody>
-                <c:forEach var="e" items="${attendanceList}">
-                    <form method="POST" action="/TeacherAttendanceServlet" class="form-flex">
-                        <table>
-                            <tr>
-                                <td class="name-label">${e.sName}</td>
-                                <td>
-                                    <div class="selectbox-5">
-                                        <select name="attendance">
-                                            <option value="Present" <c:if test="${e.status == 'Present'}">selected</c:if>>出席</option>
-                                            <option value="Absent" <c:if test="${e.status == 'Absent'}">selected</c:if>>欠席</option>
-                                            <option value="Late" <c:if test="${e.status == 'Late'}">selected</c:if>>遅刻</option>
-                                            <option value="Early" <c:if test="${e.status == 'Early'}">selected</c:if>>早退</option>
-                                        </select>
-                                    </div>
-                                </td>
-                                <td>
-                                    <input type="submit" value="更新" class="submit-btn">
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-                </c:forEach>
-            </tbody>
+   			<tbody>
+   			<c:forEach var="e" items="${attendanceList}">
+				<form method="POST" action="/TeacherAttendanceServlet" class="form-flex">
+               		<tr>
+                 
+                     <td class="name-label">${e.sName}</td>
+                     <td>
+                         <div class="selectbox-5">
+                             <select name="attendance">
+                                 <option value="Present" <c:if test="${e.status == 'Present'}">selected</c:if>>出席</option>
+                                 <option value="Absent" <c:if test="${e.status == 'Absent'}">selected</c:if>>欠席</option>
+                                 <option value="Late" <c:if test="${e.status == 'Late'}">selected</c:if>>遅刻</option>
+                                 <option value="Early" <c:if test="${e.status == 'Early'}">selected</c:if>>早退</option>
+                             </select>
+                         </div>
+                     </td>
+                     <td>
+                         <input type="submit" value="更新" class="submit-btn">
+                     </td>
+                 
+               		</tr>
+               </form>
+           	</c:forEach>
+   		</tbody>
         </table>
     </div>
 

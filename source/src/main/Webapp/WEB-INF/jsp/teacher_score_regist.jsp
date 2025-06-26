@@ -35,7 +35,8 @@
 	</header>
 
 
-	<form method="POST" action="<c:url value='/TeacherGradeRegistServlet'/>">
+	<form method="POST"
+		action="<c:url value='/TeacherGradeRegistServlet'/>" id="form">
 		<select name="term">
 			<!-- 学期選択 -->
 			<option value="1">1学期</option>
@@ -43,26 +44,31 @@
 			<option value="3">3学期</option>
 		</select>
 		<!-- テストを検索する -->
-		<input type="text" name="testName">テスト <input type="submit"
-			name="submit" value="検索"><br>
-	</form>
-
-	<form method="POST"
-		action="<c:url value='/TeacherGradeRegistServlet'/>" id="form">
+		<input type="text" name="testName">テスト 
+		
 		<table>
-			<c:forEach var="student" items="${scoreList}" varStatus="status">
+			<tr>
+				<th>氏名</th>
+				<th>国語</th>
+				<th>数学</th>
+				<th>理科</th>
+				<th>社会</th>
+				<th>英語</th>
+				<th>総合</th>
+			</tr>
+			<c:forEach var="student" items="${studentList}" varStatus="status">
 				<tr>
-					<!-- 生徒名をリクエスト領域から取得する -->
+					<td><input type="text" name="sName" value="${student.sName}"
+						readonly></td>
 					<td><input type="text" name="japanese"
-						value="${scoreList.japanese}"></td>
-					<td><input type="text" name="math" value="${scoreList.math}"></td>
+						value=""></td>
+					<td><input type="text" name="math" value=""></td>
 					<td><input type="text" name="science"
-						value="${scoreList.science}"></td>
-					<td><input type="text" name="social"
-						value="${scoreList.social}"></td>
+						value=""></td>
+					<td><input type="text" name="social" value=""></td>
 					<td><input type="text" name="english"
-						value="${scoreList.english}"></td>
-					<td><input type="text" name="sum" value="${scoreList.sum}"></td>
+						value=""></td>
+					<td><input type="text" name="sum" value=""></td>
 				</tr>
 			</c:forEach>
 		</table>
