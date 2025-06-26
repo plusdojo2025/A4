@@ -17,10 +17,10 @@ public class OtherDisplayAttendanceServlet extends HttpServlet{
 		
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
-			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
-			return;
-		}
+//		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
+//			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
+//			return;
+//		}
 				
 		String position = (String) session.getAttribute("position");
 		if(position.equals("student")) {

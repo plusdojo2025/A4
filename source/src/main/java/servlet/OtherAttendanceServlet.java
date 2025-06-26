@@ -24,10 +24,10 @@ public class OtherAttendanceServlet extends HttpServlet {
 		throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
-			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
-			return;
-		}
+//		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
+//			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
+//			return;
+//		}
 		//学籍番号取得
 		Sidpw studentInfo = new Sidpw();
 		studentInfo = (Sidpw)session.getAttribute("Sidpw");
@@ -65,22 +65,17 @@ public class OtherAttendanceServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
-<<<<<<< HEAD
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
-=======
->>>>>>> dade2ee68c6d5e8306bbdde7f74ae220acb54fb6
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
-			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
-			return;
-		}
-<<<<<<< HEAD
+//		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
+//			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
+//			return;
+//		}
 		
 		// セッションパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		int attendantId = Integer.parseInt(request.getParameter("attid"));
 		int number = Integer.parseInt(request.getParameter("number"));
-		String status = request.getParameter("status");
 		String attendanceDate = request.getParameter("attdate");
 		
 		//学籍番号取得
@@ -97,7 +92,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		AttendanceDAO attendanceInfo = new AttendanceDAO();
 		Attendance attendance = new Attendance();
 		attendance = attendanceInfo.attendanceSelect(studentId);
-		System.out.println(attendance.getAttendantId());
+		
 		
 		//リクエスト領域に保存
 		request.setAttribute("attendance", attendance);
@@ -107,30 +102,12 @@ public class OtherAttendanceServlet extends HttpServlet {
 		session.setAttribute("today",formattedDate);
 		
 		
-=======
-		// セッションパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		
-		String position = (String)session.getAttribute("position");
-		//出席情報をリクエスト領域から取得
-        AttendanceDAO attendDao = new AttendanceDAO();
-        Attendance attendance = new Attendance();
-        attendance = (Attendance)session.getAttribute("attendanceDate");
-        int attendantId = attendance.getAttendantId();
-        int number = attendance.getNumber();
-        String status = request.getParameter("status");
-        
-        
-        String attendanceDate = (String)session.getAttribute("today");
-        
-        
->>>>>>> dade2ee68c6d5e8306bbdde7f74ae220acb54fb6
 		//出席登録・欠席登録
 		String submit = request.getParameter("submit");
 		String position = (String) session.getAttribute("position");
 		if ("欠席登録".equals(submit)) {
 			if(position.equals("student")) {
-				if(attendanceInfo.update(new Attendance(attendantId, number, status, attendanceDate))) {
+				if(attendanceInfo.update(new Attendance(attendantId, number, "出席", attendanceDate))) {
 					request.setAttribute("msg", "更新しました。");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_today_attend.jsp");
 					dispatcher.forward(request, response);
@@ -142,7 +119,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 			}
 		else {
 			if(position.equals("parent")) {
-				if(attendanceInfo.update(new Attendance(attendantId, number, status, attendanceDate))) {
+				if(attendanceInfo.update(new Attendance(attendantId, number, "欠席", attendanceDate))) {
 					request.setAttribute("msg", "更新しました。");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_today_attend.jsp");
 					dispatcher.forward(request, response);
