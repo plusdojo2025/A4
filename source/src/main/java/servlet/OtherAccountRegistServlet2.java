@@ -21,10 +21,10 @@ public class OtherAccountRegistServlet2 extends HttpServlet{
             throws ServletException, IOException {
         //もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Tidpw") == null ){
-			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
-			return;
-		}
+//		if(session.getAttribute("Tidpw") == null ){
+//			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
+//			return;
+//		}
 		
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_user_regist.jsp");

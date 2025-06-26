@@ -24,10 +24,10 @@ public class OtherAttendanceServlet extends HttpServlet {
 		throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
-			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
-			return;
-		}
+//		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
+//			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
+//			return;
+//		}
 		//学籍番号取得
 		Sidpw studentInfo = new Sidpw();
 		studentInfo = (Sidpw)session.getAttribute("Sidpw");
@@ -67,10 +67,10 @@ public class OtherAttendanceServlet extends HttpServlet {
 		throws ServletException, IOException {
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
-			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
-			return;
-		}
+//		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
+//			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
+//			return;
+//		}
 		
 		// セッションパラメータを取得する
 		request.setCharacterEncoding("UTF-8");

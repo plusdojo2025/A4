@@ -24,10 +24,10 @@ public class OtherAccountRegistServlet extends HttpServlet {
             throws ServletException, IOException {
         //もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Tidpw") == null ){
-			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
-			return;
-		}
+//		if(session.getAttribute("Tidpw") == null ){
+//			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
+//			return;
+//		}
 		//sessionからログインしているユーザーのクラスネームを取得
 		Tidpw loginUser =(Tidpw)session.getAttribute("Tidpw");
 		int className = loginUser.getClassName();		
@@ -70,10 +70,10 @@ public class OtherAccountRegistServlet extends HttpServlet {
 			throws ServletException, IOException {
     	//もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Tidpw") == null ){
-			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
-			return;
-		}
+//		if(session.getAttribute("Tidpw") == null ){
+//			response.sendRedirect(request.getContextPath() +"/TeacherLoginServlet");
+//			return;
+//		}
 		Tidpw tDto = new Tidpw();
 		tDto = (Tidpw)session.getAttribute("Tidpw");
 		//クラス名の取得
