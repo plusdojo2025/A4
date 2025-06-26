@@ -52,7 +52,7 @@
 		  			<input type="text" name="enter" value="入力してください" required>
 	  			</td>
 	  			<td>
-	  				<input type="submit"name="sendMessage" value="送信">
+	  				<input type="submit"name="sendMessage" value="送信" onclick="return announceAlert();">
 	  			</td>
 			</tr>
 		</table>
@@ -62,4 +62,9 @@
 		<img src = "<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
+<script>
+function announceAlert() {
+	return confirm("送信してよろしいですか？");
+  }
+</script>
 </html>
