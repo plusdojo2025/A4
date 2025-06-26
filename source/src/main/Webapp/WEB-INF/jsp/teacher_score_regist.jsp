@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,53 +12,66 @@
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
-		<label class="out"><img src = "<c:url value='/TeacherLogoutServlet'/>"width="50px" height="50px"></label>
+		<label class="out"><img
+			src="<c:url value='/TeacherLogoutServlet'/>" width="50px"
+			height="50px"></label>
 		<div class="logo">
-			<a href="<c:url value='/TeacherMenuServlet'/>"><img src = "<c:url value='/images/cshare.png'/>" width="300px" height="122px"></a>
+			<a href="<c:url value='/TeacherMenuServlet'/>"><img
+				src="<c:url value='/images/cshare.png'/>" width="300px"
+				height="122px"></a>
 		</div>
-		<nav class = "burner">
+		<nav class="burner">
 			<ul>
-				<li><a href="<c:url value='/TeacherAttendanceServlet'/>" class="highlight">出欠管理</a></li>
+				<li><a href="<c:url value='/TeacherAttendanceServlet'/>"
+					class="highlight">出欠管理</a></li>
 				<li><a href="<c:url value='/TeacherGradeServlet'/>">成績管理</a></li>
-				<li><a href="<c:url value='/TeacherMessageServlet'/>" class="highlight">連絡管理</a></li>
-				<li><a href="<c:url value='/OtherAccountRegistServlet'/>" class="highlight">ユーザー一覧管理</a></li>
-				
+				<li><a href="<c:url value='/TeacherMessageServlet'/>"
+					class="highlight">連絡管理</a></li>
+				<li><a href="<c:url value='/OtherAccountRegistServlet'/>"
+					class="highlight">ユーザー一覧管理</a></li>
+
 			</ul>
 		</nav>
 	</header>
-	<select>
-		<!-- 学期選択 -->
-	    <option value="1">1学期</option>
-	    <option value="2">2学期</option>
-	    <option value="3">3学期</option>
-  	</select>
-  	
+
+
 	<form method="POST" action="<c:url value='/TeacherGradeRegistServlet'/>">
+		<select name="term">
+			<!-- 学期選択 -->
+			<option value="1">1学期</option>
+			<option value="2">2学期</option>
+			<option value="3">3学期</option>
+		</select>
 		<!-- テストを検索する -->
-		<input type="text" name="testName">テスト
-		<input type="submit" name="search" value="検索"><br>
+		<input type="text" name="testName">テスト <input type="submit"
+			name="submit" value="検索"><br>
 	</form>
-	
-	<form method="POST" action="<c:url value='/TeacherGradeRegistServlet'/>" id="form">
+
+	<form method="POST"
+		action="<c:url value='/TeacherGradeRegistServlet'/>" id="form">
 		<table>
 			<c:forEach var="student" items="${scoreList}" varStatus="status">
 				<tr>
 					<!-- 生徒名をリクエスト領域から取得する -->
-					<td><input type="text" name="japanese" value="${scoreList.japanese}"></td>
+					<td><input type="text" name="japanese"
+						value="${scoreList.japanese}"></td>
 					<td><input type="text" name="math" value="${scoreList.math}"></td>
-					<td><input type="text" name="science" value="${scoreList.science}"></td>
-					<td><input type="text" name="social" value="${scoreList.social}"></td>
-					<td><input type="text" name="english" value="${scoreList.english}"></td>
+					<td><input type="text" name="science"
+						value="${scoreList.science}"></td>
+					<td><input type="text" name="social"
+						value="${scoreList.social}"></td>
+					<td><input type="text" name="english"
+						value="${scoreList.english}"></td>
 					<td><input type="text" name="sum" value="${scoreList.sum}"></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<input type="submit" name="regist" value="登録"><br>
+		<input type="submit" name="submit" value="登録"><br>
 	</form>
-	
-	
+
+
 	<footer class="footer">
-		<img src = "<c:url value='/images/runningman.png'/>">
+		<img src="<c:url value='/images/runningman.png'/>">
 	</footer>
 </body>
 </html>
