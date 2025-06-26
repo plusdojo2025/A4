@@ -401,11 +401,13 @@ h3 {
 	margin: 0 auto;
 }
 
+
 .submit input[type="submit"]{
 	width: 80px;            /* 固定幅（30pxは小さすぎ） */
-  padding: 15px 0;         /* 横のpaddingをなくす */
-  text-align: center;
-  vertical-align: middle;
+	padding: 15px 0;         /* 横のpaddingをなくす */
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 0;
 }
 
 
