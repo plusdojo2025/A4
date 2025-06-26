@@ -44,6 +44,8 @@
             
         </div>
     </form>
+    ${msg}
+    ${errormsg}
     <div class="attend2">
     	<h2>（${today}）</h2>
         <table>
@@ -59,7 +61,12 @@
 				<form method="POST" action="/TeacherAttendanceServlet" class="form-flex">
                		<tr>
                  
-                     <td class="name-label">${e.sName}</td>
+                     <td class="name-label">
+                     	<input type="hidden" name="attid" value="${e.attendantId}">
+                        <input type="hidden" name="number" value="${e.number}">
+                        <input type="hidden" name="attdate" value="${e.attendanceDate}">
+                     	${e.sName}
+                     </td>
                      <td>
                          <div class="selectbox-5">
                              <select name="attendance">
@@ -71,7 +78,7 @@
                          </div>
                      </td>
                      <td>
-                         <input type="submit" value="更新" class="submit-btn">
+                         <input type="submit" name="submit" value="更新" class="submit-btn">
                      </td>
                  
                		</tr>

@@ -14,6 +14,7 @@ public class Allaccess implements Serializable {
 	private String pName; // 保護者の氏名
 	private String pPw; // 保護者のパスワード
 	
+	private int attendantId; //出席ID
 	private String status; // 出席状況
 	private String attendanceDate; //出欠日
 	
@@ -38,9 +39,9 @@ public class Allaccess implements Serializable {
 	
 	
 	
-	public Allaccess(int number, String sName, String status, String attendanceDate) {
+	public Allaccess(int attendantId,int number,String status, String attendanceDate) {
+		this.attendantId = attendantId;
 		this.number= number;
-		this.sName = sName;
 		this.status = status;
 		this.attendanceDate = attendanceDate;
 	}
@@ -72,7 +73,7 @@ public class Allaccess implements Serializable {
 	
 	
 	public Allaccess(int className, String tName, String tPw, String sName, int number, String sPw, String pName,
-			String pPw, String status, String attendanceDate, String announce, String announceDate, int testsId,
+			String pPw, int attendantId,String status, String attendanceDate, String announce, String announceDate, int testsId,
 			int term, String testName, int japanese, int averageJapanese, int math, int averageMath, int science,
 			int averageScience, int social, int averageSocial, int english, int averageEnglish, int sum,
 			int averageSum) {
@@ -84,6 +85,7 @@ public class Allaccess implements Serializable {
 		this.sPw = sPw;
 		this.pName = pName;
 		this.pPw = pPw;
+		this.attendantId = attendantId;
 		this.status = status;
 		this.attendanceDate = attendanceDate;
 		this.announce = announce;
@@ -114,6 +116,7 @@ public class Allaccess implements Serializable {
 		this.sPw = "";
 		this.pName = "";
 		this.pPw = "";
+		this.attendantId = 0;
 		this.status = "";
 		this.attendanceDate = "";
 		this.announce = "";
@@ -218,6 +221,14 @@ public class Allaccess implements Serializable {
 
 	public void setpPw(String pPw) {
 		this.pPw = pPw;
+	}
+
+	public int getAttendantId() {
+		return attendantId;
+	}
+
+	public void setAttendantId(int attendantId) {
+		this.attendantId = attendantId;
 	}
 
 	public String getStatus() {
