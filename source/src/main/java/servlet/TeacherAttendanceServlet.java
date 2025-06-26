@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.AttendanceDAO;
 import dto.Allaccess;
+import dto.Attendance;
 
 
 @WebServlet("/TeacherAttendanceServlet")
@@ -58,18 +59,38 @@ public class TeacherAttendanceServlet extends HttpServlet {
 		
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String attdate = request.getParameter("attdate");
+		int attendantId = Integer.parseInt(request.getParameter("attid"));
 		int number = Integer.parseInt(request.getParameter("number"));
-		String sName = request.getParameter("sName");
-		String attendance = request.getParameter("attendance");
+		String status = request.getParameter("attendance");
+		String attendanceDate = request.getParameter("attdate");
 		
 		// 更新を行う
 		AttendanceDAO attDao = new AttendanceDAO();
-		attDao.update(new Allaccess(number,sName,attendance,attdate));
-		
+		if(request.getParameter("submit").equals("更新")) {
+			if(attDao.update(new Attendance(attendantId,number,status,attendanceDate))){
+				request.setAttribute("msg","レコードを更新しました。");
+				// 今日の日付を取得
+			    String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+			    // 出席DAOを使ってそのクラスの生徒の出席情報を取得
+			    AttendanceDAO dao = new AttendanceDAO();
+			    List<Allaccess> attendanceList = dao.select(today);
+
+				//リクエスト領域に保存
+				request.setAttribute("attendanceList", attendanceList);
+				request.setAttribute("today", today); // 日付も渡す
+				// 結果ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
+				dispatcher.forward(request, response);
+			}else {
+				request.setAttribute("errormsg","レコードを更新できませんでした。");
+				// 結果ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
+				dispatcher.forward(request, response);
+			}
+			
+		}
 	    
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
-		dispatcher.forward(request, response);
+		
 	}	
 }
