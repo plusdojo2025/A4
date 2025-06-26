@@ -319,68 +319,49 @@ h3 {
 }
 
 .access-buttons input[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #6ca4e0;
 }
 
 
 /*成績管理*/
 /* ▼ 全体を横並びにするための親 */
-.student-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 40px 200px;
-  box-sizing: border-box;
-}
-
-.student-container h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #333;
-  margin: 0;
-}
-
-
-/* ▼ 生徒名簿サイドエリア（固定じゃない） */
 .student-sidebar {
-  
   border-radius: 8px;
   box-sizing: border-box;
+  width: 100%; /* 幅は親に任せる */
 }
 
-
-.student-sidebar input[type="submit"] {
-    vertical-align: middle;
-    margin-top: 5px;
-}
-
-
-/* ▼ サイドバー見出しとリスト */
-.student-sidebar h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #333;
-}
-
+/* 横並び用にflex */
 .student-sidebar ul {
   list-style: none;
   margin: 0;
-  width: 100px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;         /* 人数が増えたら折り返し */
+  gap: 10px;               /* ボタン間のスペース */
+  justify-content: center; /* ボタン全体を中央揃え */
+  max-width: 400px;        /* 横幅を固定 */
+  margin: 0 auto;          /* 中央寄せ */
 }
 
 .student-sidebar li {
-  margin-bottom: 8px;
+  margin: 0;
 }
 
-.student-sidebar a {
-  text-decoration: none;
-  color: #007BFF;
-  transition: color 0.3s;
+.student-sidebar input[type="submit"] {
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #4C6CB3;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.student-sidebar a:hover {
-  color: #0056b3;
+.student-sidebar input[type="submit"]:hover {
+  background-color: #0056b3;
 }
+
 
 /* ▼ メインコンテンツ */
 .student-main-content {
@@ -416,6 +397,74 @@ h3 {
 	margin-top: 0;
 }
 
+
+/*成績登録*/
+.grade {
+  width: fit-content;         /* 内容に合わせて幅を自動調整 */
+  margin: 0 auto;             /* 横方向中央揃え */
+  text-align: center;         /* テキストや要素を中央寄せ */
+  padding: 20px;              /* 少し余白を追加（任意） */
+  border-radius: 8px;
+}
+
+
+/* 学期選択のセレクトボックスを囲む要素に余白追加 */
+.grade .selectbox-5 {
+  margin-top: 20px;  /* ← 学期選択の上の余白 */
+  margin-bottom: 20px; /* ← 下にも空けるとバランス良し */
+}
+
+
+
+.grade table {
+  margin: 20px auto;
+  border-collapse: collapse;
+  border: none;             /* 外枠の線を消す */
+  table-layout: auto;
+  width: 100%; /* or 任意の幅 */
+}
+
+.grade th,
+.grade td {
+  padding: 4px 0px;
+  text-align: center;
+}
+
+/* 氏名列（1列目） */
+.grade th:nth-child(1),
+.grade td:nth-child(1) {
+  width: 120px;
+}
+
+/* 教科列（2〜6列目） */
+.grade th:nth-child(n+2):nth-child(-n+6),
+.grade td:nth-child(n+2):nth-child(-n+6) {
+  width: 80px;
+}
+
+/* 総合列（7列目） */
+.grade th:nth-child(7),
+.grade td:nth-child(7) {
+  width: 100px;
+}
+
+
+.grade input[type="text"] {
+	width: 70px;
+	text-align: center;
+}
+
+/* 氏名入力欄だけ幅広めに */
+.grade input[name="sName"] {
+  width: 100px;
+}
+
+.grade input[type="submit"]{
+	width: 80px;            /* 固定幅（30pxは小さすぎ） */
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 10px;
+}
 
 
 /*当日出席一覧*/

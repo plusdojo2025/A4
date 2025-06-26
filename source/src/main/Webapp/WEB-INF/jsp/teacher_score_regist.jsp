@@ -12,9 +12,9 @@
 <body>
 	<header>
 		<!-- ページタイトルやメニュー欄を記載 -->
-		<label class="out"><img
-			src="<c:url value='/TeacherLogoutServlet'/>" width="50px"
-			height="50px"></label>
+		<label class="out">
+			<a href="<c:url value='TeacherLogoutServlet'/>"><img src = "images/out.png" width="50px" height="50px"></a>
+		</label>
 		<div class="logo">
 			<a href="<c:url value='/TeacherMenuServlet'/>"><img
 				src="<c:url value='/images/cshare.png'/>" width="300px"
@@ -36,13 +36,16 @@
 
 
 	<form method="POST"
-		action="<c:url value='/TeacherGradeRegistServlet'/>" id="form">
-		<select name="term">
-			<!-- 学期選択 -->
-			<option value="1">1学期</option>
-			<option value="2">2学期</option>
-			<option value="3">3学期</option>
-		</select>
+		action="<c:url value='/TeacherGradeRegistServlet'/>" id="form" class=grade>
+		<div class="selectbox-5">
+			<select name="term">
+				<!-- 学期選択 -->
+				<option value="1">1学期</option>
+				<option value="2">2学期</option>
+				<option value="3">3学期</option>
+				
+			</select>
+		</div>
 		<!-- テストを検索する -->
 		<input type="text" name="testName">テスト 
 		
