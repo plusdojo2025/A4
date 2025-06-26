@@ -53,15 +53,16 @@ public class TeacherGradeRegistServlet extends HttpServlet {
 			list = t.select(term, test);
 			// 検索結果をリクエストスコープに格納する
 			request.setAttribute("scoreList", list);
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_score.jsp");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_score_regist.jsp");
 			dispatcher.forward(request, response);
+
 		} 
-		else if (submit.equals("登録")) {
+		if (submit.equals("登録")) {
 
 			// それぞれの情報をリクエスト領域から取得
 			request.setCharacterEncoding("UTF-8");
-			String[] studentName = request.getParameterValues("studentName");
+			String[] studentName = request.getParameterValues("sName");
 			String[] japanese = request.getParameterValues("japanese");
 			String[] math = request.getParameterValues("math");
 			String[] science = request.getParameterValues("science");

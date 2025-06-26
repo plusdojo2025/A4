@@ -160,39 +160,23 @@ public class TestsDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (term != 0) {
-				pStmt.setInt(1, term);
-			} else {
-				pStmt.setInt(1, 0);
-			}
-			if (testName != null) {
-				pStmt.setString(2, testName);
-			} else {
-				pStmt.setString(2, "%");
-			}
-
+			pStmt.setInt(1, term);
+			pStmt.setString(2, testName);
+			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Allaccess test = new Allaccess();
 				test.setsName(rs.getString("sName"));
-				test.setTestsId(rs.getInt("testsId"));
-				test.setNumber(rs.getInt("number"));
 				test.setTerm(rs.getInt("term"));
 				test.setTestName(rs.getString("testName"));
 				test.setJapanese(rs.getInt("japanese"));
-				test.setAverageJapanese(rs.getInt("averageJapanese"));
 				test.setMath(rs.getInt("math"));
-				test.setAverageMath(rs.getInt("averageMath"));
 				test.setScience(rs.getInt("science"));
-				test.setAverageScience(rs.getInt("averageScience"));
 				test.setSocial(rs.getInt("social"));
-				test.setAverageSocial(rs.getInt("averageSocial"));
 				test.setEnglish(rs.getInt("english"));
-				test.setAverageEnglish(rs.getInt("averageEnglish"));
 				test.setSum(rs.getInt("sum"));
-				test.setAverageSum(rs.getInt("averageSum"));
 				testsResult.add(test);
 			}
 

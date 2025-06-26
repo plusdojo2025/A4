@@ -275,7 +275,7 @@ public class SidpwDAO {
 			
 			//SQL文を完成させる
 			if(studentName != null) {
-				pStmt.setString(1,"%"+studentName+"%");
+				pStmt.setString(1,studentName);
 			}
 			else {
 				pStmt.setString(1, "%");
