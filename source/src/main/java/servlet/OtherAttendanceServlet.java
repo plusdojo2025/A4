@@ -65,16 +65,12 @@ public class OtherAttendanceServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
-<<<<<<< HEAD
 		//もしもログインしていなかったらログインサーブレットにリダイレクトする
-=======
->>>>>>> dade2ee68c6d5e8306bbdde7f74ae220acb54fb6
 		HttpSession session = request.getSession();
 		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
 			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
 			return;
 		}
-<<<<<<< HEAD
 		
 		// セッションパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -97,7 +93,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		AttendanceDAO attendanceInfo = new AttendanceDAO();
 		Attendance attendance = new Attendance();
 		attendance = attendanceInfo.attendanceSelect(studentId);
-		System.out.println(attendance.getAttendantId());
+		
 		
 		//リクエスト領域に保存
 		request.setAttribute("attendance", attendance);
@@ -107,24 +103,6 @@ public class OtherAttendanceServlet extends HttpServlet {
 		session.setAttribute("today",formattedDate);
 		
 		
-=======
-		// セッションパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		
-		String position = (String)session.getAttribute("position");
-		//出席情報をリクエスト領域から取得
-        AttendanceDAO attendDao = new AttendanceDAO();
-        Attendance attendance = new Attendance();
-        attendance = (Attendance)session.getAttribute("attendanceDate");
-        int attendantId = attendance.getAttendantId();
-        int number = attendance.getNumber();
-        String status = request.getParameter("status");
-        
-        
-        String attendanceDate = (String)session.getAttribute("today");
-        
-        
->>>>>>> dade2ee68c6d5e8306bbdde7f74ae220acb54fb6
 		//出席登録・欠席登録
 		String submit = request.getParameter("submit");
 		String position = (String) session.getAttribute("position");

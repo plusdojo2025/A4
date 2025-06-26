@@ -131,9 +131,9 @@ public class AttendanceDAO {
 	}
 	
 	//学籍番号と日付を引数にその日の出席情報を取得する
-	public List<Allaccess> attendanceSelect(int number) {
+	public Attendance attendanceSelect(int number) {
 		Connection conn = null;
-		List<Allaccess> attList = new ArrayList<Allaccess>();
+		Attendance attendanceData = new Attendance();
 		
 		
 		try {
@@ -166,23 +166,20 @@ public class AttendanceDAO {
 			ResultSet rs = pStmt.executeQuery();
 			
 			// 結果表をコレクションにコピーする
-			while(rs.next()) {
-				Allaccess att = new Allaccess();
-				att.setAttendantId(rs.getInt("attendantId"));
-				att.setNumber(rs.getInt("number"));
-				att.setStatus(rs.getString("status"));
-				att.setAttendanceDate(rs.getString("attendanceDate"));
-				
-				attList.add(att);
+			if(rs.next()) {
+				attendanceData.setAttendantId(rs.getInt("attendantId"));
+				attendanceData.setNumber(rs.getInt("number"));
+				attendanceData.setStatus(rs.getString("status"));
+				attendanceData.setAttendanceDate(rs.getString("attendanceDate"));
 			}
 			
 			
 		}catch (SQLException e) {
 			e.printStackTrace();
-			attList = null;
+			attendanceData = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			attList = null;
+			attendanceData = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -190,11 +187,11 @@ public class AttendanceDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					attList = null;
+					attendanceData = null;
 				}
 			}
 		}
-		return attList;
+		return attendanceData;
 	}
 	
 	//先生が出席状況を更新する
