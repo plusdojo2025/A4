@@ -29,6 +29,7 @@ public class SidpwDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, Sidpw.getsName());
 			pStmt.setString(2, Sidpw.getsPw());
+			
 	
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
