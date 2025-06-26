@@ -1,7 +1,9 @@
 @charset "UTF-8";
 
 
-
+p {
+	text-align: center;
+}
 
 
 .regist{
@@ -357,6 +359,7 @@ h3 {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100px;
 }
 
 .student-sidebar li {
@@ -384,10 +387,39 @@ h3 {
   color: #333;
 }
 
+/*個人の成績*/
+.test input[type="text"] {
+	width: 50px;
+	text-align: center;
+}
+
+.test td {
+	width: 0;
+}
+.test table {
+	width: 0;
+	margin: 0 auto;
+}
+
+
+.submit input[type="submit"]{
+	width: 80px;            /* 固定幅（30pxは小さすぎ） */
+	padding: 15px 0;         /* 横のpaddingをなくす */
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 0;
+}
+
+
 
 /*当日出席一覧*/
 .attend p{
 	text-align: center;
+}
+
+.attend table {
+	width: 0;
+	
 }
 
 .attend2 {
@@ -539,4 +571,6 @@ form.contact {
 .message-block:last-child {
   border-bottom: none;
 }
+
+
 

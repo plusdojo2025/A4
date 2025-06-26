@@ -39,7 +39,7 @@
 		<p>${score.term}学期</p>
 		<p>${score.testName}テスト</p>
 		<form method="POST"
-			action="<c:url value='/TeacherScoreDisplayServlet'/>" id="form">
+			action="<c:url value='/TeacherScoreDisplayServlet'/>" id="form" class="test">
 			<input type="hidden" name="id" value="${score.testsId}">
 			<table>
 				<!--表形式-->

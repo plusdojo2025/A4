@@ -44,27 +44,31 @@
 			<option value="3">3学期</option>
 		</select>
 		<!-- テストを検索する -->
-		<input type="text" name="testName">テスト <input type="submit"
-			name="submit" value="検索"><br>
-
-		<!-- 検索結果が空の場合のメッセージ -->
-		<c:if test="${empty scoreList}">
-			<p>該当する成績データが見つかりませんでした。</p>
-		</c:if>
+		<input type="text" name="testName">テスト 
+		
 		<table>
-			<c:forEach var="student" items="${scoreList}" varStatus="status">
+			<tr>
+				<th>氏名</th>
+				<th>国語</th>
+				<th>数学</th>
+				<th>理科</th>
+				<th>社会</th>
+				<th>英語</th>
+				<th>総合</th>
+			</tr>
+			<c:forEach var="student" items="${studentList}" varStatus="status">
 				<tr>
 					<td><input type="text" name="sName" value="${student.sName}"
 						readonly></td>
 					<td><input type="text" name="japanese"
-						value="${student.japanese}"></td>
-					<td><input type="text" name="math" value="${student.math}"></td>
+						value=""></td>
+					<td><input type="text" name="math" value=""></td>
 					<td><input type="text" name="science"
-						value="${student.science}"></td>
-					<td><input type="text" name="social" value="${student.social}"></td>
+						value=""></td>
+					<td><input type="text" name="social" value=""></td>
 					<td><input type="text" name="english"
-						value="${student.english}"></td>
-					<td><input type="text" name="sum" value="${student.sum}"></td>
+						value=""></td>
+					<td><input type="text" name="sum" value=""></td>
 				</tr>
 			</c:forEach>
 		</table>
