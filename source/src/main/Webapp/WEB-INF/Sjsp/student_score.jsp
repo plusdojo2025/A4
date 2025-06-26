@@ -57,33 +57,37 @@
 				</c:if>
 
 				<c:forEach var="e" items="${scoreList}">
+					<p>${e.term}学期</p>
+					<p>${e.testName}テスト</p>
 					<table>
 						<tr>
-							<td></td>
-							<td>国語</td>
-							<td>数学</td>
-							<td>理科</td>
-							<td>社会</td>
-							<td>英語</td>
-							<td>総合</td>
+							<th>国語</th>
+							<th>数学</th>
+							<th>理科</th>
+							<th>社会</th>
+							<th>英語</th>
+							<th>総合</th>
 						</tr>
 						<tr>
-							<td>点数</td>
-							<td>${e.japanese}</td>
-							<td>${e.math}</td>
-							<td>${e.science}</td>
-							<td>${e.social}</td>
-							<td>${e.english}</td>
-							<td>${e.sum}</td>
+							<td><input type=text name=japanese value="${e.japanese}"></td>
+							<td><input type=text name=math value="${e.math}"></td>
+							<td><input type=text name=science value="${e.science}"></td>
+							<td><input type=text name=social value="${e.social}"></td>
+							<td><input type=text name=english value="${e.english}"></td>
+							<td><input type=text name=sum value="${e.sum}"></td>
 						</tr>
 						<tr>
-							<td>平均</td>
-							<td>${e.averageJapanese}</td>
-							<td>${e.averageMath}</td>
-							<td>${e.averageScience}</td>
-							<td>${e.averageSocial}</td>
-							<td>${e.averageEnglish}</td>
-							<td>${e.averageSum}</td>
+							<td><input type=text name=averageJapanese
+								value="${e.averageJapanese}"></td>
+							<td><input type=text name=averageMath
+								value="${e.averageMath}"></td>
+							<td><input type=text name=averageScience
+								value="${e.averageScience}"></td>
+							<td><input type=text name=averageSocial
+								value="${e.averageSocial}"></td>
+							<td><input type=text name=averageEnglish
+								value="${e.averageEnglish}"></td>
+							<td><input type=text name=averageSum value="${e.averageSum}"></td>
 						</tr>
 					</table>
 				</c:forEach>

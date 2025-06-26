@@ -15,7 +15,9 @@ body {
 	margin: 0 auto;
 }
 
-
+p {
+	text-align: center;
+}
 
 /* ▼ メインコンテンツ */
 .student-main-content {
@@ -142,4 +144,17 @@ body {
     cursor: pointer;
     text-align: center;
     
+}
+
+.test input[type="text"] {
+	width: 50px;
+	text-align: center;
+}
+
+.test td {
+	width: 0;
+}
+.test table {
+	width: 0;
+	margin: 0 auto;
 }
