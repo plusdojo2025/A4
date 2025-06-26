@@ -75,16 +75,14 @@ public class OtherAttendanceServlet extends HttpServlet {
         int attendantId = attendance.getAttendantId();
         int number = attendance.getNumber();
         String status = request.getParameter("status");
-        System.out.println(status);
+        
         
         String attendanceDate = (String)session.getAttribute("today");
         
-        System.out.println(position);
-        System.out.println(attendanceDate);
-        System.out.println(attendantId);
+        
 		//出席登録・欠席登録
 		if(position.equals("student")) {
-			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
+			if(attendDao.update(new Attendance(number,status,attendanceDate))) {
 				System.out.println("こんばんはだよ～");
 				response.sendRedirect(request.getContextPath() + "/OtherAttendanceServlet");
 			}
@@ -96,7 +94,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 			
 		}
 		else if(position.equals("parent")) {
-			if(attendDao.update(new Attendance(attendantId,number,status,attendanceDate))) {
+			if(attendDao.update(new Attendance(number,status,attendanceDate))) {
 				System.out.println("こんちくわだよ～");
 				response.sendRedirect(request.getContextPath() + "/OtherAttendanceServlet");
 			}

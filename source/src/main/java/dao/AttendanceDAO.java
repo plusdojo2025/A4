@@ -29,7 +29,7 @@ public class AttendanceDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT Sidpw.sName,Attendance.number,Attendance.status,Attendance.attendanceDate"
+			String sql = "SELECT Sidpw.sName,Attendance.attendantId,Attendance.number,Attendance.status,Attendance.attendanceDate"
 					+" FROM Attendance JOIN Sidpw ON Attendance.number = Sidpw.number WHERE attendanceDate = ? ";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -42,6 +42,7 @@ public class AttendanceDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Allaccess att = new Allaccess();
+				att.setAttendantId(rs.getInt("attendantId"));
 				att.setsName(rs.getString("sName"));
                 att.setNumber(rs.getInt("number"));
                 att.setStatus(rs.getString("status"));
@@ -255,7 +256,7 @@ public class AttendanceDAO {
 			//SQL文の準備する
 			String sql = "UPDATE Attendance SET status=?, number=?, attendanceDate=? WHERE attendantId=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			System.out.println(sql);
+			
 			//SQL文を完成させる
 			pStmt.setString(1, attendance.getStatus());              // 新しい出欠ステータス
 			pStmt.setInt(2, attendance.getNumber());                 // 学籍番号

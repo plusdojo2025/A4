@@ -56,7 +56,7 @@
                		</div>
                		<div >
                			
-               			<label> ${attendanceDate.status}</label>
+               			<label> <input name="status" ${attendanceDate.status}></label>
                			
                		</div>
             	</div>
