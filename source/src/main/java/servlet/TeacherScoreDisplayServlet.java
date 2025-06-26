@@ -68,9 +68,18 @@ public class TeacherScoreDisplayServlet extends HttpServlet{
 		// 更新を行う
 		TestsDAO annDao = new TestsDAO();
 		if (request.getParameter("update").equals("更新")) {
-			if(annDao.update(new Tests(testsId,japanes,math,science,social,
-					english,sum,averageJapanese,averageMath,averageScience,
-					averageSocial,averageEnglish,averageSum))) {
+			Tests te = new Tests();
+			te.setTestsId(testsId);
+			te.setJapanese(japanes);
+			te.setMath(math);
+			te.setScience(science);
+			te.setSocial(social);
+			te.setEnglish(english);
+			te.setSum(sum);
+			if(annDao.update(te)) {				
+//			if(annDao.update(new Tests(testsId,japanes,math,science,social,
+//					english,sum,averageJapanese,averageMath,averageScience,
+//					averageSocial,averageEnglish,averageSum))) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_score.jsp");
 				dispatcher.forward(request, response);
 			}

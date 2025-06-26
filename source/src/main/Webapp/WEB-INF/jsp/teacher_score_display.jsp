@@ -40,7 +40,7 @@
 		<p>${score.testName}テスト</p>
 		<form method="POST"
 			action="<c:url value='/TeacherScoreDisplayServlet'/>" id="form" class="test">
-			<input type="hidden" name="id" value="${score.testsId}">
+			<input type="text" name="id" value="${score.testsId}">
 			<table>
 				<!--表形式-->
 				<tr>
@@ -52,12 +52,12 @@
 					<th>総合</th>
 				</tr>
 				<tr>
-					<td><input type=text name=japanese value="${score.japanese}"></td>
-					<td><input type=text name=math value="${score.math}"></td>
-					<td><input type=text name=science value="${score.science}"></td>
-					<td><input type=text name=social value="${score.social}"></td>
-					<td><input type=text name=english value="${score.english}"></td>
-					<td><input type=text name=sum value="${score.sum}"></td>
+					<td><input type="text" name="japanese" value="${score.japanese}"></td>
+					<td><input type="text" name="math" value="${score.math}"></td>
+					<td><input type="text" name="science" value="${score.science}"></td>
+					<td><input type="text" name="social" value="${score.social}"></td>
+					<td><input type="text" name="english" value="${score.english}"></td>
+					<td><input type="text" name="sum" value="${score.sum}"></td>
 				</tr>
 				<tr>
 					<td><input type=text name=averageJapanese value="${score.averageJapanese}"></td>
