@@ -32,6 +32,7 @@ private static final long serialVersionUID = 1L;
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String position = request.getParameter("position");
+		System.out.println(position+"←ポジションだよ");
 		
 		String sName = "";
 		String sPw = "";

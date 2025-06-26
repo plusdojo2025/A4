@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.AttendanceDAO;
 import dto.Attendance;
+import dto.Pidpw;
 import dto.Sidpw;
 
 @WebServlet("/OtherAttendanceServlet")
@@ -29,9 +30,17 @@ public class OtherAttendanceServlet extends HttpServlet {
 //			return;
 //		}
 		//学籍番号取得
-		Sidpw studentInfo = new Sidpw();
-		studentInfo = (Sidpw)session.getAttribute("Sidpw");
-		int studentId = studentInfo.getNumber();
+		Sidpw studentInfo1 = new Sidpw();
+		studentInfo1 = (Sidpw)session.getAttribute("Sidpw");
+		Pidpw studentInfo2 = new Pidpw();
+		studentInfo2 = (Pidpw)session.getAttribute("Pidpw");
+		int studentId = 99;
+		if(studentInfo1 != null) {
+			studentId= studentInfo1.getNumber();
+		}else {
+			studentId= studentInfo2.getNumber();
+		}
+		
 		
 		//その日の日付を取得
 		LocalDate today = LocalDate.now();
@@ -53,6 +62,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 		
 		// ユーザーの種類に応じてJSPを振り分け
 		String position = (String) session.getAttribute("position");
+		System.out.println(position+"あてんだんすのポジションだよ");
 		if (position.equals("student")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_today_attend.jsp");
 			dispatcher.forward(request, response);
