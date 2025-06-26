@@ -58,29 +58,27 @@
             </thead>
    			<tbody>
    			<c:forEach var="e" items="${attendanceList}">
-				<form method="POST" action="/TeacherAttendanceServlet" class="form-flex">
+				<form method="POST" action="<c:url value='/TeacherAttendanceServlet'/>" class="form-flex">
                		<tr>
-                 
-                     <td class="name-label">
-                     	<input type="hidden" name="attid" value="${e.attendantId}">
-                        <input type="hidden" name="number" value="${e.number}">
-                        <input type="hidden" name="attdate" value="${e.attendanceDate}">
-                     	${e.sName}
-                     </td>
-                     <td>
-                         <div class="selectbox-5">
-                             <select name="attendance">
-                                 <option value="Present" <c:if test="${e.status == 'Present'}">selected</c:if>>出席</option>
-                                 <option value="Absent" <c:if test="${e.status == 'Absent'}">selected</c:if>>欠席</option>
-                                 <option value="Late" <c:if test="${e.status == 'Late'}">selected</c:if>>遅刻</option>
-                                 <option value="Early" <c:if test="${e.status == 'Early'}">selected</c:if>>早退</option>
-                             </select>
-                         </div>
-                     </td>
-                     <td>
-                         <input type="submit" name="submit" value="更新" class="submit-btn">
-                     </td>
-                 
+	                    <td class="name-label">
+	                    	<input type="hidden" name="attid" value="${e.attendantId}">
+	                       <input type="hidden" name="number" value="${e.number}">
+	                       <input type="hidden" name="attdate" value="${e.attendanceDate}">
+	                    	${e.sName}
+	                    </td>
+	                    <td>
+	                        <div class="selectbox-5">
+	                            <select name="attendance">
+								  <option value="出席" <c:if test="${e.status == '出席'}">selected</c:if>>出席</option>
+								  <option value="欠席" <c:if test="${e.status == '欠席'}">selected</c:if>>欠席</option>
+								  <option value="遅刻" <c:if test="${e.status == '遅刻'}">selected</c:if>>遅刻</option>
+								  <option value="早退" <c:if test="${e.status == '早退'}">selected</c:if>>早退</option>
+								</select>
+	                        </div>
+	                    </td>
+	                    <td>
+	                        <input type="submit" name="submit" value="更新" class="submit-btn">
+	                    </td>
                		</tr>
                </form>
            	</c:forEach>

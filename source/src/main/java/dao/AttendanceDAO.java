@@ -29,7 +29,7 @@ public class AttendanceDAO {
 					"root", "password");
 
 			// SQL文を準備する
-			String sql = "SELECT Sidpw.sName,Attendance.number,Attendance.status,Attendance.attendanceDate"
+			String sql = "SELECT Sidpw.sName,Attendance.attendantId,Attendance.number,Attendance.status,Attendance.attendanceDate"
 					+" FROM Attendance JOIN Sidpw ON Attendance.number = Sidpw.number WHERE attendanceDate = ? ";
 			
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -42,6 +42,7 @@ public class AttendanceDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Allaccess att = new Allaccess();
+				att.setAttendantId(rs.getInt("attendantId"));
 				att.setsName(rs.getString("sName"));
                 att.setNumber(rs.getInt("number"));
                 att.setStatus(rs.getString("status"));
@@ -130,10 +131,10 @@ public class AttendanceDAO {
 	}
 	
 	//学籍番号と日付を引数にその日の出席情報を取得する
-	public Attendance attendanceSelect(int number, String date) {
+	public List<Allaccess> attendanceSelect(int number) {
 		Connection conn = null;
-		Attendance attendanceData = new Attendance();
-		String attendanceDate = date.replace("/","-");
+		List<Allaccess> attList = new ArrayList<Allaccess>();
+		
 		
 		try {
 			// JDBCドライバを読み込む
@@ -144,41 +145,44 @@ public class AttendanceDAO {
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
 			
 			//SQL文を準備する
-			String sql ="SELECT * FROM Attendance WHERE number=? AND attendanceDate=?";
+			String sql ="SELECT \r\n"
+					+ "  Sidpw.sName,\r\n"
+					+ "  Attendance.number,\r\n"
+					+ "  Attendance.attendantId,\r\n"
+					+ "  Attendance.status,\r\n"
+					+ "  Attendance.attendanceDate\r\n"
+					+ "FROM \r\n"
+					+ "  Attendance\r\n"
+					+ "JOIN \r\n"
+					+ "  Sidpw ON Attendance.number = Sidpw.number\r\n"
+					+ "WHERE \r\n"
+					+ "  Attendance.number = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			
 			//SQL文を完成させる
-			if(number != 0) {
-				pStmt.setInt(1,number);
-			}
-			else {
-				pStmt.setInt(1, 0);
-			}
-			if(attendanceDate != null) {
-				pStmt.setString(2,attendanceDate);
-			}
-			else {
-				pStmt.setString(2, "%");
-			}
+				pStmt.setInt(1, number);
 			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 			
 			// 結果表をコレクションにコピーする
-			if(rs.next()) {
-				attendanceData.setAttendantId(rs.getInt("attendantId"));
-				attendanceData.setNumber(rs.getInt("number"));
-				attendanceData.setStatus(rs.getString("status"));
-				attendanceData.setAttendanceDate(rs.getString("attendanceDate"));
+			while(rs.next()) {
+				Allaccess att = new Allaccess();
+				att.setAttendantId(rs.getInt("attendantId"));
+				att.setNumber(rs.getInt("number"));
+				att.setStatus(rs.getString("status"));
+				att.setAttendanceDate(rs.getString("attendanceDate"));
+				
+				attList.add(att);
 			}
 			
 			
 		}catch (SQLException e) {
 			e.printStackTrace();
-			attendanceData = null;
+			attList = null;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			attendanceData = null;
+			attList = null;
 		} finally {
 			// データベースを切断
 			if (conn != null) {
@@ -186,11 +190,11 @@ public class AttendanceDAO {
 					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
-					attendanceData = null;
+					attList = null;
 				}
 			}
 		}
-		return attendanceData;
+		return attList;
 	}
 	
 	//先生が出席状況を更新する
@@ -255,7 +259,7 @@ public class AttendanceDAO {
 			//SQL文の準備する
 			String sql = "UPDATE Attendance SET status=?, number=?, attendanceDate=? WHERE attendantId=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			System.out.println(sql);
+			
 			//SQL文を完成させる
 			pStmt.setString(1, attendance.getStatus());              // 新しい出欠ステータス
 			pStmt.setInt(2, attendance.getNumber());                 // 学籍番号

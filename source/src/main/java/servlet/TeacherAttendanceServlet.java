@@ -64,33 +64,29 @@ public class TeacherAttendanceServlet extends HttpServlet {
 		String status = request.getParameter("attendance");
 		String attendanceDate = request.getParameter("attdate");
 		
-		// 更新を行う
-		AttendanceDAO attDao = new AttendanceDAO();
-		if(request.getParameter("submit").equals("更新")) {
-			if(attDao.update(new Attendance(attendantId,number,status,attendanceDate))){
-				request.setAttribute("msg","レコードを更新しました。");
-				// 今日の日付を取得
-			    String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		// 今日の日付を取得
+	    String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-			    // 出席DAOを使ってそのクラスの生徒の出席情報を取得
-			    AttendanceDAO dao = new AttendanceDAO();
-			    List<Allaccess> attendanceList = dao.select(today);
+	    // 出席DAOを使ってそのクラスの生徒の出席情報を取得
+	    AttendanceDAO dao = new AttendanceDAO();
+	    List<Allaccess> attendanceList = dao.select(today);
 
-				//リクエスト領域に保存
-				request.setAttribute("attendanceList", attendanceList);
-				request.setAttribute("today", today); // 日付も渡す
-				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
-				dispatcher.forward(request, response);
-			}else {
-				request.setAttribute("errormsg","レコードを更新できませんでした。");
-				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
-				dispatcher.forward(request, response);
-			}
-			
-		}
-	    
+		//リクエスト領域に保存
+		request.setAttribute("attendanceList", attendanceList);
+		request.setAttribute("today", today); // 日付も渡す
 		
+		String submit = request.getParameter("submit");
+		if ("更新".equals(submit)) {
+		    if (dao.update(new Attendance(attendantId, number, status, attendanceDate))) {
+		        request.setAttribute("msg", "更新しました。");
+		    } else {
+		        request.setAttribute("errormsg", "更新に失敗しました。");
+		    }
+		}
+
+	    
+		// 出席管理ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/teacher_today_attend.jsp");
+		dispatcher.forward(request, response);
 	}	
 }

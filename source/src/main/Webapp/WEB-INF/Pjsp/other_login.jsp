@@ -42,6 +42,7 @@
 					<label for="pw">パスワード</label><br>
 					<input type="password" name="otherPw" required>
 				</div><br>
+				
 				<input type="submit" name="login" value="ログイン">
 			</div>
 		
