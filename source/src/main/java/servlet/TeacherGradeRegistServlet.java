@@ -23,7 +23,7 @@ public class TeacherGradeRegistServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession(false); // 既存セッションのみ取得
-		if (session == null || session.getAttribute("Tidpw") == null) {
+		if (session.getAttribute("Tidpw") == null) {
 			response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
 			return;
 		}
@@ -42,12 +42,12 @@ public class TeacherGradeRegistServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-//		HttpSession session = request.getSession(false); // 既存セッションのみ取得
-//		if (session == null || session.getAttribute("Tidpw") == null) {
-//			response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
-//			return;
-//		}
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession(false); // 既存セッションのみ取得
+		if (session.getAttribute("Tidpw") == null) {
+			response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
+			return;
+		}
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");

@@ -21,7 +21,7 @@ public class TeacherGradeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession(false); // 既存セッションのみ取得
-		if (session == null || session.getAttribute("Tidpw") == null) {
+		if (session.getAttribute("Tidpw") == null) {
 			response.sendRedirect(request.getContextPath() + "/TeacherLoginServlet");
 			return;
 		}
