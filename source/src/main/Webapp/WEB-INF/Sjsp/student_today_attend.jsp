@@ -51,12 +51,15 @@
                 <div class="attend2">
                 	<div >
                 	<!-- セッションスコープから名前とる -->
-               			<label id="student-name">${sessionScope.Sidpw.sName}</label>
+               			<label id="student-name">
+               				<input name="sName" ${sessionScope.Sidpw.sName}>
+      					</label>
+      					<input type="hidden" name="attid" value="${e.attendantId}">
                			<input type="hidden" name="number" value="${attendanceDate.number}">
                		</div>
                		<div >
                			
-               			<label> <input name="status" ${attendanceDate.status}></label>
+               			<label> <input name="status" value="${attendanceDate.status}"></label>
                			
                		</div>
             	</div>
