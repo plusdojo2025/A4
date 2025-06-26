@@ -64,7 +64,7 @@
                		</div>
             	</div>
             	<div class="button">
-            		<input type="submit" name="regist" value="出席登録" onclick="showConfirm()"><br>
+            		<input type="submit" name="submit" value="出席登録" onclick="showConfirm()"><br>
             	</div>
             </div>
         </form>
