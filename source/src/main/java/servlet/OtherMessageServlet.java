@@ -22,10 +22,10 @@ public class OtherMessageServlet extends HttpServlet{
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
-			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
-			return;
-		}
+//		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
+//			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
+//			return;
+//		}
 		
 		String position = (String)session.getAttribute("position");
 		int className=0;

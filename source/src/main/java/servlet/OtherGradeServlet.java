@@ -22,10 +22,10 @@ public class OtherGradeServlet extends HttpServlet{
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
-			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
-			return;
-		}
+//		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
+//			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
+//			return;
+//		}
 		String position = (String)session.getAttribute("position");
 		
 		// 成績ページにフォワードする
@@ -43,10 +43,10 @@ public class OtherGradeServlet extends HttpServlet{
 			throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
-			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
-			return;
-		}
+//		if(session.getAttribute("Pidpw") == null || session.getAttribute("Sidpw") == null) {
+//			response.sendRedirect(request.getContextPath() +"/OtherLoginServlet");
+//			return;
+//		}
 		request.setCharacterEncoding("UTF-8");
 		String position = (String)session.getAttribute("position");
 		int studentId=0;
