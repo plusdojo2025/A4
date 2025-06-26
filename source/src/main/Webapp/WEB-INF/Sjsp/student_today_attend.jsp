@@ -39,29 +39,20 @@
     <div>
         <!--生徒の出席状況の表示-->
         <form method="POST" action="<c:url value='/OtherAttendanceServlet'/>" class="form-flex">
+        	<input type="hidden" name="attid" value="${attendance.attendantId}">
+		    <input type="hidden" name="number" value="${attendance.number}">
+		    <input type="hidden" name="attdate" value="${attendance.attendanceDate}">
         <div class="day">
-        <!--日付表示(のちに変更必要)-->
-        <p>日付：${today}</p>
-    </div>
+        	<p>日付：${today}</p>
+    	</div>
             <div class="attend">
                 <div class="attend2">
 	               <label for="name">名前</label>
 	               <label for="status">出欠</label>
                 </div>
                 <div class="attend2">
-                	<div >
-                	<!-- セッションスコープから名前とる -->
-               			<label id="student-name">
-               				<input name="sName" ${sessionScope.Sidpw.sName}>
-      					</label>
-      					<input type="hidden" name="attid" value="${e.attendantId}">
-               			<input type="hidden" name="number" value="${attendanceDate.number}">
-               		</div>
-               		<div >
-               			
-               			<label> <input name="status" value="${attendanceDate.status}"></label>
-               			
-               		</div>
+               			<label id="student-name">${sessionScope.Sidpw.sName}</label>
+               			<label><input type="hidden" name="status" ${attendance.status}></label>
             	</div>
             	<div class="button">
             		<input type="submit" name="submit" value="出席登録" onclick="showConfirm()"><br>

@@ -76,7 +76,6 @@ public class OtherAttendanceServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		int attendantId = Integer.parseInt(request.getParameter("attid"));
 		int number = Integer.parseInt(request.getParameter("number"));
-		String status = request.getParameter("status");
 		String attendanceDate = request.getParameter("attdate");
 		
 		//学籍番号取得
