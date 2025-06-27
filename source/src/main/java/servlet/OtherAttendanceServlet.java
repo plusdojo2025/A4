@@ -122,9 +122,9 @@ public class OtherAttendanceServlet extends HttpServlet {
 		//出席登録・欠席登録
 		String submit = request.getParameter("submit");
 		String position = (String) session.getAttribute("position");
-		if ("欠席登録".equals(submit)) {
+		if ("出席登録".equals(submit)) {
 			if(position.equals("student")) {
-				if(attendanceInfo.update(new Attendance(attendantId, number, "出席", attendanceDate))) {
+				if(attendanceInfo.insert(new Attendance(attendantId, number, "出席", attendanceDate))) {
 					request.setAttribute("msg", "更新しました。");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Sjsp/student_today_attend.jsp");
 					dispatcher.forward(request, response);
@@ -134,9 +134,9 @@ public class OtherAttendanceServlet extends HttpServlet {
 					dispatcher.forward(request, response);
 				}  
 			}
-		else if("出席登録".equals(submit)){
+		else if("欠席登録".equals(submit)){
 			if(position.equals("parent")) {
-				if(attendanceInfo.update(new Attendance(attendantId, number, "欠席", attendanceDate))) {
+				if(attendanceInfo.insert(new Attendance(attendantId, number, "欠席", attendanceDate))) {
 					request.setAttribute("msg", "更新しました。");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Pjsp/parent_today_attend.jsp");
 					dispatcher.forward(request, response);
