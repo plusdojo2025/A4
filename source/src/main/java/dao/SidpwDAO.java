@@ -413,7 +413,54 @@ public class SidpwDAO {
 		return className;
 	}
 
-	
+	public String selectStudentName(int studentId) {
+		Connection conn = null;
+		String studentName = "";
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/a4?"
+				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
+						
+			//SQL文を準備する
+			String sql = "SELECT sName FROM Sidpw WHERE number=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			//SQL文を完成させる
+			if(studentId!=0) {
+				pStmt.setInt(1,studentId);
+			}
+			else {
+				pStmt.setInt(1, 0);
+			}
+			
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+			if (rs.next()) {
+	            studentName = rs.getString("sName");
+	        }
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			studentName = null;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			studentName = null;
+		} finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					studentName = null;
+				}
+			}
+		}
+		return studentName;
+	}
 	
 	
 }

@@ -56,8 +56,8 @@
 		            <label for="status">出欠</label>
 		        </div>
 		        <div class="attend2">
-		            <label id="student-name">${sessionScope.Sidpw.sName}</label>
-		            <label><input type="hidden" name="status" ${attendance.status}></label>
+		            <label id="student-name"><input type="text" name="sName" value="${studentName}"></label>
+		            <label><input type="text" name="status" value="${attendance.status}"></label>
 		        </div>
 		        <div class="button">
 		            <input type="submit" name="submit" value="欠席登録" onclick="showConfirm()"><br>

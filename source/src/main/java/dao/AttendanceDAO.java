@@ -131,7 +131,7 @@ public class AttendanceDAO {
 	}
 	
 	//学籍番号と日付を引数にその日の出席情報を取得する
-	public Attendance attendanceSelect(int number) {
+	public Attendance attendanceSelect(int number, String date) {
 		Connection conn = null;
 		Attendance attendanceData = new Attendance();
 		
@@ -145,33 +145,23 @@ public class AttendanceDAO {
 				+ "characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true","root", "password");
 			
 			//SQL文を準備する
-			String sql ="SELECT \r\n"
-					+ "  Sidpw.sName,\r\n"
-					+ "  Attendance.number,\r\n"
-					+ "  Attendance.attendantId,\r\n"
-					+ "  Attendance.status,\r\n"
-					+ "  Attendance.attendanceDate\r\n"
-					+ "FROM \r\n"
-					+ "  Attendance\r\n"
-					+ "JOIN \r\n"
-					+ "  Sidpw ON Attendance.number = Sidpw.number\r\n"
-					+ "WHERE \r\n"
-					+ "  Attendance.number = ?";
+			String sql ="SELECT attendantId,number,status,attendanceDate FROM Attendance WHERE number = ? AND attendanceDate=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			
+			System.out.println(sql);
 			//SQL文を完成させる
 				pStmt.setInt(1, number);
+				pStmt.setString(2,date);
 			
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 			
 			// 結果表をコレクションにコピーする
-			if(rs.next()) {
+			if (rs.next()) {
 				attendanceData.setAttendantId(rs.getInt("attendantId"));
 				attendanceData.setNumber(rs.getInt("number"));
 				attendanceData.setStatus(rs.getString("status"));
 				attendanceData.setAttendanceDate(rs.getString("attendanceDate"));
-			}
+			} 
 			
 			
 		}catch (SQLException e) {
