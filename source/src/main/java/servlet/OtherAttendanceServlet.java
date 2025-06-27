@@ -89,9 +89,16 @@ public class OtherAttendanceServlet extends HttpServlet {
 		String attendanceDate = request.getParameter("attdate");
 		
 		//学籍番号取得
-		Sidpw studentInfo = new Sidpw();
-		studentInfo = (Sidpw)session.getAttribute("Sidpw");
-		int studentId = studentInfo.getNumber();
+		Sidpw studentInfo1 = new Sidpw();
+		studentInfo1 = (Sidpw)session.getAttribute("Sidpw");
+		Pidpw studentInfo2 = new Pidpw();
+		studentInfo2 = (Pidpw)session.getAttribute("Pidpw");
+		int studentId = 99;
+		if(studentInfo1 != null) {
+			studentId= studentInfo1.getNumber();
+		}else {
+			studentId= studentInfo2.getNumber();
+		}
 		
 		//その日の日付を取得
 		LocalDate today = LocalDate.now();
@@ -127,7 +134,7 @@ public class OtherAttendanceServlet extends HttpServlet {
 					dispatcher.forward(request, response);
 				}  
 			}
-		else {
+		else if("出席登録".equals(submit)){
 			if(position.equals("parent")) {
 				if(attendanceInfo.update(new Attendance(attendantId, number, "欠席", attendanceDate))) {
 					request.setAttribute("msg", "更新しました。");
