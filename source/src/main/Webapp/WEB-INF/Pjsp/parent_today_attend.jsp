@@ -56,7 +56,7 @@
 		            <label for="status">出欠</label>
 		        </div>
 		        <div class="attend2">
-		            <label id="student-name">${sessionScope.Pidpw.pName}</label>
+		            <label id="student-name">${sessionScope.Sidpw.sName}</label>
 		            <label><input type="hidden" name="status" ${attendance.status}></label>
 		        </div>
 		        <div class="button">
